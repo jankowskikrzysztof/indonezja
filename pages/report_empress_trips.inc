@@ -1,7 +1,7 @@
 <script>
 function changePeriod(url)
 {
-    location.href = 'reports.php?action=empress_trips&period=' + url;
+    location.href = 'report.php?action=empress_trips&period=' + url;
 }
 </script>
 
