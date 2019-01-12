@@ -21,6 +21,5 @@ include('pages/index_main.inc');
 
 ?>
 
-<h1>test</h1>
 
 <?php include('inc/footer.inc'); ?>
