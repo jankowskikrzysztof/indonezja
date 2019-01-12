@@ -1,0 +1,19 @@
+{
+  "short_name": "Scuba Panel",
+  "name": "Scuba Froggy Panel",
+  "background_color": "#2196F3",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "inc/favicon-114x114.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    },
+    {
+      "src": "inc/favicon-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ],
+  "start_url": "login.php"
+}
