@@ -62,9 +62,9 @@ foreach($row_array as $row)
    <td>'.$row['account_no'].'</td>
    <td>'.$type_err.''.$row['type'].'</font></b></td>
    <td>'.$row['description'].'</td>  
-   <td align=right>'.$row['credit'].'</td>  
-   <td align=right>'.$row['debit'].'</td>  
-   <td align=right '.$bgvalue.'>'.$row['value'].'</td>   
+   <td align=right>'.$formatter->formatCurrency($row['credit'], 'IDR').'</td>  
+   <td align=right>'.$formatter->formatCurrency($row['debit'], 'IDR').'</td>  
+   <td align=right '.$bgvalue.'>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>   
    ';
 
    $desc_part = explode(' ',$row['description']);
