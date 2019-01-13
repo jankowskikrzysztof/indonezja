@@ -25,11 +25,12 @@ if($debug == 1 and $_SESSION['login']=='kjankowski')
 
 //echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
 
+/*
           echo '<br><br><hr>'.$_SERVER['REMOTE_ADDR'].'<pre>';
           print_r(error_get_last());
           echo '<br><br><hr>';
           print '<pre>' . htmlspecialchars(print_r(get_defined_vars(), true)) . '</pre>';
-
+*/
 
           echo "<div style='clear: both; width: 100%; font-size: 14px; font-family: Helvetica; color: #30121d; background: #bcbf77; padding: 20px; text-align: center;'>Current branch: <span style='color:#fff; font-weight: bold; text-transform: uppercase;'>" . $branchname . "</span></div>"; //show it on the page
 
