@@ -49,11 +49,11 @@ if(!$_FILES['spreadsheet']['error'])
 
     echo '<br><br><table class="pure-table pure-table-horizontal pure-table-striped">';
     echo '<thead>
-            <th>No</th>
             <th align=center>Account No</th>
             <th align=center>Post Date</th>
             <th align=center>Value Date</th>
-            <th align=center>Branch/<br>Journal</th>
+            <th align=center>Branch</th>
+            <th align=center>Journal</th>
             <th align=center>Type</th>
             <th align=center>Description</th>
             <th align=center>Debit<br>OUT</th>
