@@ -7,6 +7,7 @@ include('inc/config.inc');
 include('inc/nav.inc');
 ?>
 
+<br><br><br><br>
 <div align=center class="pure-form" >
 
 <form method="post" enctype="multipart/form-data">
