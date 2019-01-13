@@ -47,6 +47,21 @@ if($_FILES['spreadsheet']['tmp_name']){
 if(!$_FILES['spreadsheet']['error'])
 {
 
+    echo '<br><br><table class="pure-table pure-table-horizontal pure-table-striped">';
+    echo '<thead>
+            <th>No</th>
+            <th align=center>Account No</th>
+            <th align=center>Post Date</th>
+            <th align=center>Value Date</th>
+            <th align=center>Branch/<br>Journal</th>
+            <th align=center>Type</th>
+            <th align=center>Description</th>
+            <th align=center>Debit<br>OUT</th>
+            <th align=center>Credit<br>IN</th>
+            <th align=center>Status</th>
+            </thead>';
+
+
     $acc_name = $_POST['acc_name'];
     $inputFile = $_FILES['spreadsheet']['tmp_name'];
     //$extension = strtoupper(pathinfo($inputFile, PATHINFO_EXTENSION));
@@ -114,7 +129,7 @@ if(!$_FILES['spreadsheet']['error'])
                                                 and `credit` = '$credit'
                                                 and `currency_code` = '$currency_code'
                                             ";
-    echo $select_check.'<br>';
+    //echo $select_check.'<br>';
 
                             $stmt = $dbh->prepare($select_check);                        
                             $stmt -> execute();
@@ -138,7 +153,7 @@ if(!$_FILES['spreadsheet']['error'])
                                     '".$value_date."',
                                     '".$branch."',
                                     '".$journal."',
-                                    '".$type."',
+                                    '".trim($type)."',
                                     '".addslashes($description)."',
                                     '".$debit."',
                                     '".$credit."',
@@ -149,9 +164,12 @@ if(!$_FILES['spreadsheet']['error'])
                             $stmt = $dbh->prepare($inser_after_check);
                                 
                                 if($mysql_active==1 and $select_count==0) 
+                                    {
+                                    $insert_status = '<font color=green>OK</font>';
                                     $stmt -> execute();
+                                    }
                                 else
-                                    echo 'input file has duplicated record row '.$post_date.' '.$debit.' '.$credit.'<br>';
+                                    $insert_status = '<font color=red>input file has duplicated record row</font>';
                                 
                                 $insert_id = $dbh->lastInsertId();                                
                             
@@ -174,6 +192,7 @@ if(!$_FILES['spreadsheet']['error'])
 
                                         <td>'.$debit.'</td>
                                         <td>'.$credit.'</td>
+                                        <td>'.$insert_status.'</td>
                                 </tr>'."&#13;&#10;";
 
             }
