@@ -114,6 +114,7 @@ if(!$_FILES['spreadsheet']['error'])
                                                 and `credit` = '$credit'
                                                 and `currency_code` = '$currency_code'
                                             ";
+    echo $select_check.'<br>';
 
                             $stmt = $dbh->prepare($select_check);                        
                             $stmt -> execute();
