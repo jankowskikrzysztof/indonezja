@@ -19,6 +19,7 @@ include('inc/nav.inc');
 
 <form method="post" enctype="multipart/form-data">
 <select name="acc_name">
+    <option value="error">choose account</option>
     <option value="380251201">USD - 380251201</option>
     <option value="359738937">IDR - 359738937</option>
     <option value="filename">from filename</option>
@@ -53,6 +54,18 @@ if(isset($_FILES['spreadsheet'])){
 if($_FILES['spreadsheet']['tmp_name']){
 if(!$_FILES['spreadsheet']['error'])
 {
+    $acc_name = $_POST['acc_name'];
+    $inputFile = $_FILES['spreadsheet']['tmp_name'];
+    //$extension = strtoupper(pathinfo($inputFile, PATHINFO_EXTENSION));
+    $extension = strtoupper(pathinfo($_FILES['spreadsheet']['name'], PATHINFO_EXTENSION));
+    $filename = strtoupper(pathinfo($_FILES['spreadsheet']['name'], PATHINFO_BASENAME));
+
+
+    if($acc_name=='error')
+        {
+        echo 'choose proper account for file';
+        exit;
+        }
 
     echo '<br><br><table class="pure-table pure-table-horizontal pure-table-striped">';
     echo '<thead>
@@ -70,11 +83,7 @@ if(!$_FILES['spreadsheet']['error'])
             </thead>';
 
 
-    $acc_name = $_POST['acc_name'];
-    $inputFile = $_FILES['spreadsheet']['tmp_name'];
-    //$extension = strtoupper(pathinfo($inputFile, PATHINFO_EXTENSION));
-    $extension = strtoupper(pathinfo($_FILES['spreadsheet']['name'], PATHINFO_EXTENSION));
-    $filename = strtoupper(pathinfo($_FILES['spreadsheet']['name'], PATHINFO_BASENAME));
+
     
 //    if($extension == 'XLSX' || $extension == 'xlsx' || $extension == 'csv'){
 
