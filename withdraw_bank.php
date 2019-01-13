@@ -107,7 +107,7 @@ foreach($row_array as $row)
 $lp++;
     echo "<tr>";
 
-if(!$row['settlements'])
+if(!$row['foreign_doc'])
     $set_bgcolor = 'style="background-color: #ff9999"';
 else
     $set_bgcolor = '';
@@ -116,6 +116,23 @@ if($row['credit']+$row['debit'] <> $row['set_value'])
     $setvalue_bgcolor = 'style="background-color: #ff9999"';
 else
     $setvalue_bgcolor = '';
+
+
+$lista_foreign_dok = explode(',',$row['foreign_doc']);
+foreach ($lista_foreign_dok as $lista_for_dok) {
+
+    $foreign_dok = explode('|',$lista_for_dok);
+
+    if($foreign_dok[1]=='cash_book' and $row['debit']<>0)
+        $foreign_dok_arr .= '<a href="cash_report.php?action=edit&id='.$foreign_dok[0].'&cash=out">Cash Book</a><br>';
+    elseif($foreign_dok[1]=='cash_book' and $row['credit']<>0)
+        $foreign_dok_arr .= '<a href="empress_income.php?action=edit&id='.$foreign_dok[0].'>Invoice</a><br>';
+    else
+        $foreign_dok_arr .= $lista_for_dok.'<br>';
+
+
+}
+    
 
 
 echo '<td align=center>'.$lp.'<br><font size="0.5vw">'.$row['id_bank_statement'].'</font></td>';
@@ -127,7 +144,7 @@ echo "<td align=center>".$row['type']."</td>";
 echo "<td align=left>".$row['description']."</td>";
 echo "<td align=right>".$formatter->formatCurrency($row['credit'], 'IDR')."</td>";
 echo "<td align=right>".$formatter->formatCurrency($row['debit'], 'IDR')."</td>";
-echo "<td align=right ".$set_bgcolor.">".$row['foreign_doc']."</td>";
+echo "<td align=right ".$set_bgcolor.">".$foreign_dok_arr."</td>";
 echo "<td align=right ".$setvalue_bgcolor.">".$formatter->formatCurrency($row['set_value'], 'IDR')."</td>";
 
 $debit_sum += $row['debit'];
