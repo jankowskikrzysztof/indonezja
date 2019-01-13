@@ -51,11 +51,11 @@ foreach($row_array as $row)
 		$type_err = '<font color=red><b>';
 	
 	if($row['value']==0)
-		$bgvalue = ' bgcolor="#FA8072';
+		$bgvalue = ' bgcolor="#FA8072"';
 	elseif($row['credit'] + $row['debit'] == $row['value'])
-		$bgvalue = ' bgcolor="#7CFC00';
+		$bgvalue = ' bgcolor="#7CFC00"';
 	elseif($row['credit'] + $row['debit'] <> $row['value'])
-		$bgvalue = ' bgcolor="#FFA500';
+		$bgvalue = ' bgcolor="#FFA500"';
 
    echo '<tr>
    <td>'.$row['value_date'].'</td>
