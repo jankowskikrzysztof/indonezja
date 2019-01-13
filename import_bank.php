@@ -127,15 +127,13 @@ if(!$_FILES['spreadsheet']['error'])
                             $select_check = "SELECT * 
                                             FROM `bank_statement` 
                                             WHERE
-                                                    `account_no` = '$account_no'
-                                                and `post_date` = '$post_date'
+                                                    `post_date` = '$post_date'
                                                 and `value_date` = '$value_date'
                                                 and `branch` = '$branch'
                                                 and `journal_no` = '$journal'
                                                 and `type` = '".trim($type)."'
                                                 and `debit` = '$debit'
                                                 and `credit` = '$credit'
-                                                and `currency_code` = '$currency_code'
                                             ";
     //echo $select_check.'<br>';
 
