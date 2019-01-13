@@ -11,6 +11,12 @@ include('inc/nav.inc');
 <div align=center class="pure-form" >
 
 <form method="post" enctype="multipart/form-data">
+<select name="acc_name">
+    <option value="380251201">USD - 380251201</option>
+    <option value="359738937">IDR - 359738937</option>
+    <option value="filename">from filename</option>
+</select>
+
 Upload File: <input type="file" name="spreadsheet"/>
 <input type="submit" name="submit" value="Submit" />
 </form>
@@ -41,6 +47,7 @@ if($_FILES['spreadsheet']['tmp_name']){
 if(!$_FILES['spreadsheet']['error'])
 {
 
+    $acc_name = $_POST['acc_name'];
     $inputFile = $_FILES['spreadsheet']['tmp_name'];
     //$extension = strtoupper(pathinfo($inputFile, PATHINFO_EXTENSION));
     $extension = strtoupper(pathinfo($_FILES['spreadsheet']['name'], PATHINFO_EXTENSION));
@@ -71,8 +78,11 @@ if(!$_FILES['spreadsheet']['error'])
                     {
                         //Post Date,Value Date,Branch,Journal No.,Description,Debit,Credit,
 
+                        if($acc_name == 'filename')
+                            $account_no = str_replace('.CSV','',$filename);
+                        else    
+                            $account_no = $acc_name;
 
-                        $account_no = str_replace('.CSV','',$filename);
                         $post_date = '20'.substr($rowData[0][0],6,2).'-'.substr($rowData[0][0],3,2).'-'.substr($rowData[0][0],0,2).'';
                         $value_date = '20'.substr($rowData[0][1],6,2).'-'.substr($rowData[0][1],3,2).'-'.substr($rowData[0][1],0,2).'';
                         $branch = $rowData[0][2];
