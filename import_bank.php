@@ -49,6 +49,7 @@ if(!$_FILES['spreadsheet']['error'])
 
     echo '<br><br><table class="pure-table pure-table-horizontal pure-table-striped">';
     echo '<thead>
+            <th align=center>File line</th>
             <th align=center>Account No</th>
             <th align=center>Post Date</th>
             <th align=center>Value Date</th>
@@ -175,6 +176,7 @@ if(!$_FILES['spreadsheet']['error'])
                             
 
                             echo '<tr>
+                                        <td>'.$row.'</td>
                                         <td>'.$account_no.'</td>
                                         <td>'.$post_date.'</td>
                                         <td>'.$value_date.'</td>
