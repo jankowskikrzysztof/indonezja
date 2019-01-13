@@ -94,6 +94,7 @@ $bank_statement_array = $stmt->fetchAll();
             <!-- <div class="pure-control-group">
                 <label for="name">Foreign ID</label> -->
                 <input type="hidden" name="foreign_id" id="foreign_id" value="<?php echo $foreign_id; ?>">
+                <input type="hidden" name="doc_value" id="doc_value" value="<?php echo $value; ?>">
                 <!-- <?php echo $foreign_id; ?>
             </div> -->
 <br>
