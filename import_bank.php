@@ -63,7 +63,7 @@ if(!$_FILES['spreadsheet']['error'])
 
     if($acc_name=='error')
         {
-        echo 'choose proper account for file';
+        echo '<font color=red>choose proper account for file</font>';
         exit;
         }
 
