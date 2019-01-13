@@ -1,4 +1,11 @@
+<style>
+         tr {
+             font-size: 85%;
+         }
+      </style>
+
 <?php
+
 
 $header_title = 'Scuba Froggy Panel';
 include('inc/header.inc');
@@ -192,8 +199,8 @@ if(!$_FILES['spreadsheet']['error'])
                             echo '
 
 
-                                        <td>'.$debit.'</td>
-                                        <td>'.$credit.'</td>
+                                        <td align="right">'.$debit.'</td>
+                                        <td align="right">'.$credit.'</td>
                                         <td>'.$insert_status.'</td>
                                 </tr>'."&#13;&#10;";
 
