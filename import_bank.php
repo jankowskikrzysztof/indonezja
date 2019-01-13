@@ -7,7 +7,7 @@ include('inc/config.inc');
 include('inc/nav.inc');
 ?>
 
-
+<div align=center class="pure-form" >
 
 <form method="post" enctype="multipart/form-data">
 Upload File: <input type="file" name="spreadsheet"/>
