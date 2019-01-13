@@ -32,7 +32,7 @@ if($debug == 1 and $_SESSION['login']=='kjankowski')
           print '<pre>' . htmlspecialchars(print_r(get_defined_vars(), true)) . '</pre>';
 */
 
-          echo "<div style='clear: both; width: 100%; font-size: 14px; font-family: Helvetica; color: #30121d; background: #bcbf77; padding: 20px; text-align: center;'>Current branch: <span style='color:#fff; font-weight: bold; text-transform: uppercase;'>" . $branchname . "</span></div>"; //show it on the page
+          echo "<br><br><br><div style='clear: both; width: 100%; font-size: 14px; font-family: Helvetica; color: #30121d; background: #bcbf77; padding: 20px; text-align: center;'>Current branch: <span style='color:#fff; font-weight: bold; text-transform: uppercase;'>" . $branchname . "</span></div>"; //show it on the page
 
         }
 ?>
