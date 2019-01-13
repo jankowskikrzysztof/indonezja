@@ -117,7 +117,7 @@ if($row['credit']+$row['debit'] <> $row['set_value'])
 else
     $setvalue_bgcolor = '';
 
-
+$foreign_dok_arr = '';
 $lista_foreign_dok = explode(',',$row['foreign_doc']);
 foreach ($lista_foreign_dok as $lista_for_dok) {
 
@@ -126,7 +126,7 @@ foreach ($lista_foreign_dok as $lista_for_dok) {
     if($foreign_dok[1]=='cash_book' and $row['debit']<>0)
         $foreign_dok_arr .= '<a href="cash_report.php?action=edit&id='.$foreign_dok[0].'&cash=out">Cash Book</a><br>';
     elseif($foreign_dok[1]=='cash_book' and $row['credit']<>0)
-        $foreign_dok_arr .= '<a href="empress_income.php?action=edit&id='.$foreign_dok[0].'>Invoice</a><br>';
+        $foreign_dok_arr .= '<a href="empress_income.php?action=edit&id='.$foreign_dok[0].'">Invoice</a><br>';
     else
         $foreign_dok_arr .= $lista_for_dok.'<br>';
 
