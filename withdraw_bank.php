@@ -65,7 +65,7 @@ echo '<h2 align=center>Bank withdraw: '.$period_month.'/'.$period_year.'</h2>';
 echo '<table class="pure-table pure-table-horizontal pure-table-striped">';
 
 
-if($_SESSION['user_id']==1)
+if($_SESSION['user_id']==1 or $_SESSION['user_id']==6 )
 echo '<thead>
 <th colspan=10 align=right><a href="import_bank.php">Import withdraw</a></th>
 </thead>';
