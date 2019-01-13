@@ -50,6 +50,12 @@ foreach($row_array as $row)
 	if(substr($row['type'],0,9)=='TARIK CHQ' and $row['value']==0)
 		$type_err = '<font color=red><b>';
 	
+	if($row['value']==0)
+		$bgvalue = ' bgcolor="#FA8072';
+	elseif($row['credit'] + $row['debit'] == $row['value'])
+		$bgvalue = ' bgcolor="#7CFC00';
+	elseif($row['credit'] + $row['debit'] <> $row['value'])
+		$bgvalue = ' bgcolor="#FFA500';
 
    echo '<tr>
    <td>'.$row['value_date'].'</td>
@@ -58,7 +64,7 @@ foreach($row_array as $row)
    <td>'.$row['description'].'</td>  
    <td align=right>'.$row['credit'].'</td>  
    <td align=right>'.$row['debit'].'</td>  
-   <td align=right>'.$row['value'].'</td>   
+   <td align=right '.$bgvalue.'>'.$row['value'].'</td>   
    ';
 
    $desc_part = explode(' ',$row['description']);
