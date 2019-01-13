@@ -84,7 +84,7 @@ echo '<thead>
 <th align=center>Set. Value</th>
 </thead>';
 //
-$select = "SELECT bank_statement.*, GROUP_CONCAT(settlements.id_settlements) as settlements, sum(settlements.value) as set_value
+$select = "SELECT bank_statement.*, GROUP_CONCAT(settlements.id_settlements) as ids_settlements, GROUP_CONCAT(CONCAT(settlements.foreign_id,'|',settlements.foreign_table)) as foreign_doc, sum(settlements.value) as set_value
 FROM bank_statement
 left join settlements on settlements.bank_statement_id=bank_statement.id_bank_statement
 WHERE YEAR(bank_statement.post_date)='".$period_year."'
@@ -127,7 +127,7 @@ echo "<td align=center>".$row['type']."</td>";
 echo "<td align=left>".$row['description']."</td>";
 echo "<td align=right>".$formatter->formatCurrency($row['credit'], 'IDR')."</td>";
 echo "<td align=right>".$formatter->formatCurrency($row['debit'], 'IDR')."</td>";
-echo "<td align=right ".$set_bgcolor.">".$row['settlements']."</td>";
+echo "<td align=right ".$set_bgcolor.">".$row['foreign_doc']."</td>";
 echo "<td align=right ".$setvalue_bgcolor.">".$formatter->formatCurrency($row['set_value'], 'IDR')."</td>";
 
 $debit_sum += $row['debit'];
