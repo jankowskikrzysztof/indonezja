@@ -70,7 +70,7 @@ if(!$_FILES['spreadsheet']['error'])
         $highestColumn = $sheet->getHighestColumn();
 
         //Loop through each row of the worksheet in turn
-        for ($row = 1; $row <= $highestRow; $row++){ 
+        for ($row = 2; $row <= $highestRow; $row++){ 
                 //  Read a row of data into an array
                 $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
                 
@@ -100,33 +100,57 @@ if(!$_FILES['spreadsheet']['error'])
                         $type = $description_pre[0];
                         $description = $description_pre[1].' '.$description_pre[2].' '.$description_pre[3].' '.$description_pre[4].' '.$description_pre[5];
 
-                            $stmt = $dbh->prepare("INSERT INTO `bank_statement`
-                                                            (`account_no`,
-                                                            `post_date`,
-                                                            `value_date`,
-                                                            `branch`,
-                                                            `journal_no`,
-                                                            `type`,
-                                                            `description`,
-                                                            `debit`,
-                                                            `credit`,
-                                                            `currency_code`
-                                                            )
 
-                                                    VALUES ('".$account_no."',
-                                                            '".$post_date."',
-                                                            '".$value_date."',
-                                                            '".$branch."',
-                                                            '".$journal."',
-                                                            '".$type."',
-                                                            '".addslashes($description)."',
-                                                            '".$debit."',
-                                                            '".$credit."',
-                                                            '".$currency_code."'
-                                                            )
-                                                    ");
+                            $select_check = "SELECT * 
+                                            FROM `bank_statement` 
+                                            WHERE
+                                                    `account_no` = '$account_no'
+                                                and `post_date` = '$post_date'
+                                                and `value_date` = '$value_date'
+                                                and `branch` = '$branch'
+                                                and `journal_no` = '$journal_no'
+                                                and `type` = '$type'
+                                                and `debit` = '$debit'
+                                                and `credit` = '$credit'
+                                                and `currency_code` = '$currency_code'
+                                            ";
+
+                            $stmt = $dbh->prepare($select_check);                        
+                            $stmt -> execute();
+                            $select_count = $stmt->fetchColumn();
+
+                            $inser_after_check = "INSERT INTO `bank_statement`
+                                (`account_no`,
+                                `post_date`,
+                                `value_date`,
+                                `branch`,
+                                `journal_no`,
+                                `type`,
+                                `description`,
+                                `debit`,
+                                `credit`,
+                                `currency_code`
+                                )
+
+                            VALUES ('".$account_no."',
+                                    '".$post_date."',
+                                    '".$value_date."',
+                                    '".$branch."',
+                                    '".$journal."',
+                                    '".$type."',
+                                    '".addslashes($description)."',
+                                    '".$debit."',
+                                    '".$credit."',
+                                    '".$currency_code."'
+                                    )
+                            ";
+
+                            $stmt = $dbh->prepare($inser_after_check);
                                 
-                                if($mysql_active==1) $stmt -> execute();
+                                if($mysql_active==1 and $select_count==0) 
+                                    $stmt -> execute();
+                                else
+                                    echo 'input file has duplicated record row '.$post_date.' '.$debit.' '.$credit.'<br>';
                                 
                                 $insert_id = $dbh->lastInsertId();                                
                             
