@@ -17,7 +17,7 @@ include('inc/nav.inc');
     <option value="filename">from filename</option>
 </select>
 
-Upload File: <input type="file" name="spreadsheet"/>
+Upload File: <input class="pure-button pure-button-primary" type="file" name="spreadsheet"/>
 <input class="pure-button pure-button-primary" type="submit" name="submit" value="Submit" />
 </form>
 <!--<textarea rows="40" cols="200">-->
