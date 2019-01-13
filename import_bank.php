@@ -1,15 +1,11 @@
-<html>
-<header>
- <title>Import Balance</title>
- <meta charset="utf-8">
+<?php
 
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+$header_title = 'Scuba Froggy Panel';
+include('inc/header.inc');
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+include('inc/config.inc');
+?>
 
-</header>
-<body><div>
 
 
 <form method="post" enctype="multipart/form-data">
@@ -21,7 +17,7 @@ Upload File: <input type="file" name="spreadsheet"/>
 
 <?php
 
-include('inc/db_config.inc');
+//include('inc/db_config.inc');
 
 
 $mysql_active = 1;
@@ -160,5 +156,6 @@ else{
 <!--</textarea>-->
 </table>
 </div>
-</body>
-</html>
+
+
+<?php include('inc/footer.inc'); ?>

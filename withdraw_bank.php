@@ -62,8 +62,15 @@ function changePeriod(url)
 echo '<h2 align=center>Bank withdraw: '.$period_month.'/'.$period_year.'</h2>';
 
 
-echo '<table class="pure-table pure-table-horizontal pure-table-striped">
-   <thead>
+echo '<table class="pure-table pure-table-horizontal pure-table-striped">';
+
+
+if($_SESSION['user_id']==1)
+echo '<thead>
+<th colspan=10 align=right><a href="import_bank.php">Import withdraw</a></th>
+</thead>';
+
+echo '<thead>
 <th>No</th>
 <th align=center>Account No</th>
 <th align=center>Post Date/<br>Value Date</th>
@@ -128,17 +135,9 @@ $credit_sum += $row['credit'];
 
 }
 
-echo '<tr><td colspan=6 align=right>SUM</td><td>'.$formatter->formatCurrency($credit_sum, 'IDR').'</td><td>'.$formatter->formatCurrency($debit_sum, 'IDR').'</td><td></td><td></td></tr>';
+echo '<tr><td colspan=6 align=right>SUM</td><td align="right">'.$formatter->formatCurrency($credit_sum, 'IDR').'</td><td align="right">'.$formatter->formatCurrency($debit_sum, 'IDR').'</td><td></td><td></td></tr>';
 
 echo "</table>";
-
-
-//echo "<pre>";
-//var_dump($v);
-//echo "</pre>";
-
-
-
 
 ?>
 
