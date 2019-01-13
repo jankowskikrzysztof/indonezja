@@ -17,6 +17,4 @@ include('pages/index_main.inc');
 
 ?>
 
-test
-
 <?php include('inc/footer.inc'); ?>
