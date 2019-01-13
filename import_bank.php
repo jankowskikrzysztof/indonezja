@@ -18,7 +18,7 @@ include('inc/nav.inc');
 </select>
 
 Upload File: <input type="file" name="spreadsheet"/>
-<input type="submit" name="submit" value="Submit" />
+<input class="pure-button pure-button-primary" type="submit" name="submit" value="Submit" />
 </form>
 <!--<textarea rows="40" cols="200">-->
 <table cellpadding=10 border=1>
