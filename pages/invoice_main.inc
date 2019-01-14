@@ -122,19 +122,20 @@ foreach($row_array as $row)
 
    //echo "conv_currency( ".$row['value']." - ".$row['total_pay'].",'to', ".$show_currency." , ".date('Y-m-d').")<br>";
 
+   /*
    $still_to_pay = conv_currency($row['value']-$row['total_pay'],'to',$show_currency,date('Y-m-d'),$dbh);
-
    $value_before_discount = conv_currency($row['value_before_discount'],'to',$show_currency,$row['date'],$dbh);
-
    $booker_commission = conv_currency($row['booker_commission'],'to',$show_currency,$row['date'],$dbh);
-
    $due_to_pay = conv_currency($row['value'],'to',$show_currency,$row['date'],$dbh);
-
+   */
+  
+   $show_currency = 'IDR';
+   $value_before_discount = $row['value_before_discount_currency'];
+   $booker_commission = $row['booker_commission_currency'];
+   $due_to_pay = $row['value_currency'];
+   $still_to_pay = $row['value_currency']-$row['set_value'];
 
    /// END VALUES
-
-
-   if($row['date_pay_deposit']<>'0000-00-00') $date_dep1 = $row['date_pay_deposit'].'<br>'; else $date_dep1 = '';
 
    echo '<tr>
    <td><a href="report_empress.php?action=trip_result&id_boat_trip='.$row['boat_trip_id'].'">'.$row['date_from'].' - '.$row['date_to'].'<br>'.$row['txt_route'].'<br>'.$row[shortcut].'</a></td>
