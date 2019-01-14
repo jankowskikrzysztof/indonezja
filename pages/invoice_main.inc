@@ -51,11 +51,11 @@ function changePeriod(url)
 <!--  <tr>
       <th colspan=6><a class="pure-button pure-button-primary" href="?action=add" accesskey="a"><i class="fa fa-plus" aria-hidden="true"></i> <u>A</u>dd</a></th>
   </tr>
--->
   <tr>
     <th colspan=16 align=right>All values in <?php echo $show_currency; ?>. Show currency in: <a href="invoice.php?action=emp&period=<?php echo $period_year; ?>&cur=USD">USD</a>, <a href="invoice.php?action=emp&period=<?php echo $period_year; ?>&cur=EUR">EUR</a>, <a href="invoice.php?action=emp&period=<?php echo $period_year; ?>&cur=PLN">PLN</a> or <a href="invoice.php?action=emp&period=<?php echo $period_year; ?>">IDR</a></th>
   </tr>
-  <tr align=center>
+-->
+<tr align=center>
      <th>Trip</th>
      <th>Booker</th>
      <th>Date</th>
@@ -128,7 +128,7 @@ foreach($row_array as $row)
    $booker_commission = conv_currency($row['booker_commission'],'to',$show_currency,$row['date'],$dbh);
    $due_to_pay = conv_currency($row['value'],'to',$show_currency,$row['date'],$dbh);
    */
-  
+
    $show_currency = 'IDR';
    $value_before_discount = $row['value_before_discount_currency'];
    $booker_commission = $row['booker_commission_currency'];
