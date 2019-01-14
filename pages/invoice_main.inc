@@ -63,10 +63,8 @@ function changePeriod(url)
      <th>Public<br>rate</th>
      <th>Commission</th>
      <th>Due to Pay</th>
-     <th>Pay Cash<br>Pay Bank</th>
-     <th>Deposit</th>
-     <th>Still<br>to Pay</th>
      <th>Settlements</th>
+     <th>Still<br>to Pay</th>
      <th>Reference</th>
      <th>Client</th>
   </tr>
@@ -132,27 +130,11 @@ foreach($row_array as $row)
 
    $due_to_pay = conv_currency($row['value'],'to',$show_currency,$row['date'],$dbh);
 
-   $pay_cash_part = conv_currency($row['pay_cash_part'],'to',$show_currency,$row['date'],$dbh);
-   $pay_bank_part = conv_currency($row['pay_bank_part'],'to',$show_currency,$row['date'],$dbh);
-
-   $pay_cash_deposit = conv_currency($row['pay_cash_deposit'],'to',$show_currency,$row['date_pay_deposit'],$dbh);
-//   $pay_cash_deposit2 = conv_currency($row['pay_cash_deposit2'],'to',$show_currency,$row['date_pay_deposit2'],$dbh);
-//   $pay_cash_deposit3 = conv_currency($row['pay_cash_deposit3'],'to',$show_currency,$row['date_pay_deposit3'],$dbh);
-//   $pay_cash_deposit4 = conv_currency($row['pay_cash_deposit4'],'to',$show_currency,$row['date_pay_deposit4'],$dbh);
-
-   $pay_bank_deposit = conv_currency($row['pay_bank_deposit'],'to',$show_currency,$row['date_pay_deposit'],$dbh);
-//   $pay_bank_deposit2 = conv_currency($row['pay_bank_deposit2'],'to',$show_currency,$row['date_pay_deposit2'],$dbh);
-//   $pay_bank_deposit3 = conv_currency($row['pay_bank_deposit3'],'to',$show_currency,$row['date_pay_deposit3'],$dbh);
-//   $pay_bank_deposit4 = conv_currency($row['pay_bank_deposit4'],'to',$show_currency,$row['date_pay_deposit4'],$dbh);
-
 
    /// END VALUES
 
 
    if($row['date_pay_deposit']<>'0000-00-00') $date_dep1 = $row['date_pay_deposit'].'<br>'; else $date_dep1 = '';
-//   if($row['date_pay_deposit2']<>'0000-00-00') $date_dep2 = $row['date_pay_deposit2'].'<br>'; else $date_dep2 = '';
-//   if($row['date_pay_deposit3']<>'0000-00-00') $date_dep3 = $row['date_pay_deposit3'].'<br>'; else $date_dep3 = '';
-//   if($row['date_pay_deposit4']<>'0000-00-00') $date_dep4 = $row['date_pay_deposit4'].'<br>'; else $date_dep4 = '';
 
    echo '<tr>
    <td><a href="report_empress.php?action=trip_result&id_boat_trip='.$row['boat_trip_id'].'">'.$row['date_from'].' - '.$row['date_to'].'<br>'.$row['txt_route'].'<br>'.$row[shortcut].'</a></td>
@@ -162,19 +144,13 @@ foreach($row_array as $row)
    <td class=cash>'.$formatter->formatCurrency($value_before_discount,$show_currency).'</td>
    <td class=cash>'.$formatter->formatCurrency($booker_commission,$show_currency).'</td>
    <td class=cash>'.$formatter->formatCurrency($due_to_pay,$show_currency).'</td>
-   <td class=cash valign=bottom>'.$formatter->formatCurrency($pay_cash_part,$show_currency).'<br>'.$formatter->formatCurrency($pay_bank_part,$show_currency).'</td>
-   <td class=cash valign=bottom>'.$date_dep1.$formatter->formatCurrency($pay_cash_deposit,$show_currency).'<br>'.$formatter->formatCurrency($pay_bank_deposit,$show_currency).'</td>
-   <td class=cash>'.$formatter->formatCurrency($still_to_pay,$show_currency).'</td>
    <td class=cash>'.$formatter->formatCurrency($row['set_value'],$show_currency).'</td>   
+   <td class=cash>'.$formatter->formatCurrency($still_to_pay,$show_currency).'</td>
    <td align=center>'.$row['booking_no'].'</td>
    <td><a href="client.php?action=edit&id='.$row['client_id'].'">'.$row['client_name'].'</a></td>
    </tr>';
 
 
-/*    <td class=cash valign=bottom>'.$date_dep2.$formatter->formatCurrency($pay_cash_deposit2,$show_currency).'<br>'.$formatter->formatCurrency($pay_bank_deposit2,$show_currency).'</td>
-   <td class=cash valign=bottom>'.$date_dep3.$formatter->formatCurrency($pay_cash_deposit3,$show_currency).'<br>'.$formatter->formatCurrency($pay_bank_deposit3,$show_currency).'</td>
-   <td class=cash valign=bottom>'.$date_dep4.$formatter->formatCurrency($pay_cash_deposit4,$show_currency).'<br>'.$formatter->formatCurrency($pay_bank_deposit4,$show_currency).'</td>
- */
 
    }
 
