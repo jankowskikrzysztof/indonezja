@@ -92,7 +92,7 @@ foreach($row_array as $row)
 			}
 
 
-	echo '<td>check '.$match_sel_1.'</td>';
+	echo '<td>check<br>'.$match_sel_1.'<br>'.$match_sel.'</td>';
 
    	}
 
