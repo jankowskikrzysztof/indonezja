@@ -87,12 +87,12 @@ foreach($row_array as $row)
 			{
 			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
 			VALUES ('1', ".$row['id_bank_statement'].", ".$row_match['id_cash_book'].", 'cash_book', ".$row['debit'].")";
-			//$stmt_match1 = $dbh->prepare($match_sel_1);
-			//$stmt_match1 -> execute();
+			$stmt_match1 = $dbh->prepare($match_sel_1);
+			$stmt_match1 -> execute();
 			}
 
 
-	echo '<td>check<br>'.$match_sel_1.'<br>'.$match_sel.'</td>';
+	echo '<td>check<br>'.$match_sel_1.'</td>';
 
    	}
 
