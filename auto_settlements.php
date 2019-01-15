@@ -76,7 +76,7 @@ foreach($row_array as $row)
 
 		$numer_chq = str_replace(' ','',str_replace('TARIK CHQ','',trim($row['type'])));
 
-		$match_sel = "SELECT * FROM cash_book WHERE `desc` LIKE '%".$numer_chq."%' and cash_report_only=1 and type=1";
+		$match_sel = "SELECT * FROM cash_book WHERE `desc` LIKE '%".$numer_chq."%' and cash_report_only=1 and type=1 and pay_cash='".$row['debit']."'";
 		$stmt_match = $dbh->prepare($match_sel);
 		$stmt_match -> execute();
 		$row_match = $stmt_match->fetch();
