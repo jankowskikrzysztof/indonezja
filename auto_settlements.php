@@ -69,6 +69,29 @@ foreach($row_array as $row)
 
    $desc_part = explode(' ',$row['description']);
 
+// START ------------------ ROZLICZENIE CHECKóW
+
+   if(trim($row['type']) =='TARIK CHQ CI812701' and $row['account_no']=='359738937' and $row['debit']>0 and $row['value']==0)
+   	{
+
+		$numer_chq = str_replace('TARIK CHQ ','',trim($row['type']));
+
+		$match_sel = "SELECT * FROM cash_report WHERE `desc` LIKE '%".$numer_chq."%' and cash_report_only=1 and type=1";
+		$stmt_match = $dbh->prepare($match_sel);
+		$stmt_match -> execute();
+		$row_match = $stmt_match->fetch();
+
+		$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
+		VALUES ('1', ".$row['id_bank_statement'].", ".$row_match['id_cash_book'].", 'cash_book', ".$row['debit'].")";
+		//$stmt_match1 = $dbh->prepare($match_sel_1);
+		//$stmt_match1 -> execute();
+
+
+	echo '<td>check '.$match_sel_1.'</td>';
+
+   	}
+
+// END ------------------ ROZLICZENIE CHECKóW
 
 		// START ---------------- ROZLICZENIE TRANSFEROW POMIEDZY KONTAMI USD I IDR
 
