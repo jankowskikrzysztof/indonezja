@@ -797,7 +797,7 @@ if($action=='edit' and $room_charge_select<>0)
                 <table class="pure-table pure-table-horizontal pure-table-striped">
                 <?php if($action<>'add') echo '<tr><th colspan=5 align=left><a class="pure-button pure-button-primary" href="settlements.php?action=add&foreign_id='.$id.'&foreign_table=cash_book&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201"><i class="fa fa-plus" aria-hidden="true"></i></a></th></tr>'; ?>
                 
-                <tr><td>Value date</td><td>Account</td><td>Type</td><td>Description</td><td>Value</td></tr>
+                <tr><td>Value date</td><td>Account</td><td>Type</td><td>Description</td><td>Value</td><td></td></tr>
 
 
 <?php
@@ -813,12 +813,12 @@ if($action=='edit' and $room_charge_select<>0)
 
                     foreach($last_change as $row)
                             {
-                                echo '<tr><td>'.$row['value_date'].'</td><td>'.$row['account_no'].'</td><td>'.$row['type'].'</td><td>'.$row['description'].'</td><td>'.$formatter->formatCurrency($row['value'], 'IDR').'</td></tr>';
+                                echo '<tr><td>'.$row['value_date'].'</td><td>'.$row['account_no'].'</td><td>'.$row['type'].'</td><td>'.$row['description'].'</td><td>'.$formatter->formatCurrency($row['value'], 'IDR').'</td><td><a href="settlements.php?action=add&id='.$row['id_settlements'].'"><i class="far fa-trash-alt" aria-hidden="true"></i></a></td></tr>';
 
                                 $sum_settlement += $row['value'];
                                 }
     
-                        echo '<tr><td colspan=4>SUM</td><td align=right>'.$formatter->formatCurrency($sum_settlement, 'IDR').'</td></tr>';
+                        echo '<tr><td colspan=4>SUM</td><td align=right>'.$formatter->formatCurrency($sum_settlement, 'IDR').'</td><td></td></tr>';
     ?>
                 </table>
             </div>
