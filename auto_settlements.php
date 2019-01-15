@@ -71,7 +71,7 @@ foreach($row_array as $row)
 
 // START ------------------ ROZLICZENIE CHECKóW
 
-   if(trim($row['type']) =='TARIK CHQ CI812701' and $row['account_no']=='359738937' and $row['debit']>0 and $row['value']==0)
+   if(substr(trim($row['type']),0,9) =='TARIK CHQ' and $row['account_no']=='359738937' and $row['debit']>0 and $row['value']==0)
    	{
 
 		$numer_chq = str_replace('TARIK CHQ ','',trim($row['type']));
