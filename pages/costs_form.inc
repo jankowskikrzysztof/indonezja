@@ -376,6 +376,11 @@ if($action=='edit')
     </form>
 
 <hr>
+
+<?php
+$value = $price;
+?>
+
             <div class="pure-control-group">
                 <p align=center>Settlements:</p>
             </div>
