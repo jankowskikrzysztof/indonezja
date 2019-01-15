@@ -74,7 +74,7 @@ foreach($row_array as $row)
    if(substr(trim($row['type']),0,9) =='TARIK CHQ' and $row['account_no']=='359738937' and $row['debit']>0 and $row['value']==0)
    	{
 
-		$numer_chq = str_replace(' ','',str_replace('TARIK CHQ','',trim($row['type']));
+		$numer_chq = str_replace(' ','',str_replace('TARIK CHQ','',trim($row['type'])));
 
 		$match_sel = "SELECT * FROM cash_book WHERE `desc` LIKE '%".$numer_chq."%' and cash_report_only=1 and type=1";
 		$stmt_match = $dbh->prepare($match_sel);
