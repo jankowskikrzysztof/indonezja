@@ -76,15 +76,20 @@ foreach($row_array as $row)
 
 		$numer_chq = str_replace('TARIK CHQ ','',trim($row['type']));
 
-		$match_sel = "SELECT * FROM cash_report WHERE `desc` LIKE '%".$numer_chq."%' and cash_report_only=1 and type=1";
+		$match_sel = "SELECT * FROM cash_book WHERE `desc` LIKE '%".$numer_chq."%' and cash_report_only=1 and type=1";
 		$stmt_match = $dbh->prepare($match_sel);
 		$stmt_match -> execute();
 		$row_match = $stmt_match->fetch();
 
-		$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
-		VALUES ('1', ".$row['id_bank_statement'].", ".$row_match['id_cash_book'].", 'cash_book', ".$row['debit'].")";
-		//$stmt_match1 = $dbh->prepare($match_sel_1);
-		//$stmt_match1 -> execute();
+		$match_sel_1 = '';
+
+		if($row_match['id_cash_book']<>0)
+			{
+			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
+			VALUES ('1', ".$row['id_bank_statement'].", ".$row_match['id_cash_book'].", 'cash_book', ".$row['debit'].")";
+			//$stmt_match1 = $dbh->prepare($match_sel_1);
+			//$stmt_match1 -> execute();
+			}
 
 
 	echo '<td>check '.$match_sel_1.'</td>';
