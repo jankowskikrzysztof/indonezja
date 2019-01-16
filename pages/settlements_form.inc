@@ -36,7 +36,11 @@ if($action=='add')
                     }
 
 
-$exclude_transfers = "and `description` NOT LIKE '%PADI TRAVEL%' and `description` NOT LIKE '%LIVEBOARD.COM%' and `description` NOT LIKE '%DIVEBOOKER.COM%'";
+$exclude_transfers = "and `description` NOT LIKE '%PADI TRAVEL%' 
+                      and `description` NOT LIKE '%LIVEABOARD.COM%' 
+                      and `description` NOT LIKE '%DIVEBOOKER.COM%'
+                      and `description` NOT LIKE '%DIVIAC AG%'
+                      ";
 
 
 $bs_sql = "SELECT 
