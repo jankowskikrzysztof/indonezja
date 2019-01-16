@@ -36,6 +36,8 @@ if($action=='add')
                     }
 
 
+$exclude_transfers = "`description` NOT LIKE '%PADI TRAVEL%' and `description` NOT LIKE '%LIVEBOARD.COM%' and `description` NOT LIKE '%DIVEBOOKER.COM%'";
+
 
 $bs_sql = "SELECT 
                     (CASE WHEN debit<>0 THEN debit WHEN credit<>0 THEN credit END) as value,
@@ -45,6 +47,7 @@ $bs_sql = "SELECT
                     left join settlements on settlements.bank_statement_id=bank_statement.id_bank_statement
                     where (settlements.bank_statement_id IS NULL or settlements.value<>(bank_statement.credit+bank_statement.debit))
                     $acc_filter_sql
+                    $exclude_transfers
                     GROUP BY bank_statement.id_bank_statement
                     ORDER BY bank_statement.account_no, bank_statement.value_date DESC";
 
