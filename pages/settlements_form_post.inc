@@ -40,7 +40,7 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
     $stmt -> execute();
     echo '<p>Data change success</p>';
     }
-elseif($_GET['action']=='del' and $_SESSION['permission']=='rw')
+elseif($_GET['action']=='del' and $_SESSION['permission']=='rw' and ($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1))
     {
     $post_id = $_GET['id'];
 
