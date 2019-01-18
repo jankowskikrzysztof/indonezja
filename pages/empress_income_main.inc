@@ -193,7 +193,7 @@ foreach($row_array as $row)
       $route_txt = '<font style="font-size:80%;">'.$row['date_from'].' - '.$row['date_to'].'<br>'.$row['txt_route'].'</font>';
 
    //$still_to_pay = $row['value']-$row['total_pay'];
-   $still_to_pay = $row['value']-$row['set_value'];
+   $still_to_pay = $row['value_currency']-$row['set_value'];
 
 
    $payment_type = '';
@@ -223,7 +223,7 @@ foreach($row_array as $row)
    if($row['currency_second'] <> '' and $row['currency_second'] <> '0.0' and $row['currency']<>$row['currency_second'])
       {
       $value_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency'], $row['currency_second']).' '.$row['currency_second'].'</font>';
-      $still_to_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency']-$row['total_pay_currency'], $row['currency_second']).' '.$row['currency_second'];
+      //$still_to_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency']-$row['total_pay_currency'], $row['currency_second']).' '.$row['currency_second'];
       $total_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['total_pay_currency'], $row['currency_second']).' '.$row['currency_second'];
       }
     else
@@ -243,9 +243,9 @@ foreach($row_array as $row)
    <td align=right'.$value_error_color.'>'.$formatter->formatCurrency($row['value'], 'IDR').' '.$row['currency'].$value_currency.'</td>
    <td align=center>'.$payment_type.'</td>
    <td align=right>'.$formatter->formatCurrency($row['total_pay'], 'IDR').' '.$row['currency'].$total_pay_currency.'</td>
-   <td align=right>'.$formatter->formatCurrency($still_to_pay, 'IDR').' '.$row['currency'].$still_to_pay_currency.'</td>
+   <td align=right>'.$formatter->formatCurrency($still_to_pay, 'IDR').'</td>
    <td align=right>';
-
+   // '.$row['currency'].$still_to_pay_currency.'
    //($_SESSION['login'] == 'kjankowski' or $_SESSION['login'] == 'przemek') and 
    if($row['boat_trip_id']<>0 and $row['client_id']<>0)
         {
