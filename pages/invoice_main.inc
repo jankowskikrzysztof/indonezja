@@ -65,6 +65,7 @@ function changePeriod(url)
      <th>Due to Pay</th>
      <th>Settlements</th>
      <th>Still<br>to Pay</th>
+     <th>Payment<br>type</th>
      <th>Reference</th>
      <th>Client</th>
   </tr>
@@ -130,6 +131,18 @@ foreach($row_array as $row)
    $due_to_pay = conv_currency($row['value'],'to',$show_currency,$row['date'],$dbh);
    */
 
+    $payment_type = '';
+    if($row['pay_cash']<>0)
+        $payment_type .= 'cash,';
+    if($row['pay_creditcard']<>0)
+        $payment_type .= 'creditcard,';
+    if($row['pay_roomcharge']<>0)
+        $payment_type .= 'roomcharge,';
+    if($row['pay_bank']<>0)
+        $payment_type .= 'bank,';
+    if($row['pay_paypal']<>0)
+        $payment_type .= 'paypal,';
+
    $show_currency = 'IDR';
    $value_before_discount = $row['value_before_discount_currency'];
    $booker_commission = $row['booker_commission_currency'];
@@ -148,6 +161,7 @@ foreach($row_array as $row)
    <td class=cash>'.$formatter->formatCurrency($due_to_pay,$show_currency).'</td>
    <td class=cash>'.$formatter->formatCurrency($row['set_value'],$show_currency).'</td>   
    <td class=cash>'.$formatter->formatCurrency($still_to_pay,$show_currency).'</td>
+   <td class=cash>'.$payment_type.'</td>
    <td align=center>'.$row['booking_no'].'</td>
    <td><a href="client.php?action=edit&id='.$row['client_id'].'">'.$row['client_name'].'</a></td>
    </tr>';
