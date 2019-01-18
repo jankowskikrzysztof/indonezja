@@ -131,11 +131,24 @@ foreach($row_array as $row)
    $due_to_pay = conv_currency($row['value'],'to',$show_currency,$row['date'],$dbh);
    */
 
+  $show_currency = 'IDR';
+  $value_before_discount = $row['value_before_discount_currency'];
+  $booker_commission = $row['booker_commission_currency'];
+  $due_to_pay = $row['value_currency'];
+  $still_to_pay = $row['value_currency']-$row['set_value'];
+
+
     $payment_type = '';
     if($row['pay_cash']<>0)
+        {
+        $still_to_pay = $still_to_pay - $row['pay_cash'];
         $payment_type .= 'cash,';
+        }
     if($row['pay_creditcard']<>0)
+        {
         $payment_type .= 'creditcard,';
+        $still_to_pay = $still_to_pay - $row['pay_creditcard'];
+        }
     if($row['pay_roomcharge']<>0)
         $payment_type .= 'roomcharge,';
     if($row['pay_bank']<>0)
@@ -143,12 +156,7 @@ foreach($row_array as $row)
     if($row['pay_paypal']<>0)
         $payment_type .= 'paypal,';
 
-   $show_currency = 'IDR';
-   $value_before_discount = $row['value_before_discount_currency'];
-   $booker_commission = $row['booker_commission_currency'];
-   $due_to_pay = $row['value_currency'];
-   $still_to_pay = $row['value_currency']-$row['set_value'];
-
+   
    /// END VALUES
 
    echo '<tr>
