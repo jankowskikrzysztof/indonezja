@@ -5,6 +5,12 @@ function changePeriod(url)
 }
 </script>
 
+<script>
+function changePeriodBook(url)
+{
+    location.href = 'report_group_settlements.php?action=bookers&period=<?php echo $_GET['period'];?>&' + url;
+}
+</script>
 
 <?php
 $stmt = $dbh->prepare("SELECT booker.id_booker, booker.name as book_name
@@ -43,6 +49,10 @@ if($_SESSION['limit_data_months']<>0)
 else
       $period_limit = '';
 
+if($_GET['book_sel'] <> '')
+  $book_sel = 'and booker.id_booker ='.$_GET['book_sel'];
+else
+  $book_sel = '';
 
 //echo $sel_loc_pers.'a<br>';
 
@@ -68,8 +78,9 @@ and cash_book.type=1
 and cash_book.cash_report_only=0
 
                               ".$sel_loc_pers."
-                  			      ".$where_limit."
+                  			   ".$where_limit."
                               ".$period_limit."
+                              ".$book_sel."
 
 and cash_book.booker_id<>0
 
