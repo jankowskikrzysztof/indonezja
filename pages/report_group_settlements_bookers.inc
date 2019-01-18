@@ -6,6 +6,16 @@ function changePeriod(url)
 </script>
 
 
+<?php
+$stmt = $dbh->prepare("SELECT booker.id_booker, booker.name as book_name
+                              FROM booker
+
+                              ORDER BY booker.name");
+$stmt -> execute();
+$booker_array = $stmt->fetchAll();
+?>
+
+
 <div align=center class="pure-form" >
 
 <input type=month value="<?php echo $period; ?>"  onchange="changePeriod(this.value)">
@@ -129,7 +139,23 @@ foreach($row_array as $row)
      <th>Bill No</th>
      <th>Group</th>
      <th>Description</th>
-     <th>Booker</th>
+     <th>Booker<div class="pure-form">
+              <select onchange="changePeriodBook(this.value)">
+                      <option value='?'>All</option>
+     <?php
+           foreach($booker_array as $row)
+              {
+              if($row['id_booker'] == $_GET['book_sel'])
+                 $sel = 'selected';
+              else
+                 $sel = '';
+
+              echo "<option value='book_sel=".$row['id_booker']."' ".$sel.">".$row['book_name']."</option>";
+
+              }
+     ?>
+
+              </select></div></th>
      <th>Payment</th>
   </tr>
  </thead>
