@@ -141,13 +141,13 @@ foreach($row_array as $row)
     $payment_type = '';
     if($row['pay_cash']<>0)
         {
-        $still_to_pay = $still_to_pay - $row['pay_cash'];
+        $still_to_pay = $still_to_pay - $row['pay_cash_currency'];
         $payment_type .= 'cash,';
         }
     if($row['pay_creditcard']<>0)
         {
         $payment_type .= 'creditcard,';
-        $still_to_pay = $still_to_pay - $row['pay_creditcard'];
+        $still_to_pay = $still_to_pay - $row['pay_creditcard_currency'];
         }
     if($row['pay_roomcharge']<>0)
         $payment_type .= 'roomcharge,';
