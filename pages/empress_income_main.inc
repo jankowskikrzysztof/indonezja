@@ -149,12 +149,16 @@ $sql_select = "SELECT cash_book_group.name as cb_name, location.name as loc_name
                               GROUP_CONCAT(activity.shortcut) as shortcut,
                               booker.name as booker_name,
                               client.name as client_name,
-                              cash_book.client_id
+                              cash_book.client_id,
+                              GROUP_CONCAT(settlements.id_settlements) as settlements, 
+                              SELECT SUM(value) FROM settlements WHERE settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book'
 
                               FROM (cash_book, cash_book_item, personel, location, cash_book_group, activity, location_groups)
                               left join boat_trip on boat_trip.id_boat_trip=cash_book.boat_trip_id
                               left join booker on cash_book.booker_id=booker.id_booker
                               left join client on client.id_client=cash_book.client_id
+
+                              left join settlements on settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book'
 
                               WHERE cash_book_group.id_cash_book_group=cash_book.cash_book_group_id
                               and cash_book.personel_id=personel.id_personel
@@ -188,12 +192,21 @@ foreach($row_array as $row)
    if($row['boat_trip_id']>0)
       $route_txt = '<font style="font-size:80%;">'.$row['date_from'].' - '.$row['date_to'].'<br>'.$row['txt_route'].'</font>';
 
+   //$still_to_pay = $row['value']-$row['total_pay'];
+   $still_to_pay = $row['value']-$row['set_value'];
+
 
    $payment_type = '';
    if($row['pay_cash']<>0)
+      {
+      $still_to_pay = $still_to_pay - $row['pay_cash_currency'];
       $payment_type .= 'cash,';
+      }
    if($row['pay_creditcard']<>0)
+      {
       $payment_type .= 'creditcard,';
+      $still_to_pay = $still_to_pay - $row['pay_creditcard_currency'];
+      }
    if($row['pay_roomcharge']<>0)
       $payment_type .= 'roomcharge,';
    if($row['pay_bank']<>0)
@@ -206,7 +219,6 @@ foreach($row_array as $row)
    else
       $value_error_color = '';
 
-   $still_to_pay = $row['value']-$row['total_pay'];
 
    if($row['currency_second'] <> '' and $row['currency_second'] <> '0.0' and $row['currency']<>$row['currency_second'])
       {
