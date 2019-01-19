@@ -3,101 +3,101 @@
 include('inc/calc_cur.inc');
 $sys_currency = 'IDR';
 
-if(isset($_POST[period]))
-  $period = $_POST[period];
-elseif(isset($_GET[period]))
-$period = $_GET[period];
+if(isset($_POST["period"]))
+  $period = $_POST["period"];
+elseif(isset($_GET['period']))
+$period = $_GET['period'];
 
-$post_id = $_POST[id];
-$cash_book_group_id = $_POST[cash_book_group_id];
-$location_id = $_POST[location_id];
-$personel_id = $_SESSION[user_id];
-$instructor_id = explode("|",$_POST[instructor_id]);
-$client_id = $_POST[client_id];
+$post_id = $_POST["id"];
+$cash_book_group_id = $_POST["cash_book_group_id"];
+$location_id = $_POST["location_id"];
+$personel_id = $_SESSION["user_id"];
+$instructor_id = explode("|",$_POST["instructor_id"]);
+$client_id = $_POST["client_id"];
 
-$activity_id = $_POST[activity_id];
-$boat_trip_id = $_POST[boat_trip_id];
-$pcs_no = $_POST[pcs_no];
-$price = $_POST[price];
-$item_currency = $_POST[item_currency];
-$item_currency_second = $_POST[item_currency_second];
-$id_cash_book_item = $_POST[id_cash_book_item];
+$activity_id = $_POST["activity_id"];
+$boat_trip_id = $_POST["boat_trip_id"];
+$pcs_no = $_POST["pcs_no"];
+$price = $_POST["price"];
+$item_currency = $_POST["item_currency"];
+$item_currency_second = $_POST["item_currency_second"];
+$id_cash_book_item = $_POST["id_cash_book_item"];
 
 $activity_count = count($activity_id);
 
-$type = $_POST[type];
-$type_cost = $_POST[type_cost];
-$date = $_POST[date];
-$bill_no = $_POST[bill_no];
-$desc = $_POST[desc];
-$value = str_replace(',','',$_POST[total_act]);
-$value_currency = str_replace(',','',$_POST[total_act_currency]);
-//$discount = $_POST[discount];
-//$value_before_discount = str_replace(',','',$_POST[value_before_discount]);
-$value_before_discount = str_replace(',','',$_POST[value_before_discount]);
-$value_before_discount_currency = str_replace(',','',$_POST[value_before_discount_currency]);
+$type = $_POST["type"];
+$type_cost = $_POST["type_cost"];
+$date = $_POST["date"];
+$bill_no = $_POST["bill_no"];
+$desc = $_POST["desc"];
+$value = str_replace(',','',$_POST["total_act"]);
+$value_currency = str_replace(',','',$_POST["total_act_currency"]);
+//$discount = $_POST["discount"];
+//$value_before_discount = str_replace(',','',$_POST["value_before_discount"]);
+$value_before_discount = str_replace(',','',$_POST["value_before_discount"]);
+$value_before_discount_currency = str_replace(',','',$_POST["value_before_discount_currency"]);
 
 
-$instructor = $_POST[instructor];
-$instructor_perc = $_POST[instructor_perc];
-$instructor_commission = str_replace(',','',$_POST[instructor_commission]);
-$instructor_commission_currency = str_replace(',','',$_POST[instructor_commission_currency]);
-$booker_id = $_POST[booker_id];
-$booker_perc = $_POST[booker_perc];
-$booker_commission = str_replace(',','',$_POST[booker_commission]);
-$booker_commission_currency = str_replace(',','',$_POST[booker_commission_currency]);
-$booking_no = $_POST[booking_no];
+$instructor = $_POST["instructor"];
+$instructor_perc = $_POST["instructor_perc"];
+$instructor_commission = str_replace(',','',$_POST["instructor_commission"]);
+$instructor_commission_currency = str_replace(',','',$_POST["instructor_commission_currency"]);
+$booker_id = $_POST["booker_id"];
+$booker_perc = $_POST["booker_perc"];
+$booker_commission = str_replace(',','',$_POST["booker_commission"]);
+$booker_commission_currency = str_replace(',','',$_POST["booker_commission_currency"]);
+$booking_no = $_POST["booking_no"];
 
-//$pay_cash = str_replace(',','',$_POST[cash]);
+//$pay_cash = str_replace(',','',$_POST["cash"]);
 
 
-$pay_deposit_perc = str_replace(',','',$_POST['pay_deposit_perc']);
+$pay_deposit_perc = str_replace(',','',$_POST["pay_deposit_perc"]);
 
-$pay_cash_deposit = str_replace(',','',$_POST[pay_cash_deposit]);
-$pay_cash_deposit2 = str_replace(',','',$_POST[pay_cash_deposit2]);
-$pay_cash_deposit3 = str_replace(',','',$_POST[pay_cash_deposit3]);
-$pay_cash_deposit4 = str_replace(',','',$_POST[pay_cash_deposit4]);
-$pay_cash_part = str_replace(',','',$_POST[cash_part]);
+$pay_cash_deposit = str_replace(',','',$_POST["pay_cash_deposit"]);
+$pay_cash_deposit2 = str_replace(',','',$_POST["pay_cash_deposit2"]);
+$pay_cash_deposit3 = str_replace(',','',$_POST["pay_cash_deposit3"]);
+$pay_cash_deposit4 = str_replace(',','',$_POST["pay_cash_deposit4"]);
+$pay_cash_part = str_replace(',','',$_POST["cash_part"]);
 $pay_cash = $pay_cash_deposit + $pay_cash_deposit2 + $pay_cash_deposit3 + $pay_cash_deposit4 + $pay_cash_part;
 
-$pay_cash_deposit_currency = str_replace(',','',$_POST[pay_cash_deposit_currency]);
-$pay_cash_deposit2_currency = str_replace(',','',$_POST[pay_cash_deposit2_currency]);
-$pay_cash_deposit3_currency = str_replace(',','',$_POST[pay_cash_deposit3_currency]);
-$pay_cash_deposit4_currency = str_replace(',','',$_POST[pay_cash_deposit4_currency]);
-$pay_cash_part_currency = str_replace(',','',$_POST[cash_part_currency]);
+$pay_cash_deposit_currency = str_replace(',','',$_POST["pay_cash_deposit_currency"]);
+$pay_cash_deposit2_currency = str_replace(',','',$_POST["pay_cash_deposit2_currency"]);
+$pay_cash_deposit3_currency = str_replace(',','',$_POST["pay_cash_deposit3_currency"]);
+$pay_cash_deposit4_currency = str_replace(',','',$_POST["pay_cash_deposit4_currency"]);
+$pay_cash_part_currency = str_replace(',','',$_POST["cash_part_currency"]);
 $pay_cash_currency = $pay_cash_deposit_currency + $pay_cash_deposit2_currency + $pay_cash_deposit3_currency + $pay_cash_deposit4_currency + $pay_cash_part_currency;
 
 
-$date_pay_deposit = str_replace(',','',$_POST[date_pay_deposit]);
-$date_pay_deposit2 = str_replace(',','',$_POST[date_pay_deposit2]);
-$date_pay_deposit3 = str_replace(',','',$_POST[date_pay_deposit3]);
-$date_pay_deposit4 = str_replace(',','',$_POST[date_pay_deposit4]);
+$date_pay_deposit = str_replace(',','',$_POST["date_pay_deposit"]);
+$date_pay_deposit2 = str_replace(',','',$_POST["date_pay_deposit2"]);
+$date_pay_deposit3 = str_replace(',','',$_POST["date_pay_deposit3"]);
+$date_pay_deposit4 = str_replace(',','',$_POST["date_pay_deposit4"]);
 
-$date_pay_deposit_currency = str_replace(',','',$_POST[date_pay_deposit_currency]);
-$date_pay_deposit2_currency = str_replace(',','',$_POST[date_pay_deposit2_currency]);
-$date_pay_deposit3_currency = str_replace(',','',$_POST[date_pay_deposit3_currency]);
-$date_pay_deposit4_currency = str_replace(',','',$_POST[date_pay_deposit4_currency]);
+$date_pay_deposit_currency = str_replace(',','',$_POST["date_pay_deposit_currency"]);
+$date_pay_deposit2_currency = str_replace(',','',$_POST["date_pay_deposit2_currency"]);
+$date_pay_deposit3_currency = str_replace(',','',$_POST["date_pay_deposit3_currency"]);
+$date_pay_deposit4_currency = str_replace(',','',$_POST["date_pay_deposit4_currency"]);
 
-$pay_roomcharge = str_replace(',','',$_POST[roomcharge]);
-$pay_creditcard = str_replace(',','',$_POST[creditcard]);
-$pay_paypal = str_replace(',','',$_POST[paypal]);
+$pay_roomcharge = str_replace(',','',$_POST["roomcharge"]);
+$pay_creditcard = str_replace(',','',$_POST["creditcard"]);
+$pay_paypal = str_replace(',','',$_POST["paypal"]);
 
-$pay_roomcharge_currency = str_replace(',','',$_POST[roomcharge_currency]);
-$pay_creditcard_currency = str_replace(',','',$_POST[creditcard_currency]);
-$pay_paypal_currency = str_replace(',','',$_POST[paypal_currency]);
+$pay_roomcharge_currency = str_replace(',','',$_POST["roomcharge_currency"]);
+$pay_creditcard_currency = str_replace(',','',$_POST["creditcard_currency"]);
+$pay_paypal_currency = str_replace(',','',$_POST["paypal_currency"]);
 
-$pay_bank_deposit = str_replace(',','',$_POST[pay_bank_deposit]);
-$pay_bank_deposit2 = str_replace(',','',$_POST[pay_bank_deposit2]);
-$pay_bank_deposit3 = str_replace(',','',$_POST[pay_bank_deposit3]);
-$pay_bank_deposit4 = str_replace(',','',$_POST[pay_bank_deposit4]);
-$pay_bank_part = str_replace(',','',$_POST[pay_bank_part]);
+$pay_bank_deposit = str_replace(',','',$_POST["pay_bank_deposit"]);
+$pay_bank_deposit2 = str_replace(',','',$_POST["pay_bank_deposit2"]);
+$pay_bank_deposit3 = str_replace(',','',$_POST["pay_bank_deposit3"]);
+$pay_bank_deposit4 = str_replace(',','',$_POST["pay_bank_deposit4"]);
+$pay_bank_part = str_replace(',','',$_POST["pay_bank_part"]);
 $pay_bank = $pay_bank_deposit + $pay_bank_deposit2 + $pay_bank_deposit3 + $pay_bank_deposit4 + $pay_bank_part;
 
-$pay_bank_deposit_currency = str_replace(',','',$_POST[pay_bank_deposit_currency]);
-$pay_bank_deposit2_currency = str_replace(',','',$_POST[pay_bank_deposit2_currency]);
-$pay_bank_deposit3_currency = str_replace(',','',$_POST[pay_bank_deposit3_currency]);
-$pay_bank_deposit4_currency = str_replace(',','',$_POST[pay_bank_deposit4_currency]);
-$pay_bank_part_currency = str_replace(',','',$_POST[pay_bank_part_currency]);
+$pay_bank_deposit_currency = str_replace(',','',$_POST["pay_bank_deposit_currency"]);
+$pay_bank_deposit2_currency = str_replace(',','',$_POST["pay_bank_deposit2_currency"]);
+$pay_bank_deposit3_currency = str_replace(',','',$_POST["pay_bank_deposit3_currency"]);
+$pay_bank_deposit4_currency = str_replace(',','',$_POST["pay_bank_deposit4_currency"]);
+$pay_bank_part_currency = str_replace(',','',$_POST["pay_bank_part_currency"]);
 $pay_bank_currency = $pay_bank_deposit_currency + $pay_bank_deposit2_currency + $pay_bank_deposit3_currency + $pay_bank_deposit4_currency + $pay_bank_part_currency;
 
 
@@ -105,7 +105,7 @@ $pay_bank_currency = $pay_bank_deposit_currency + $pay_bank_deposit2_currency + 
 
 //conv_currency($change_value,'to',USD,'2018-05-08',$dbh)
 
-$currency = $_POST[currency];
+$currency = $_POST["currency"];
 
     for($i=0;$i<$activity_count;$i++)
        {

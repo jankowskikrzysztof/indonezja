@@ -35,12 +35,16 @@ if($action=='add')
                         $acc_filter_sql = '';
                     }
 
-
-$exclude_transfers = "and `description` NOT LIKE '%PADI TRAVEL%' 
-                      and `description` NOT LIKE '%LIVEABOARD.COM%' 
-                      and `description` NOT LIKE '%DIVEBOOKER.COM%'
-                      and `description` NOT LIKE '%DIVIAC AG%'
-                      ";
+if($_GET['bookers']==0)
+    {
+    $exclude_transfers = "and `description` NOT LIKE '%PADI TRAVEL%' 
+                        and `description` NOT LIKE '%LIVEABOARD.COM%' 
+                        and `description` NOT LIKE '%DIVEBOOKER.COM%'
+                        and `description` NOT LIKE '%DIVIAC AG%'
+                        ";
+    }
+else   
+    $exclude_transfers = '';
 
 
 $bs_sql = "SELECT 
@@ -110,6 +114,7 @@ $bank_statement_array = $stmt->fetchAll();
                 Show only: 
                         <?php echo '<a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=359738937">359738937</a> 
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201">380251201</a> 
+                                    <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201&bookers=1">380251201 with bookers</a> 
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=PP: scubafroggy.com">PayPal</a><br>'; ?>
                 <select name="bank_statement_id" id="bank_statement_id" autofocus size=25 style="width: 100em !important; min-width: 100em; max-width: 100em; font-size:0.9vw;">
             
