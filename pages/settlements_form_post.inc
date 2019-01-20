@@ -24,7 +24,7 @@ if($foreign_currency <> $bank_statement_currency)
 else
     $value_foreign = $value;
 
-
+echo "if($foreign_currency <> $bank_statement_currency)<br>";
 
 if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
     {
@@ -58,8 +58,8 @@ $stmt = $dbh->prepare("INSERT INTO `logs` (`personel_id`,`ip`,`type`,`txt`)
 $stmt -> execute();
 
 
-header('location: index.php');
-exit;
+//header('location: index.php');
+//exit;
 
 ?>
 
