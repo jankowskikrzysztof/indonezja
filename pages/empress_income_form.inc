@@ -819,7 +819,7 @@ if($action=='edit' and $room_charge_select<>0)
 
                     foreach($last_change as $row)
                             {
-                                echo '<tr><td>'.$row['value_date'].'</td><td>'.$row['account_no'].'</td><td>'.$row['type'].'</td><td>'.$row['description'].'</td><td align="right">'.$formatter->formatCurrency($row['value'], 'IDR').' '.$row['currency'].'</td><td><a href="settlements.php?action=del&id='.$row['id_settlements'].'"><i class="far fa-trash-alt" aria-hidden="true"></i></a></td></tr>';
+                                echo '<tr><td>'.$row['value_date'].'</td><td>'.$row['account_no'].'</td><td>'.$row['type'].'</td><td>'.$row['description'].'</td><td align="right">'.$formatter->formatCurrency($row['value'], 'IDR').' '.$row['currency_code'].'</td><td><a href="settlements.php?action=del&id='.$row['id_settlements'].'"><i class="far fa-trash-alt" aria-hidden="true"></i></a></td></tr>';
 
                                 $sum_settlement += $row['value'];
                                 }
