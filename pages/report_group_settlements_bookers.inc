@@ -53,7 +53,7 @@ if($_GET['book_sel'] <> '')
    {
    $booker_key = array_search($_GET['book_sel'], array_column($booker_array, 'id_booker'));
    
-   $booker_statement_filter = strtoupper($booker_array[$booker_key]['book_name']);
+   $booker_statement_filter = 'and description LIKE "%'.strtoupper($booker_array[$booker_key]['book_name']).'%"';
    $book_sel = 'and booker.id_booker ='.$_GET['book_sel'];
    }
 else
