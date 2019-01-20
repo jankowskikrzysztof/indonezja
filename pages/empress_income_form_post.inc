@@ -130,6 +130,8 @@ $currency = $_POST["currency"];
           $value_currency = $value;
           $value = conv_currency($value,'from',$currency,$date,$dbh);
 
+        echo "$value = conv_currency($value,'from',$currency,$date);";
+
           $value_before_discount_currency = $value_before_discount;
           $value_before_discount = conv_currency($value_before_discount,'from',$currency,$date,$dbh);
 
@@ -517,8 +519,8 @@ $stmt -> execute();
 //echo 'header(location: empress_income.php?period='.$period.');';
 //echo '<br>'.$row_count.' a: '.$err_list;
 
-header('location: empress_income.php?period='.$period);
-exit;
+//header('location: empress_income.php?period='.$period);
+//exit;
 
 
 ?>
