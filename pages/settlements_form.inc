@@ -190,11 +190,11 @@ $(document).ready(function()
     $('#bank_statement_id').change(function() 
         {
         var value = $(this).find("option:selected").attr("maxsett");
-        var docvalue = document.getElementById('doc_value');
+        var docvalue = document.getElementsByName('doc_value');
         //if(value<docvalue)
         //    $('#value').val(value);
         //if(value>=docvalue)
-            $('#value').val(docvalue);
+            $('#value').docvalue;
         
         });
     });
