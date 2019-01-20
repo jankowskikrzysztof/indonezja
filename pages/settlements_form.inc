@@ -191,9 +191,9 @@ $(document).ready(function()
         {
         var value = $(this).find("option:selected").attr("maxsett");
         var docvalue = document.getElementsByName('doc_value');
-        //if(value<docvalue)
-        //    $('#value').val(value);
-        //if(value>=docvalue)
+        if(value<docvalue)
+            $('#value').val(value);
+        if(value>=docvalue)
             $('#value').docvalue;
         
         });
