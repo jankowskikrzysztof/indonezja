@@ -801,9 +801,9 @@ if($action=='edit' and $room_charge_select<>0)
 
             <div class="pure-controls" align=center>
                 <table class="pure-table pure-table-horizontal pure-table-striped">
-                <?php if($action<>'add') echo '<tr><th colspan=6 align=left><a class="pure-button pure-button-primary" href="settlements.php?action=add&foreign_id='.$id.'&foreign_table=cash_book&value='.$value.'&date='.$date.'&desc='.$desc.'&client='.$client_name.'&acc_filter=380251201"><i class="fa fa-plus" aria-hidden="true"></i></a></th></tr>'; ?>
+                <?php if($action<>'add') echo '<tr><th colspan=9 align=left><a class="pure-button pure-button-primary" href="settlements.php?action=add&foreign_id='.$id.'&foreign_table=cash_book&value='.$value.'&date='.$date.'&desc='.$desc.'&client='.$client_name.'&acc_filter=380251201"><i class="fa fa-plus" aria-hidden="true"></i></a></th></tr>'; ?>
                 
-                <tr><td>Value date</td><td>Account</td><td>Type</td><td>Description</td><td>Value</td><td></td><td>Value Doc Currency</td><td></td><td></td></tr>
+                <tr><td>Value date</td><td>Account</td><td>Type</td><td>Description</td><td>Transfer Value</td><td></td><td>Doc Currency Value</td><td></td><td></td></tr>
 
 
 <?php
@@ -824,7 +824,7 @@ if($action=='edit' and $room_charge_select<>0)
                                 $sum_settlement += $row['value'];
                                 }
     
-                        echo '<tr><td colspan=4 align="right">SUM</td><td align="right">'.$formatter->formatCurrency($sum_settlement, 'IDR').'</td><td></td><td></td></tr>';
+                        echo '<tr><td colspan=4 align="right">SUM</td><td align="right">'.$formatter->formatCurrency($sum_settlement, 'IDR').'</td><td></td><td></td><td></td><td></td></tr>';
     ?>
                 </table>
             </div>
