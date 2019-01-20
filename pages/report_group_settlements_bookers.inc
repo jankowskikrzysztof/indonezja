@@ -50,9 +50,20 @@ else
       $period_limit = '';
 
 if($_GET['book_sel'] <> '')
-  $book_sel = 'and booker.id_booker ='.$_GET['book_sel'];
+   {
+   echo '<pre>';
+   var_dump($booker_array);
+   echo '</pre>';
+
+
+   $booker_statement_filter = '';
+   $book_sel = 'and booker.id_booker ='.$_GET['book_sel'];
+   }
 else
-  $book_sel = '';
+   {
+   $booker_statement_filter = '';
+   $book_sel = '';
+   }
 
 //echo $sel_loc_pers.'a<br>';
 
@@ -198,6 +209,7 @@ and (
 )
 and account_no = '380251201'
 and YEAR(`value_date`) = '".$period_year."'
+".$booker_statement_filter."
 
 ORDER BY bank_statement.value_date DESC";
 
