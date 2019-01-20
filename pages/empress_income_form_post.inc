@@ -30,9 +30,9 @@ $type_cost = $_POST["type_cost"];
 $date = $_POST["date"];
 $bill_no = $_POST["bill_no"];
 $desc = $_POST["desc"];
-$value = str_replace(',','',$_POST["total_act"]);
+$value_total_act = str_replace(',','',$_POST["total_act"]);
 
-echo $value.' '.$_POST["total_act"].'<br>';
+echo $value_total_act.' '.$_POST["total_act"].'<br>';
 
 $value_currency = str_replace(',','',$_POST["total_act_currency"]);
 //$discount = $_POST["discount"];
@@ -130,10 +130,10 @@ $currency = $_POST["currency"];
           $instructor_commission = conv_currency($instructor_commission,'from',$currency,$date,$dbh);
 
 
-          $value_currency = $value;
-          $value = conv_currency($value,'from',$currency,$date,$dbh);
+          $value_currency = $value_total_act;
+          $value_total_act = conv_currency($value_total_act,'from',$currency,$date,$dbh);
 
-        echo "$value = conv_currency($value,'from',$currency,$date);";
+        echo "$value_total_act = conv_currency($value_total_act,'from',$currency,$date);";
 
           $value_before_discount_currency = $value_before_discount;
           $value_before_discount = conv_currency($value_before_discount,'from',$currency,$date,$dbh);
@@ -275,7 +275,7 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
                                    '".$date."',
                                    '".$bill_no."',
                                    '".$desc."',
-                                   '".$value."',
+                                   '".$value_total_act."',
                                    '".$value_currency."',
                                    '".$currency."',
                                    '".$currency_second."',
@@ -383,7 +383,7 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
                            `date` = '".$date."',
                            `bill_no` = '".$bill_no."',
                            `desc` = '".$desc."',
-                           `value` = '".$value."',
+                           `value` = '".$value_total_act."',
                            `value_currency` = '".$value_currency."',
                            `currency` = '".$currency."',
                            `currency_second` = '".$currency_second."',
