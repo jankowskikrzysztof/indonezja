@@ -93,7 +93,7 @@ $bank_statement_array = $stmt->fetchAll();
             <!-- <div class="pure-control-group">
                 <label for="name">Foreign ID</label> -->
                 <input type="hidden" name="foreign_id" id="foreign_id" value="<?php echo $foreign_id; ?>">
-                <input type="hidden" name="doc_value" id="doc_value" value="<?php echo str_replace('.','',$value); ?>">
+                <input type="hidden" name="doc_value" id="doc_value" value="<?php echo $value ?>">
                 <!-- <?php echo $foreign_id; ?>
             </div> -->
 <br>
@@ -191,9 +191,9 @@ $(document).ready(function()
         {
         var value = $(this).find("option:selected").attr("maxsett");
         var docvalue = $('#doc_value').val();
-        if(value<docvalue)
+        if(parseInt(value)<parseInt(docvalue))
             $('#value').val(value);
-        if(value>=docvalue)
+        if(parseInt(value)>=parseInt(docvalue))
             $('#value').val(docvalue);
         
         });
