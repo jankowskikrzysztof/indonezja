@@ -51,15 +51,9 @@ else
 
 if($_GET['book_sel'] <> '')
    {
-   echo '<pre>';
-   var_dump($booker_array);
-   echo '</pre>';
-
-   $key = array_search($_GET['book_sel'], array_column($booker_array, 'id_booker'));
-
-   echo '<b>'.$key.'</b>'.$booker_array[$key]['book_name'].'<br>';
+   $booker_key = array_search($_GET['book_sel'], array_column($booker_array, 'id_booker'));
    
-   $booker_statement_filter = '';
+   $booker_statement_filter = upper($booker_array[$booker_key]['book_name']);
    $book_sel = 'and booker.id_booker ='.$_GET['book_sel'];
    }
 else
