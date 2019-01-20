@@ -5,6 +5,7 @@ $sys_currency = 'IDR';
 
 $post_id = $_POST['id'];
 $foreign_table = $_POST['foreign_table'];
+$foreign_currency = $_POST['foreign_currency'];
 $foreign_id = $_POST['foreign_id'];
 $value = str_replace(',','.',$_POST['value']);
 $bank_statement_id = $_POST['bank_statement_id'];
@@ -18,7 +19,10 @@ $bs_data = $stmt->fetchAll();
 $bank_statement_date = $bs_data[0]['value_date'];
 $bank_statement_currency = $bs_data[0]['currency_code'];
 
-$value_foreign = conv_currency($value,'from',$bank_statement_currency,$bank_statement_date,$dbh);
+if($foreign_currency <> $bank_statement_currency)
+    $value_foreign = conv_currency($value,'to',$bank_statement_currency,$bank_statement_date,$dbh);
+else
+    $value_foreign = $value;
 
 
 
