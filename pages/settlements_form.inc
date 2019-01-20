@@ -3,23 +3,6 @@
 
 $id = $_GET['id'];
 
-if($action=='edit')
-                   {
-
-                   $stmt = $dbh->prepare("SELECT personel.*
-                              FROM personel
-                              WHERE personel.id_personel='".$id."'
-                              ");
-                   $stmt -> execute();
-                   $edit_array = $stmt->fetchAll();
-
-                   $name_value = $edit_array[0]['name'];
-                   $email_value = $edit_array[0]['email'];
-                   $login_value = $edit_array[0]['login'];
-                   $permission_value = $edit_array[0]['permission'];
-                   $timezone_value = $edit_array[0]['timezone'];
-                   }
-
 
 if($action=='add')
                    {
@@ -29,6 +12,7 @@ if($action=='add')
                     $date = $_GET['date'];
                     $desc = $_GET['desc'];
                     $acc_filter = $_GET['acc_filter'];
+                    $client = $_GET['client'];
                     if($acc_filter<>'')
                         $acc_filter_sql = 'and bank_statement.account_no='.$acc_filter;
                     else    
@@ -99,6 +83,10 @@ $bank_statement_array = $stmt->fetchAll();
 
             <div class="pure-control-group">
             <label for="name">Document description: <?php echo $desc; ?></label>
+            </div>
+
+            <div class="pure-control-group">
+            <label for="name">Document Client: <?php echo $client; ?></label>
             </div>
 
 

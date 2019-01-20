@@ -341,7 +341,13 @@ if($ontripsell==1)
                 <?php
                      foreach($client_array as $row)
                         {
-                        if( $client_select == $row['id_client'] ) $sel='selected'; else $sel = '';
+                        if( $client_select == $row['id_client'] ) 
+                            { 
+                            $sel='selected'; 
+                            $client_name = $row['name']; 
+                            } 
+                        else 
+                            $sel = '';
 
                         echo '<option value="'.$row['id_client'].'" '.$sel.'>'.$row['name'].'</option>';
                         }
@@ -795,7 +801,7 @@ if($action=='edit' and $room_charge_select<>0)
 
             <div class="pure-controls" align=center>
                 <table class="pure-table pure-table-horizontal pure-table-striped">
-                <?php if($action<>'add') echo '<tr><th colspan=6 align=left><a class="pure-button pure-button-primary" href="settlements.php?action=add&foreign_id='.$id.'&foreign_table=cash_book&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201"><i class="fa fa-plus" aria-hidden="true"></i></a></th></tr>'; ?>
+                <?php if($action<>'add') echo '<tr><th colspan=6 align=left><a class="pure-button pure-button-primary" href="settlements.php?action=add&foreign_id='.$id.'&foreign_table=cash_book&value='.$value.'&date='.$date.'&desc='.$desc.'&client='.$client_name.'&acc_filter=380251201"><i class="fa fa-plus" aria-hidden="true"></i></a></th></tr>'; ?>
                 
                 <tr><td>Value date</td><td>Account</td><td>Type</td><td>Description</td><td>Value</td><td></td></tr>
 
