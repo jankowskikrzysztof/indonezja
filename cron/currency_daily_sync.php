@@ -16,7 +16,9 @@ $eur_curr = convertCurrency(1, "EUR", "IDR");
 
 
 
-    $stmt = $dbh->prepare("INSERT INTO `cur_rate`
+if($usd_curr<>0)
+        {
+        $stmt = $dbh->prepare("INSERT INTO `cur_rate`
                                   (`date`,
                                    `currency`,
                                    `value`)
@@ -26,9 +28,12 @@ $eur_curr = convertCurrency(1, "EUR", "IDR");
                                    '".$usd_curr."'
                                    )
                            ");
-    $stmt -> execute();
+        $stmt -> execute();
+        }
 
-    $stmt = $dbh->prepare("INSERT INTO `cur_rate`
+if($pln_curr<>0)
+        {
+        $stmt = $dbh->prepare("INSERT INTO `cur_rate`
                                   (`date`,
                                    `currency`,
                                    `value`)
@@ -38,8 +43,11 @@ $eur_curr = convertCurrency(1, "EUR", "IDR");
                                    '".$pln_curr."'
                                    )
                            ");
-    $stmt -> execute();
+        $stmt -> execute();
+        }
 
+if($eur_curr<>0)
+        {
         $stmt = $dbh->prepare("INSERT INTO `cur_rate`
                                   (`date`,
                                    `currency`,
@@ -50,7 +58,8 @@ $eur_curr = convertCurrency(1, "EUR", "IDR");
                                    '".$eur_curr."'
                                    )
                            ");
-    $stmt -> execute();
+        $stmt -> execute();
+        }
 
 
 ?>
