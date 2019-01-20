@@ -122,13 +122,19 @@ $bank_statement_array = $stmt->fetchAll();
                             $selected = '';
 
                         if($row['still_to_settle']<>0)
+                            {
+                            $max_sett_value = $row['still_to_settle'];
                             $stat_value = $formatter->formatCurrency($row['still_to_settle'], 'IDR').' (out of '.$formatter->formatCurrency($row['value'], 'IDR').')';
+                            }
                         else
+                            {
+                            $max_sett_value = $row['value'];
                             $stat_value = $formatter->formatCurrency($row['value'], 'IDR');
+                            }
 
                             //$formatter->formatCurrency($row['value'], 'IDR').' ('.$row['still_to_settle']
 
-                        echo '<option value="'.$row['id_bank_statement'].'" style="color: '.$style_color.'" '.$selected.'>'.$row['account_no'].' - '.$row['value_date'].': '.$stat_value.' '.$row['type'].' '.$row['description'].' </option>';
+                        echo '<option value="'.$row['id_bank_statement'].'" maxsett="'.$max_sett_value.'" style="color: '.$style_color.'" '.$selected.'>'.$row['account_no'].' - '.$row['value_date'].': '.$stat_value.' '.$row['type'].' '.$row['description'].' </option>';
                         }
 ?>
 
@@ -178,4 +184,12 @@ jQuery('.test-only').on('keyup change', function() {
  jQuery('#custom-submit-input').prop('disabled', flag);
 
 });
+
+$(document).ready(function(){
+    $('#bank_statement_id').change(function() {
+    var value = $(this).find("option:selected").attr("maxsett");
+    $('#value').val(value);
+});
+});
+
 </script>
