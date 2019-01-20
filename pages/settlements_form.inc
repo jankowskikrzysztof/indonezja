@@ -146,7 +146,7 @@ $bank_statement_array = $stmt->fetchAll();
 <center>
 
             <div class="pure-control-group">
-                <label for="name">Amount to be settled</label>
+                <label for="name">Amount to be settled (in bank transfer currency)</label>
                 <input type="text" name="value" id="value" value="<?php echo $value; ?>" class="pure-input-1-4">
             </div>
 
