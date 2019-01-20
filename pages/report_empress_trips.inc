@@ -50,7 +50,6 @@ left join cash_book as income_cabin on boat_trip.id_boat_trip=income_cabin.boat_
                                     and income_cabin.client_id<>0
                                     and income_cabin.cash_report_only=0
 
-
 WHERE YEAR(`boat_trip`.`date_from`) = '".$period_year."'
 
 
