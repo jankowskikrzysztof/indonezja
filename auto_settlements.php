@@ -85,8 +85,8 @@ foreach($row_array as $row)
 
 		if($row_match['id_cash_book']<>0)
 			{
-			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
-			VALUES ('1', ".$row['id_bank_statement'].", ".$row_match['id_cash_book'].", 'cash_book', ".$row['debit'].")";
+			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`, `value_foreign`) 
+			VALUES ('1', ".$row['id_bank_statement'].", ".$row_match['id_cash_book'].", 'cash_book', ".$row['debit'].", ".$row['debit'].")";
 			$stmt_match1 = $dbh->prepare($match_sel_1);
 			$stmt_match1 -> execute();
 			}
@@ -111,14 +111,14 @@ foreach($row_array as $row)
 		$row_match = $stmt_match->fetch();
 
 
-		$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
-							VALUES ('1', ".$row['id_bank_statement'].", ".$row_match['id_bank_statement'].", 'bank_statement', ".$row['debit'].")";
+		$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`, `value_foreign`) 
+							VALUES ('1', ".$row['id_bank_statement'].", ".$row_match['id_bank_statement'].", 'bank_statement', ".$row['debit'].", ".$row['debit'].")";
 		$stmt_match1 = $dbh->prepare($match_sel_1);
 		$stmt_match1 -> execute();
 
 
-		$match_sel_2 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
-							VALUES ('1', ".$row_match['id_bank_statement'].", ".$row['id_bank_statement'].", 'bank_statement', ".$row_match['credit'].")";
+		$match_sel_2 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`, `value_foreign`) 
+							VALUES ('1', ".$row_match['id_bank_statement'].", ".$row['id_bank_statement'].", 'bank_statement', ".$row_match['credit'].", ".$row_match['credit'].")";
 		$stmt_match2 = $dbh->prepare($match_sel_2);
 		$stmt_match2 -> execute();
 	
@@ -134,8 +134,8 @@ foreach($row_array as $row)
 	if($row['branch'] =='0999' and $row['value']==0)
 		{
 		
-			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
-								VALUES ('1', ".$row['id_bank_statement'].", 0, 'charges', ".$row['statement_value'].")";
+			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`, `value_foreign`) 
+								VALUES ('1', ".$row['id_bank_statement'].", 0, 'charges', ".$row['statement_value'].", ".$row['statement_value'].")";
 			$stmt_match1 = $dbh->prepare($match_sel_1);
 			$stmt_match1 -> execute();
 	
@@ -150,8 +150,8 @@ foreach($row_array as $row)
 		if(substr($row['type'],0,19) =='Currency Conversion' and $row['value']==0)
 		{
 		
-			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`) 
-								VALUES ('1', ".$row['id_bank_statement'].", 0, 'conversion', ".$row['statement_value'].")";
+			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`, `value_foreign`) 
+								VALUES ('1', ".$row['id_bank_statement'].", 0, 'conversion', ".$row['statement_value'].", ".$row['statement_value'].")";
 			$stmt_match1 = $dbh->prepare($match_sel_1);
 			$stmt_match1 -> execute();
 	
