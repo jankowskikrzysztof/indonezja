@@ -289,11 +289,19 @@ echo '</table>';
 $trip_result = $sum_income - $sum_costs - $total_salary_per_trip - $sum_salaries_trip;
 
 echo '<br><br><h2 align=center>Trip summary:</h2>';
-echo '<p align=center>'.$formatter->formatCurrency($sum_income, 'IDR').' - Trip income</p>';
-echo '<p align=center>'.$formatter->formatCurrency($sum_costs, 'IDR').' - Trip costs</p>';
-echo '<p align=center>'.$formatter->formatCurrency($sum_salaries_trip, 'IDR').' - Salary trip selected</p>';
-echo '<p align=center>'.$formatter->formatCurrency($total_salary_per_trip, 'IDR').' - Salary avg. per trip</p>';
-echo '<h2 align=center>'.$formatter->formatCurrency($trip_result, 'IDR').' - Trip result</h3>';
+echo '<table border=0 cellpadding=5>
+         <tr><td>'.$formatter->formatCurrency($sum_income, 'IDR').'</td><td>Trip income</td></tr>
+         <tr><td>'.$formatter->formatCurrency($sum_costs, 'IDR').'</td><td>Trip costs</td></tr>
+         <tr><td>'.$formatter->formatCurrency($sum_salaries_trip, 'IDR').'</td><td>Salary trip selected</td></tr>
+         <tr><td>'.$formatter->formatCurrency($total_salary_per_trip, 'IDR').'</td><td>Salary avg. per trip</td></tr>
+         <tr><td>'.$formatter->formatCurrency($trip_result, 'IDR').'</td><td>Trip result</td></tr>
+      </table>';
+      
+// echo '<p align=center>'.$formatter->formatCurrency($sum_income, 'IDR').' - Trip income</p>';
+// echo '<p align=center>'.$formatter->formatCurrency($sum_costs, 'IDR').' - Trip costs</p>';
+// echo '<p align=center>'.$formatter->formatCurrency($sum_salaries_trip, 'IDR').' - Salary trip selected</p>';
+// echo '<p align=center>'.$formatter->formatCurrency($total_salary_per_trip, 'IDR').' - Salary avg. per trip</p>';
+// echo '<h2 align=center>'.$formatter->formatCurrency($trip_result, 'IDR').' - Trip result</h3>';
 
 
 echo '</td></tr></table>';   //tabelka do ulozenia wszystkiego na stronie

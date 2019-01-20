@@ -95,25 +95,25 @@ foreach($row_array as $row)
 
 
     $select_salaries = "
-    SELECT ROUND(SUM(salaries_trip.value)) as salaries_trip
-    FROM cash_book as salaries_trip 
-    WHERE salaries_trip.boat_trip_id=".$row['id_boat_trip']."
-    and salaries_trip.type=2
-    and salaries_trip.cash_book_group_id=4
-    GROUP BY boat_trip_id
-    ";
+                        SELECT ROUND(SUM(salaries_trip.value)) as salaries_trip
+                        FROM cash_book as salaries_trip 
+                        WHERE salaries_trip.boat_trip_id=".$row['id_boat_trip']."
+                          and salaries_trip.type=2
+                          and salaries_trip.cash_book_group_id=4
+                        GROUP BY boat_trip_id
+                  ";
     $stmt_s = $dbh->prepare($select_salaries);
     $stmt_s -> execute();
     $row_sal_array = $stmt_s->fetchAll();
     
     $select_costs = "
-    SELECT ROUND(SUM(costs_trip.value)) as costs_trip
-    FROM cash_book as costs_trip 
-    WHERE costs_trip.boat_trip_id=".$row['id_boat_trip']."
-    and costs_trip.type=2
-    and costs_trip.cash_book_group_id<>4
-    GROUP BY boat_trip_id
-    ";
+                     SELECT ROUND(SUM(costs_trip.value)) as costs_trip
+                       FROM cash_book as costs_trip 
+                      WHERE costs_trip.boat_trip_id=".$row['id_boat_trip']."
+                        and costs_trip.type=2
+                        and costs_trip.cash_book_group_id<>4
+                     GROUP BY boat_trip_id
+                     ";
     $stmt_c = $dbh->prepare($select_costs);
     $stmt_c -> execute();
     $row_cos_array = $stmt_c->fetchAll();
