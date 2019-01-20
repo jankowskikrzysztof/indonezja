@@ -31,6 +31,9 @@ $date = $_POST["date"];
 $bill_no = $_POST["bill_no"];
 $desc = $_POST["desc"];
 $value = str_replace(',','',$_POST["total_act"]);
+
+echo $value.' '.$_POST["total_act"].'<br>';
+
 $value_currency = str_replace(',','',$_POST["total_act_currency"]);
 //$discount = $_POST["discount"];
 //$value_before_discount = str_replace(',','',$_POST["value_before_discount"]);
