@@ -20,26 +20,6 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
     echo '<p>Data add success</p>';
 
     }
-elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
-    {
-
-    if($_POST[password]<>'')
-       $pass_upd = "`password` = '".$password."', ";
-
-    $stmt = $dbh->prepare("UPDATE `settlements` SET
-
-                           `personel_id` = '".$_SESSION['user_id']."',
-                           `foreign_table` = '".$foreign_table."',
-                           `foreign_id` = '".$foreign_id."',
-                           `value` = '".$value."',
-                           `bank_statement_id` = '".$bank_statement_id."'
-
-                           WHERE `settlements`.`id_settlements` = '".$post_id."'
-                           ");
-
-    $stmt -> execute();
-    echo '<p>Data change success</p>';
-    }
 elseif($_GET['action']=='del' and $_SESSION['permission']=='rw' and ($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1))
     {
     $post_id = $_GET['id'];
