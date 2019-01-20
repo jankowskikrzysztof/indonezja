@@ -20,11 +20,13 @@ $bank_statement_date = $bs_data[0]['value_date'];
 $bank_statement_currency = $bs_data[0]['currency_code'];
 
 if($foreign_currency <> $bank_statement_currency)
-    $value_foreign = conv_currency($value,'to',$bank_statement_currency,$bank_statement_date,$dbh);
+    {
+    echo "if($foreign_currency <> $bank_statement_currency)<br>";
+    $value_foreign = conv_currency($value,'to',$foreign_currency,$bank_statement_date,$dbh);
+    }
 else
     $value_foreign = $value;
 
-echo "if($foreign_currency <> $bank_statement_currency)<br>";
 
 if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
     {
