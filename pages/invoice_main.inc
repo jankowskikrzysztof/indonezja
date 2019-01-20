@@ -87,7 +87,7 @@ $stmt = $dbh->prepare("SELECT cash_book.*,
                               boat_trip.date_from,
                               boat_trip.date_to,
                               GROUP_CONCAT(settlements.id_settlements) as settlements, 
-                              (SELECT SUM(value) FROM settlements WHERE settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book') as set_value
+                              (SELECT SUM(value_foreign) FROM settlements WHERE settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book') as set_value
 
                               FROM (cash_book, cash_book_item)
                               left join client on client.id_client=cash_book.client_id
