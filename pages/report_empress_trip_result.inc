@@ -294,7 +294,7 @@ echo '<table class="pure-table pure-table-horizontal pure-table-striped">
          <tr><td align="right">'.$formatter->formatCurrency($sum_costs, 'IDR').'</td><td>Trip costs</td></tr>
          <tr><td align="right">'.$formatter->formatCurrency($sum_salaries_trip, 'IDR').'</td><td>Salary trip selected</td></tr>
          <tr><td align="right">'.$formatter->formatCurrency($total_salary_per_trip, 'IDR').'</td><td>Salary avg. per trip</td></tr>
-         <tr><td align="right"><b>'.$formatter->formatCurrency($trip_result, 'IDR').'</b></td><td><h2>Trip result</h2></td></tr>
+         <tr><td align="right"><b>'.$formatter->formatCurrency($trip_result, 'IDR').'</b></td><td><b>Trip result</b></td></tr>
       </table>';
       
 // echo '<p align=center>'.$formatter->formatCurrency($sum_income, 'IDR').' - Trip income</p>';
