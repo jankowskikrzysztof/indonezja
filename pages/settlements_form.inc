@@ -185,11 +185,18 @@ jQuery('.test-only').on('keyup change', function() {
 
 });
 
-$(document).ready(function(){
-    $('#bank_statement_id').change(function() {
-    var value = $(this).find("option:selected").attr("maxsett");
-    $('#value').val(value);
-});
-});
+$(document).ready(function()
+    {
+    $('#bank_statement_id').change(function() 
+        {
+        var value = $(this).find("option:selected").attr("maxsett");
+        var docvalue = document.getElementById('doc_value');
+        if(value<docvalue)
+            $('#value').val(value);
+        if(value>=docvalue)
+            $('#value').val(docvalue);
+        
+        });
+    });
 
 </script>
