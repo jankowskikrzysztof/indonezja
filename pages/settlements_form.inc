@@ -74,19 +74,19 @@ $bank_statement_array = $stmt->fetchAll();
             </div> -->
 
             <div class="pure-control-group">
-            <label for="name">Document date: <?php echo $date; ?></label>
+            <label for="name">Document date: <b><?php echo $date; ?></b></label>
             </div>
 
             <div class="pure-control-group">
-            <label for="name">Document value: <?php echo $formatter->formatCurrency($value, 'IDR'); ?></label>
+            <label for="name">Document value: <b><?php echo $formatter->formatCurrency($value, 'IDR'); ?></b></label>
             </div>
 
             <div class="pure-control-group">
-            <label for="name">Document description: <?php echo $desc; ?></label>
+            <label for="name">Document description: <b><?php echo $desc; ?></b></label>
             </div>
 
             <div class="pure-control-group">
-            <label for="name">Document Client: <?php echo $client; ?></label>
+            <label for="name">Document client: <b><?php echo $client; ?></b></label>
             </div>
 
 
