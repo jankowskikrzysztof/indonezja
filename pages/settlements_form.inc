@@ -104,7 +104,7 @@ $bank_statement_array = $stmt->fetchAll();
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201">380251201</a> | |
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201&bookers=1">380251201 with bookers</a> | |
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=PP: scubafroggy.com">PayPal</a><br>'; ?>
-                <select name="bank_statement_id" id="bank_statement_id" autofocus size=25 style="width: 100em !important; min-width: 100em; max-width: 100em; font-size:0.9vw;">
+                <select name="bank_statement_id" id="bank_statement_id" autofocus size=25 style="width: 100em !important; min-width: 100em; max-width: 100em; font-size:0.9vw;" class='test-only'>
             
 <?php
 
@@ -148,7 +148,7 @@ $bank_statement_array = $stmt->fetchAll();
                 <?php
                 if($_SESSION['permission']=='rw')
                    {
-                   echo '<button type="submit" class="pure-button pure-button-primary">Submit</button>';
+                   echo '<button type="submit" class="pure-button pure-button-primary" id="custom-submit-input" disabled="disabled">Submit</button>';
 
                    if($action<>'add')
                       echo '<a href="?action=del&id='.$id.'" class="pure-button button-error">Delete</a>';
@@ -162,3 +162,20 @@ $bank_statement_array = $stmt->fetchAll();
 
 
 </div>
+
+
+
+<script type="text/javascript">
+jQuery('.test-only').on('keyup change', function() {
+ var flag = false;
+  $('.test-only').each(function() {
+       if($(this).val()=="") {
+         flag = true;
+         return false;
+       }
+  });
+
+ jQuery('#custom-submit-input').prop('disabled', flag);
+
+});
+</script>
