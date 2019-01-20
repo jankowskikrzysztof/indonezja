@@ -100,9 +100,9 @@ $bank_statement_array = $stmt->fetchAll();
             <div class="pure-control-group">
                 <label for="password">Statement record - choose one to settle:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 Show only: 
-                        <?php echo '<a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=359738937">359738937</a> ||
-                                    <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201">380251201</a> ||
-                                    <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201&bookers=1">380251201 with bookers</a> ||
+                        <?php echo '<a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=359738937">359738937</a> | |
+                                    <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201">380251201</a> | |
+                                    <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=380251201&bookers=1">380251201 with bookers</a> | |
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&acc_filter=PP: scubafroggy.com">PayPal</a><br>'; ?>
                 <select name="bank_statement_id" id="bank_statement_id" autofocus size=25 style="width: 100em !important; min-width: 100em; max-width: 100em; font-size:0.9vw;">
             

@@ -188,7 +188,7 @@ foreach($row_array as $row)
 
 $select = "SELECT bank_statement.*
 FROM bank_statement
-WHERE bank_statement.type='TRANSFER DARI'
+WHERE (bank_statement.type='TRANSFER DARI' or bank_statement.type='KREDIT')
 and (
      description LIKE '%LIVEABOARD.COM%'
   or description LIKE '%PADI TRAVEL%'
