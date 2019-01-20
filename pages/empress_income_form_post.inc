@@ -131,9 +131,10 @@ $currency = $_POST["currency"];
 
 
           $value_currency = $value_total_act;
+          echo "$value_total_act = conv_currency($value_total_act,'from',$currency,$date);";
+
           $value_total_act = conv_currency($value_total_act,'from',$currency,$date,$dbh);
 
-        echo "$value_total_act = conv_currency($value_total_act,'from',$currency,$date);";
 
           $value_before_discount_currency = $value_before_discount;
           $value_before_discount = conv_currency($value_before_discount,'from',$currency,$date,$dbh);
