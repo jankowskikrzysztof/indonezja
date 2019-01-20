@@ -8,6 +8,7 @@ if($action=='add')
                    {
                     $foreign_table = $_GET['foreign_table'];
                     $foreign_id = $_GET['foreign_id'];
+                    $foreign_currency = $_GET['foreign_currency'];
                     $value = $_GET['value'];
                     $date = $_GET['date'];
                     $desc = $_GET['desc'];
@@ -78,7 +79,7 @@ $bank_statement_array = $stmt->fetchAll();
             </div>
 
             <div class="pure-control-group">
-            <label for="name">Document value: <b><?php echo $formatter->formatCurrency($value, 'IDR'); ?></b></label>
+            <label for="name">Document value: <b><?php echo $formatter->formatCurrency($value, 'IDR').' '.$foreign_currency; ?></b></label>
             </div>
 
             <div class="pure-control-group">
@@ -93,6 +94,7 @@ $bank_statement_array = $stmt->fetchAll();
             <!-- <div class="pure-control-group">
                 <label for="name">Foreign ID</label> -->
                 <input type="hidden" name="foreign_id" id="foreign_id" value="<?php echo $foreign_id; ?>">
+                <input type="hidden" name="foreign_currency" id="foreign_currency" value="<?php echo $foreign_currency; ?>">
                 <input type="hidden" name="doc_value" id="doc_value" value="<?php echo $value ?>">
                 <!-- <?php echo $foreign_id; ?>
             </div> -->
