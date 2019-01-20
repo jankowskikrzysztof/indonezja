@@ -825,7 +825,7 @@ if($action=='edit' and $room_charge_select<>0)
                                 $sum_settlement_currency += $row['value_foreign'];
                                 }
     
-                        echo '<tr><td colspan=4 align="right">SUM</td><td align="right">'.$formatter->formatCurrency($sum_settlement, 'IDR').'</td><td></td><td>'.$formatter->formatCurrency($sum_settlement_currency, 'IDR').'</td><td></td><td></td></tr>';
+                        echo '<tr><td colspan=4 align="right">SUM</td><td align="right">'.$formatter->formatCurrency($sum_settlement, 'IDR').'</td><td></td><td align="right">'.$formatter->formatCurrency($sum_settlement_currency, 'IDR').'</td><td></td><td></td></tr>';
     ?>
                 </table>
             </div>
