@@ -50,7 +50,7 @@ function changePeriod(url)
 </div>
 
 
-  <table class="pure-table pure-table-horizontal pure-table-striped">
+  <table class="pure-table pure-table-horizontal pure-table-striped" id="table_id">
    <thead>
 <!--  <tr>
       <th colspan=6><a class="pure-button pure-button-primary" href="?action=add" accesskey="a"><i class="fa fa-plus" aria-hidden="true"></i> <u>A</u>dd</a></th>
@@ -192,6 +192,6 @@ foreach($row_array as $row)
 
 <script>
 $(document).ready( function () {
-    $('#table').DataTable();
+    $('#table_id').DataTable();
 } );
 </script>
