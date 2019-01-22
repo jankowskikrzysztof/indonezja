@@ -80,7 +80,15 @@ function changePeriod(url)
 
 //$period_year = '2018';
 
+if($_SESSION['limit_data_months']<>0)
+      $period_limit = 'and cash_book.date >=  now() - interval '.$_SESSION['limit_data_months'].' month';
+else
+      $period_limit = '';
 
+if($_SESSION['location_id_limit']<>0)
+      $location_limit = 'and location.id_location IN ('.$_SESSION['location_id_limit'].')';
+else
+      $location_limit = '';
 
 $stmt = $dbh->prepare("SELECT cash_book.*,
                               cash_book.pay_cash+cash_book.pay_creditcard+cash_book.pay_roomcharge+cash_book.pay_bank+cash_book.pay_paypal as total_pay,
@@ -110,6 +118,8 @@ $stmt = $dbh->prepare("SELECT cash_book.*,
 
                               AND YEAR(`cash_book`.`date`) = '".$period_year."'
 
+                              ".$period_limit."
+                              ".$location_limit."
 
                               GROUP BY cash_book.id_cash_book
                               ORDER BY cash_book.date");
@@ -150,8 +160,8 @@ foreach($row_array as $row)
         }
     if($row['pay_creditcard']<>0)
         {
-        $payment_type .= 'creditcard,';
         $still_to_pay = $still_to_pay - $row['pay_creditcard_currency'];
+        $payment_type .= 'creditcard,';
         }
     if($row['pay_roomcharge']<>0)
         $payment_type .= 'roomcharge,';

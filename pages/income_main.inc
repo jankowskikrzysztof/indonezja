@@ -70,9 +70,14 @@ $stmt = $dbh->prepare("SELECT cash_book_group.name as cb_name, location.name as 
                                   end as type_name,
 
                               cash_book.value,
-                              GROUP_CONCAT(activity.shortcut) as shortcut
+                              GROUP_CONCAT(activity.shortcut) as shortcut,
 
-                              FROM cash_book, cash_book_item, personel, location, cash_book_group, activity, location_groups
+                              (SELECT SUM(value_foreign) FROM settlements WHERE settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book') as set_value
+
+                              FROM (cash_book, cash_book_item, personel, location, cash_book_group, activity, location_groups)
+
+                              left join settlements on settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book'
+
                               WHERE cash_book_group.id_cash_book_group=cash_book.cash_book_group_id
                               and cash_book.personel_id=personel.id_personel
                               and cash_book.type=1
@@ -99,11 +104,20 @@ $sum_still_to_pay = '';
 foreach($row_array as $row)
    {
 
+   //$still_to_pay = $row['value']-$row['total_pay'];
+   $still_to_pay = $row['value_currency']-$row['set_value'];
+
    $payment_type = '';
    if($row['pay_cash']<>0)
+      {
+      $still_to_pay = $still_to_pay - $row['pay_cash_currency'];
       $payment_type .= 'cash,';
+      }
    if($row['pay_creditcard']<>0)
+      {
+      $still_to_pay = $still_to_pay - $row['pay_creditcard_currency'];
       $payment_type .= 'creditcard,';
+      }
    if($row['pay_roomcharge']<>0)
       $payment_type .= 'roomcharge,';
    if($row['pay_bank']<>0)
@@ -116,24 +130,25 @@ foreach($row_array as $row)
    else
       $value_error_color = '';
 
-   $still_to_pay = $row['value']-$row['total_pay'];
+
+
 
    echo '<tr>
-   <td align=center>'.$row['dzien'].'</td>
-   <td>'.$row['loc_name'].'</td>
-   <td>'.$row['desc'].'</td>
-   <td>'.$row['shortcut'].'</td>
-   <td>'.$row['bill_no'].'</td>
-   <td align=right'.$value_error_color.'>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>
-   <td align=center>'.$payment_type.'</td>
-   <td align=right>'.$formatter->formatCurrency($row['total_pay'], 'IDR').'</td>
-   <td align=right>'.$formatter->formatCurrency($still_to_pay, 'IDR').'</td>
-   <td>';
+            <td align=center>'.$row['dzien'].'</td>
+            <td>'.$row['loc_name'].'</td>
+            <td>'.$row['desc'].'</td>
+            <td>'.$row['shortcut'].'</td>
+            <td>'.$row['bill_no'].'</td>
+            <td align=right'.$value_error_color.'>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>
+            <td align=center>'.$payment_type.'</td>
+            <td align=right>'.$formatter->formatCurrency($row['total_pay'], 'IDR').'</td>
+            <td align=right>'.$formatter->formatCurrency($still_to_pay, 'IDR').'</td>
+            <td>';
 
-	if($_SESSION['permission']=='rw' and $row['boat_trip_id']<>0)
-		echo '<a href="empress_income.php?action=edit&id='.$row['id_cash_book'].'"><i class="far fa-edit" aria-hidden="true"></i>[e]</a>';
-	if($_SESSION['permission']=='rw' and $row['boat_trip_id']==0)
-		echo '<a href="?action=edit&id='.$row['id_cash_book'].'"><i class="far fa-edit" aria-hidden="true"></i>[e]</a>';
+         if($_SESSION['permission']=='rw' and $row['boat_trip_id']<>0)
+            echo '<a href="empress_income.php?action=edit&id='.$row['id_cash_book'].'"><i class="far fa-edit" aria-hidden="true"></i>[e]</a>';
+         if($_SESSION['permission']=='rw' and $row['boat_trip_id']==0)
+            echo '<a href="?action=edit&id='.$row['id_cash_book'].'"><i class="far fa-edit" aria-hidden="true"></i>[e]</a>';
 
    echo '</td>
    </tr>';
