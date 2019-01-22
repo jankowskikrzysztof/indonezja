@@ -165,7 +165,7 @@ foreach($row_array as $row)
         }
     if($row['pay_roomcharge']<>0)
         $payment_type .= 'roomcharge,';
-    if($row['pay_bank']<>0)
+    if($row['pay_bank']<>0 or $row['set_value']<>0)
         $payment_type .= 'bank,';
     if($row['pay_paypal']<>0)
         $payment_type .= 'paypal,';
