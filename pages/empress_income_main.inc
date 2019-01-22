@@ -150,7 +150,7 @@ $sql_select = "SELECT cash_book_group.name as cb_name, location.name as loc_name
                               booker.name as booker_name,
                               client.name as client_name,
                               cash_book.client_id,
-                              GROUP_CONCAT(settlements.id_settlements) as settlements, 
+                              GROUP_CONCAT(settlements.id_settlements) as settlements 
 
                               (SELECT SUM(value) FROM settlements WHERE settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book') as set_value
 
