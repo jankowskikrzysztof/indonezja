@@ -34,7 +34,7 @@ echo '
      <th align=center>Cabin C</th>
      <th align=center>Cabin D</th>
      <th align=center>Cabin E</th>
-     <th align=center>Still to pay</th>
+     <!--<th align=center>Still to pay</th>-->
   </tr>
  </thead>
 
@@ -337,11 +337,11 @@ if($row['date_from']<$date_now and $row['date_to']>$date_now)
 
    <td class=cash width=200em>'.$formatter->formatCurrency($row['price_cabin_e'], 'USD').'</td>
 
-   <td class=cash rowspan=8 '.$still_to_pay_bgcolor.'>';
+   <!--<td class=cash rowspan=8 '.$still_to_pay_bgcolor.'>';
 
                     echo $formatter->formatCurrency($still_to_pay, 'USD');
 
-             echo '</td>
+             echo '</td>-->
    </tr>';
 
    echo '<tr class="reports pure-table">
