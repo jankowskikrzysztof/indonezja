@@ -134,7 +134,7 @@ foreach($row_array as $row)
    <td align=right>'.$formatter->formatCurrency($row['value_before_discount'],'IDR').' '.$row['currency'].$value_before_discount_currency.'</td>
    <td align=right>'.$formatter->formatCurrency($row['booker_commission'],'IDR').' '.$row['currency'].$booker_commission_currency.'</td>
    <td align=right>'.$formatter->formatCurrency($row['value'],'IDR').' '.$row['currency'].$value_currency.'</td>
-   <td align=right>'.$row['currency'].$still_to_pay_currency_v.'</td>
+   <td align=right>'.$still_to_pay_currency_v.'</td>
    </tr>';
 //$formatter->formatCurrency($still_to_pay,'IDR').' '.
    $sum_value_before_discount += $row['value_before_discount'];
