@@ -151,6 +151,7 @@ $sql_select = "SELECT cash_book_group.name as cb_name, location.name as loc_name
                               client.name as client_name,
                               cash_book.client_id,
                               GROUP_CONCAT(settlements.id_settlements) as settlements, 
+
                               (SELECT SUM(value) FROM settlements WHERE settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book') as set_value
 
                               FROM (cash_book, cash_book_item, personel, location, cash_book_group, activity, location_groups)
@@ -204,8 +205,8 @@ foreach($row_array as $row)
       }
    if($row['pay_creditcard']<>0)
       {
-      $payment_type .= 'creditcard,';
       $still_to_pay = $still_to_pay - $row['pay_creditcard_currency'];
+      $payment_type .= 'creditcard,';
       }
    if($row['pay_roomcharge']<>0)
       $payment_type .= 'roomcharge,';

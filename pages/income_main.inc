@@ -72,11 +72,8 @@ $stmt = $dbh->prepare("SELECT cash_book_group.name as cb_name, location.name as 
                               cash_book.value,
                               GROUP_CONCAT(activity.shortcut) as shortcut,
 
-                              (SELECT SUM(value_foreign) FROM settlements WHERE settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book') as set_value
-
                               FROM (cash_book, cash_book_item, personel, location, cash_book_group, activity, location_groups)
 
-                              left join settlements on settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book'
 
                               WHERE cash_book_group.id_cash_book_group=cash_book.cash_book_group_id
                               and cash_book.personel_id=personel.id_personel
@@ -104,20 +101,13 @@ $sum_still_to_pay = '';
 foreach($row_array as $row)
    {
 
-   //$still_to_pay = $row['value']-$row['total_pay'];
-   $still_to_pay = $row['value_currency']-$row['set_value'];
+   $still_to_pay = $row['value']-$row['total_pay'];
 
    $payment_type = '';
    if($row['pay_cash']<>0)
-      {
-      $still_to_pay = $still_to_pay - $row['pay_cash_currency'];
       $payment_type .= 'cash,';
-      }
    if($row['pay_creditcard']<>0)
-      {
-      $still_to_pay = $still_to_pay - $row['pay_creditcard_currency'];
       $payment_type .= 'creditcard,';
-      }
    if($row['pay_roomcharge']<>0)
       $payment_type .= 'roomcharge,';
    if($row['pay_bank']<>0)
@@ -130,7 +120,7 @@ foreach($row_array as $row)
    else
       $value_error_color = '';
 
-   $sum_total_pay = $row['total_pay']+$row['set_value'];
+   $sum_total_pay = $row['total_pay'];
 
 
    echo '<tr>
@@ -154,7 +144,7 @@ foreach($row_array as $row)
    </tr>';
 
    $sum_value += $row['value'];
-   $sum_total_pay += $row['total_pay'];
+   $sum_total_pay +=  $sum_total_pay;
    $sum_still_to_pay += $still_to_pay;
 
    }
