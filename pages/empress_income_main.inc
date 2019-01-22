@@ -131,6 +131,7 @@ $sql_select = "SELECT cash_book_group.name as cb_name, location.name as loc_name
                               location_groups.name as loc_grp_name, DAY(cash_book.date) as dzien,
 
                               cash_book.pay_cash,cash_book.pay_creditcard,cash_book.pay_roomcharge,cash_book.pay_bank,cash_book.pay_paypal,
+                              cash_book.pay_cash_currency,cash_book.pay_creditcard_currency,cash_book.pay_roomcharge_currency,cash_book.pay_bank_currency,cash_book.pay_paypal_currency,
                               cash_book.pay_cash+cash_book.pay_creditcard+cash_book.pay_roomcharge+cash_book.pay_bank+cash_book.pay_paypal as total_pay,
                               cash_book.pay_cash_currency+cash_book.pay_creditcard_currency+cash_book.pay_roomcharge_currency+cash_book.pay_bank_currency+cash_book.pay_paypal_currency as total_pay_currency,
                               boat_trip.date_from, boat_trip.date_to, boat_trip.txt_route, cash_book.boat_trip_id,
