@@ -225,7 +225,7 @@ foreach($row_array as $row)
       {
       $value_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency'], $row['currency_second']).' '.$row['currency_second'].'</font>';
       //$still_to_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency']-$row['total_pay_currency'], $row['currency_second']).' '.$row['currency_second'];
-      $total_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['total_pay_currency'], $row['currency_second']).' '.$row['currency_second'];
+      $total_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['total_pay_currency']+$row['set_value'], $row['currency_second']).' '.$row['currency_second'];
       }
     else
       {$value_currency=''; $still_to_pay_currency = ''; $total_pay_currency = '';}
