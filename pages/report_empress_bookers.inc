@@ -30,7 +30,7 @@ $booker_array = $stmt->fetchAll();
 
   <table class="pure-table pure-table-horizontal pure-table-striped">
    <thead>
-  <tr align=center>
+    <tr align=center>
      <th>Booker
               <div class="pure-form">
               <select onchange="changePeriodBook(this.value)">
@@ -78,7 +78,8 @@ $stmt = $dbh->prepare("SELECT cash_book.*,
                               booker.name as booker_name,
                               boat_trip.txt_route,
                               boat_trip.date_from,
-                              boat_trip.date_to
+                              boat_trip.date_to,
+                              (SELECT SUM(value_foreign) FROM settlements WHERE settlements.foreign_id=cash_book.id_cash_book and settlements.foreign_table='cash_book') as set_value
 
                               FROM (cash_book, cash_book_item)
                               left join client on client.id_client=cash_book.client_id
@@ -106,18 +107,18 @@ $row_array = $stmt->fetchAll();
 
 foreach($row_array as $row)
    {
-   $still_to_pay = $row['value']-$row['total_pay'];
+   //$still_to_pay = $row['value']-$row['total_pay'];
 
    if($row['currency_second'] <> '' and $row['currency_second'] <> '0.0' and $row['currency']<>$row['currency_second'])
       {
       $value_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency'], $row['currency_second']).' '.$row['currency_second'].'</font>';
       $value_before_discount_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_before_discount_currency'], $row['currency_second']).' '.$row['currency_second'].'</font>';
       $booker_commission_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['booker_commission_currency'], $row['currency_second']).' '.$row['currency_second'].'</font>';
-      $still_to_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency']-$row['total_pay_currency'], $row['currency_second']).' '.$row['currency_second'];
+      //$still_to_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency']-$row['total_pay_currency'], $row['currency_second']).' '.$row['currency_second'];
+      $still_to_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency']-$row['set_value'], $row['currency_second']).' '.$row['currency_second'];
       }
     else
       {$value_currency=''; $still_to_pay_currency = ''; $value_before_discount_currency = ''; $booker_commission_currency = '';}
-
 
    echo '<tr>
    <td>'.$row['booker_name'].'</td>
