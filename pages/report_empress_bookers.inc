@@ -108,6 +108,11 @@ $row_array = $stmt->fetchAll();
 foreach($row_array as $row)
    {
    //$still_to_pay = $row['value']-$row['total_pay'];
+   $still_to_pay = $row['value_currency']-$row['set_value'];
+   if($row['pay_cash']<>0)
+      $still_to_pay = $still_to_pay - $row['pay_cash_currency'];
+   if($row['pay_creditcard']<>0)
+      $still_to_pay = $still_to_pay - $row['pay_creditcard_currency'];
 
    if($row['currency_second'] <> '' and $row['currency_second'] <> '0.0' and $row['currency']<>$row['currency_second'])
       {
@@ -115,7 +120,7 @@ foreach($row_array as $row)
       $value_before_discount_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_before_discount_currency'], $row['currency_second']).' '.$row['currency_second'].'</font>';
       $booker_commission_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['booker_commission_currency'], $row['currency_second']).' '.$row['currency_second'].'</font>';
       //$still_to_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency']-$row['total_pay_currency'], $row['currency_second']).' '.$row['currency_second'];
-      $still_to_pay_currency = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($row['value_currency']-$row['set_value'], $row['currency_second']).' '.$row['currency_second'];
+      $still_to_pay_currency_v = '<br><font style="font-size:80%;">'.$formatter->formatCurrency($still_to_pay, $row['currency_second']).' '.$row['currency_second'];
       }
     else
       {$value_currency=''; $still_to_pay_currency = ''; $value_before_discount_currency = ''; $booker_commission_currency = '';}
@@ -129,9 +134,9 @@ foreach($row_array as $row)
    <td align=right>'.$formatter->formatCurrency($row['value_before_discount'],'IDR').' '.$row['currency'].$value_before_discount_currency.'</td>
    <td align=right>'.$formatter->formatCurrency($row['booker_commission'],'IDR').' '.$row['currency'].$booker_commission_currency.'</td>
    <td align=right>'.$formatter->formatCurrency($row['value'],'IDR').' '.$row['currency'].$value_currency.'</td>
-   <td align=right>'.$formatter->formatCurrency($still_to_pay,'IDR').' '.$row['currency'].$still_to_pay_currency.'</td>
+   <td align=right>'.$row['currency'].$still_to_pay_currency_v.'</td>
    </tr>';
-
+//$formatter->formatCurrency($still_to_pay,'IDR').' '.
    $sum_value_before_discount += $row['value_before_discount'];
    $sum_booker_commission += $row['booker_commission'];
    $sum_value += $row['value'];
