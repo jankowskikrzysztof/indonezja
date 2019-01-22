@@ -130,7 +130,7 @@ foreach($row_array as $row)
    else
       $value_error_color = '';
 
-
+   $sum_total_pay = $row['total_pay']+$row['set_value'];
 
 
    echo '<tr>
@@ -141,7 +141,7 @@ foreach($row_array as $row)
             <td>'.$row['bill_no'].'</td>
             <td align=right'.$value_error_color.'>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>
             <td align=center>'.$payment_type.'</td>
-            <td align=right>'.$formatter->formatCurrency($row['total_pay'], 'IDR').'</td>
+            <td align=right>'.$formatter->formatCurrency($sum_total_pay, 'IDR').'</td>
             <td align=right>'.$formatter->formatCurrency($still_to_pay, 'IDR').'</td>
             <td>';
 
