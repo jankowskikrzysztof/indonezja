@@ -27,13 +27,15 @@ WHERE bill_no='".$bill_no."'";
 $stmt = $dbh->prepare("$select");
 $stmt -> execute();
 
-//$row_array = $stmt->fetchAll();
-$count = $stmt->rowCount();
+$rows = $stmt->fetchAll();
+$num_rows = count($rows);
 
-if($count == 1) {
-    echo "Success";
+//echo $num_rows.'<br>';
+
+if($num_rows == 1) {
+    return true;
 } else {
-    echo "Fail";
+    return false;
 }
 
 
