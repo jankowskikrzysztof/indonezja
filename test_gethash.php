@@ -1,4 +1,4 @@
-<form id="formLogin" method="post" name="myform">
+<form method="post" name="myform" id="register-form">
    <label>User Name:</label>
    <input type="text" name="username" id="username">
 
