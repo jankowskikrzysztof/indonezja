@@ -24,7 +24,7 @@ $.validator.addMethod("checkUserName",
             url: "test_hash_db.php", // script to validate in server side
             data: {username: value},
             success: function(data) {
-                result = (data == true) ? true : false;
+                result = (data > 0) ? true : false;
             }
         });
         // return true if username is exist in database

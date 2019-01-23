@@ -25,13 +25,13 @@ $stmt -> execute();
 $rows = $stmt->fetchAll();
 $num_rows = count($rows);
 
-//echo $num_rows.'<br>';
+echo $num_rows;
 
-if($num_rows > 0) {
-    return true;
-} else {
-    return false;
-}
+// if($num_rows > 0) {
+//     return true;
+// } else {
+//     return false;
+// }
 
 
 ?>
