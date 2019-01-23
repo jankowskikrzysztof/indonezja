@@ -17,7 +17,7 @@ $result = mysqli_query($con, $sql);
 $count = mysqli_num_rows($result);
 */
 
-$bill_no = $_POST['bill_no'];
+$bill_no = $_POST['username'];
 
 $select = "SELECT bill_no
 FROM cash_book
