@@ -1,4 +1,4 @@
-<?
+<?php
 
 
 $header_title = 'Scuba Froggy Panel';
