@@ -19,12 +19,7 @@ $count = mysqli_num_rows($result);
 
 $bill_no = $_POST['username'];
 
-$select = "SELECT bill_no
-FROM cash_book
-WHERE bill_no='".$bill_no."'";
-
-
-$stmt = $dbh->prepare("$select");
+$stmt = $dbh->prepare("SELECT bill_no FROM cash_book WHERE bill_no='".$bill_no."'");
 $stmt -> execute();
 
 $rows = $stmt->fetchAll();
