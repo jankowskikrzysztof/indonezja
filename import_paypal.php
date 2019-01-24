@@ -42,8 +42,8 @@ $period_year = 2018;
         .'&SIGNATURE=AFcWxV21C7fd0v3bYYYRCpSSRl31AD3Bxz.VpYPkshEEZJIKbCE.fu3s'
         .'&METHOD=TransactionSearch'
         .'&TRANSACTIONCLASS=ALL'
-        .'&STARTDATE='.$period_year.'-10-01T00:00:01Z'
-        .'&ENDDATE='.$period_year.'-10-31T23:59:59Z'
+        .'&STARTDATE='.$period_year.'-11-01T00:00:01Z'
+        .'&ENDDATE='.$period_year.'-11-30T23:59:59Z'
         .'&VERSION=94';
 
 $curl = curl_init('https://api-3t.paypal.com/nvp');
