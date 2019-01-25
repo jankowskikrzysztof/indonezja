@@ -1,47 +1,45 @@
-<form method="post" id="register-form">
-   <label>User Name:</label>
-   <input type="text" name="username" id="username">
+<form method="post" id="signup">
+<div class="form-group">
+    <label for="email">Email address:</label>
+   <input type="text" name="email" id="email">
 
 
    <input type="submit" value="Login" id="submit">
    <input type="reset" value="Reset">
+   </div>
 </form>
 
+
+<div class="cs-error-note"></div>
+
 <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" type="text/javascript"></script> 
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
 
 <script>
-
-$().ready(function() {
-
-$.validator.addMethod("checkUserName", 
-    function(value, element) {
-        var result = false;
-        $.ajax({
-            type:"POST",
-            async: false,
-            url: "test_hash_db.php", // script to validate in server side
-            data: {username: value},
-            success: function(data) {
-                result = (data > 0) ? true : false;
-            }
-        });
-        // return true if username is exist in database
-        return result; 
-    }, 
-    "This username is already taken! Try another."
-);
-
-// validate signup form on keyup and submit
-$("#register-form").validate({
+$(document).ready(function () {
+    $('#signup').validate({ 
+    errorLabelContainer: "#cs-error-note",
+    wrapper: "li",
     rules: {
-        "username": {
+        email: {
             required: true,
-            checkUserName: true
+                remote: {
+                    url: "test_hash_db.php",
+                    type: "post"
+                 }
         }
-    }
+    },
+    messages: {
+        email: {
+            required: "Please enter your email address.",
+            email: "Please enter a valid email address.",
+            remote: "Email already in use!"
+        }
+    },
+    submitHandler: function(form) {
+                        form.submit();
+                     }
+    });
 });
-});   
-
 </script>
