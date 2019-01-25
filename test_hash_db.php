@@ -25,7 +25,7 @@ $stmt -> execute();
 $rows = $stmt->fetchAll();
 $num_rows = count($rows);
 
-echo $num_rows;
+//echo $num_rows;
 
  if($num_rows > 0) {
      //return true;
