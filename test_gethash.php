@@ -27,11 +27,7 @@ $(document).ready(function () {
                 remote: {
                     url: "test_hash_db.php",
                     type: "post",
-                    data: {
-                        email: function() {
-                    return $( "#email" ).val();
-          }
-        }
+                    
                  }
         }
     },

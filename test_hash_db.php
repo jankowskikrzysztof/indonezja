@@ -29,10 +29,10 @@ $num_rows = count($rows);
 
  if($num_rows > 0) {
      //return true;
-     echo "true";
+     echo 'true';
  } else {
      //return false;
-     echo "false";
+     echo 'false';
  }
 
 
