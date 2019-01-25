@@ -26,7 +26,11 @@ $(document).ready(function () {
             required: true,
                 remote: {
                     url: "test_hash_db.php",
-                    type: "post"
+                    type: "post",
+                    dataFilter: function(data) {
+                      var json = JSON.parse(data);
+                      return "\"" + json.msg + "\"";
+                    }
                     
                  }
         }

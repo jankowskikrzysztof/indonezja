@@ -27,13 +27,19 @@ $num_rows = count($rows);
 
 //echo $num_rows;
 
- if($num_rows > 0) {
-     //return true;
-     echo 'true';
- } else {
-     //return false;
-     echo 'false';
- }
+//  if($num_rows > 0) {
+//      //return true;
+//      echo 'true';
+//  } else {
+//      //return false;
+//      echo 'false';
+//  }
+
+ if( $num_rows > 0 ){
+    echo json_encode(array("msg"=>"Already exists"));
+} else {
+    echo json_encode(array("msg"=>"Not exists"));
+}
 
 
 ?>
