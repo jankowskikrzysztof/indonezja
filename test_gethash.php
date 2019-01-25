@@ -26,7 +26,7 @@ $(document).ready(function () {
             required: true,
                 remote: {
                     url: "test_hash_db.php",
-                    type: "post",
+                    type: "post"
                     
                  }
         }
