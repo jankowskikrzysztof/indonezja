@@ -10,7 +10,7 @@
 </form>
 
 
-<div class="cs-error-note"></div>
+<div class="#cs-error-note"></div>
 
 <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
