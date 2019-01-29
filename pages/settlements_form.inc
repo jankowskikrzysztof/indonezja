@@ -32,6 +32,16 @@ else
     $exclude_transfers = '';
 
 
+if($_GET['cc']==0)
+    {
+    $exclude_cc = "and `description` NOT LIKE '%MBL   PEMBAYARAN%' 
+                        and `description` NOT LIKE '%MBL   OTOPAY%' 
+                        ";
+    }
+else   
+    $exclude_cc = '';
+
+
 $bs_sql = "SELECT 
                     (CASE WHEN debit<>0 THEN debit WHEN credit<>0 THEN credit END) as value,
                     bank_statement.*,
@@ -41,6 +51,7 @@ $bs_sql = "SELECT
                     where (settlements.bank_statement_id IS NULL or settlements.value<>(bank_statement.credit+bank_statement.debit))
                     $acc_filter_sql
                     $exclude_transfers
+                    $exclude_cc
                     GROUP BY bank_statement.id_bank_statement
                     ORDER BY bank_statement.account_no, bank_statement.value_date DESC";
 
