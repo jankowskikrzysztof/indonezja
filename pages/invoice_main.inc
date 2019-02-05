@@ -145,6 +145,14 @@ foreach($row_array as $row)
    $due_to_pay = conv_currency($row['value'],'to',$show_currency,$row['date'],$dbh);
    */
 
+  $date_now = date("Y-m-d");
+  $trip_bgcolor = '';
+  if($row['date_from']<$date_now)
+     $trip_bgcolor = ' style="background-color:#e6e6e6"';
+  if($row['date_from']<$date_now and $row['date_to']>$date_now)
+     $trip_bgcolor = ' style="background-color:#73e600"';
+
+
   $show_currency = 'IDR';
   $value_before_discount = $row['value_before_discount_currency'];
   $booker_commission = $row['booker_commission_currency'];
@@ -174,7 +182,7 @@ foreach($row_array as $row)
    /// END VALUES
 
    echo '<tr>
-   <td><a href="report_empress.php?action=trip_result&id_boat_trip='.$row['boat_trip_id'].'">'.$row['date_from'].' - '.$row['date_to'].'<br>'.$row['txt_route'].'<br>'.$row[shortcut].'</a></td>
+   <td '.$trip_bgcolor.'><a href="report_empress.php?action=trip_result&id_boat_trip='.$row['boat_trip_id'].'">'.$row['date_from'].' - '.$row['date_to'].'<br>'.$row['txt_route'].'<br>'.$row[shortcut].'</a></td>
    <td>'.$row['booker_name'].'</td>
    <td>'.$row['date'].'</td>
    <td><a href="empress_income.php?action=edit&id='.$row['id_cash_book'].'">'.$row['bill_no'].'</td>
