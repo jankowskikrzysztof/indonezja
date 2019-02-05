@@ -1,6 +1,7 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+-->
 
 <script src="https://unpkg.com/sticky-table-headers"></script>
 
@@ -185,7 +186,7 @@ foreach($row_array as $row)
    <td '.$trip_bgcolor.'><a href="report_empress.php?action=trip_result&id_boat_trip='.$row['boat_trip_id'].'">'.$row['date_from'].' - '.$row['date_to'].'<br>'.$row['txt_route'].'<br>'.$row[shortcut].'</a></td>
    <td>'.$row['booker_name'].'</td>
    <td>'.$row['date'].'</td>
-   <td><a href="empress_income.php?action=edit&id='.$row['id_cash_book'].'">'.$row['bill_no'].'</td>
+   <td><a href="empress_income.php?action=edit&id='.$row['id_cash_book'].'"><i class="fas fa-file-invoice-dollar"></i> '.$row['bill_no'].'</a></td>
    <td class=cash>'.$formatter->formatCurrency($value_before_discount,$show_currency).'</td>
    <td class=cash>'.$formatter->formatCurrency($booker_commission,$show_currency).'</td>
    <td class=cash>'.$formatter->formatCurrency($due_to_pay,$show_currency).'</td>
@@ -204,12 +205,12 @@ foreach($row_array as $row)
 </tbody>
 </table>
 
-<!-- <script>
+ <script>
     $('table').stickyTableHeaders();
-</script> -->
+</script> 
 
-<script>
+<!-- <script>
 $(document).ready( function () {
     $('#table_id').DataTable();
 } );
-</script>
+</script> -->

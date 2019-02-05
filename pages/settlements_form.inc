@@ -32,6 +32,16 @@ else
     $exclude_transfers = '';
 
 
+if($_GET['cc']==0)
+    {
+    $exclude_cc = "and `description` NOT LIKE '%MBL   PEMBAYARAN%' 
+                        and `description` NOT LIKE '%MBL   OTOPAY%' 
+                        ";
+    }
+else   
+    $exclude_cc = '';
+
+
 $bs_sql = "SELECT 
                     (CASE WHEN debit<>0 THEN debit WHEN credit<>0 THEN credit END) as value,
                     bank_statement.*,
@@ -41,6 +51,7 @@ $bs_sql = "SELECT
                     where (settlements.bank_statement_id IS NULL or settlements.value<>(bank_statement.credit+bank_statement.debit))
                     $acc_filter_sql
                     $exclude_transfers
+                    $exclude_cc
                     GROUP BY bank_statement.id_bank_statement
                     ORDER BY bank_statement.account_no, bank_statement.value_date DESC";
 
@@ -103,6 +114,7 @@ $bank_statement_array = $stmt->fetchAll();
                 <label for="password">Statement record - choose one to settle:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 Show only: 
                         <?php echo '<a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&client='.$client.'&foreign_currency='.$foreign_currency.'&acc_filter=359738937">359738937</a> | |
+                                    <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&client='.$client.'&foreign_currency='.$foreign_currency.'&acc_filter=359738937&cc=1">359738937 with credit cards</a> | |
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&client='.$client.'&foreign_currency='.$foreign_currency.'&acc_filter=380251201">380251201</a> | |
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&client='.$client.'&foreign_currency='.$foreign_currency.'&acc_filter=380251201&bookers=1">380251201 with bookers</a> | |
                                     <a href="?action=add&foreign_id='.$foreign_id.'&foreign_table='.$foreign_table.'&value='.$value.'&date='.$date.'&desc='.$desc.'&client='.$client.'&foreign_currency='.$foreign_currency.'&acc_filter=PP: scubafroggy.com">PayPal</a><br>'; ?>
