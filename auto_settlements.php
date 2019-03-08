@@ -67,7 +67,7 @@ $desc_part = explode(' ',$row['description']);
    <td align=right>'.$formatter->formatCurrency($row['credit'], 'IDR').'</td>  
    <td align=right>'.$formatter->formatCurrency($row['debit'], 'IDR').'</td>  
 	 <td align=right '.$bgvalue.'>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>   
-	 <td>'.trim($row['type']).'  and (d5 '.$desc_part[5].' or d8 '.$desc_part[8].') and acc:'.$row['account_no'].' and value='.$row['value'].'</td>
+	 <!--<td>'.trim($row['type']).'  and (d5 '.$desc_part[5].' or d8 '.$desc_part[8].') and acc:'.$row['account_no'].' and value='.$row['value'].'</td>-->
    ';
 
 
@@ -147,7 +147,25 @@ $desc_part = explode(' ',$row['description']);
 		};
 			// END ---------------- ROZLICZENIE opłat bankowych i procentów
 		
+
+
+		// START ---------------- ROZLICZENIE opłat bankowych 5000
+
+		if($row['branch'] =='0989' and $row['statement_value']==5000 and $row['account_no']=='359738937' and $row['value']==0)
+		{
 		
+			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`, `value_foreign`) 
+								VALUES ('1', ".$row['id_bank_statement'].", 0, 'charges', ".$row['statement_value'].", ".$row['statement_value'].")";
+			//$stmt_match1 = $dbh->prepare($match_sel_1);
+			//$stmt_match1 -> execute();
+	
+		echo '<td>oplata 5000 '.$match_sel_1.'</td>';
+		
+		//echo '<td>'.$match_sel_1.'</td>';
+		};
+			// END ---------------- ROZLICZENIE opłat bankowych 5000
+					
+
 		// START ---------------- ROZLICZENIE konwersji walut na PP
 
 		if(substr($row['type'],0,19) =='Currency Conversion' and $row['value']==0)
