@@ -70,7 +70,8 @@ $desc_part = explode(' ',$row['description']);
 	 <!--<td>'.trim($row['type']).'  and (d5 '.$desc_part[5].' or d8 '.$desc_part[8].') and acc:'.$row['account_no'].' and value='.$row['value'].'</td>-->
    ';
 
-
+	 $match_sel_1 = '';
+	 $match_sel_2 = '';
 
 // START ------------------ ROZLICZENIE CHECKóW
 
@@ -85,6 +86,7 @@ $desc_part = explode(' ',$row['description']);
 		$row_match = $stmt_match->fetch();
 
 		$match_sel_1 = '';
+
 
 		if($row_match['id_cash_book']<>0)
 			{
@@ -158,10 +160,38 @@ $desc_part = explode(' ',$row['description']);
 								VALUES ('1', ".$row['id_bank_statement'].", 0, 'charges', ".$row['statement_value'].", ".$row['statement_value'].")";
 			//$stmt_match1 = $dbh->prepare($match_sel_1);
 			//$stmt_match1 -> execute();
-	
-		echo '<td>oplata 5000 '.$match_sel_1.'</td>';
-		
-		//echo '<td>'.$match_sel_1.'</td>';
+
+			
+			$match_sel_2 = $dbh->prepare("INSERT INTO `cash_book`
+			(`cash_book_group_id`,
+			 `location_id`,
+			 `personel_id`,
+			 `boat_trip_id`,
+			 `cash_report_only`,
+			 `type`,
+			 `type_payment`,
+			 `date`,
+			 `desc`,
+			 `costs_bill_value`,
+			 `value`,
+			 `currency`)
+
+VALUES ('18',
+			 '13',
+			 '1',
+			 '0',
+			 '0',
+			 '2',
+			 '2',
+			 '".$row['value_date']."',
+			 'bank charges ',
+			 '0',
+			 '".$row['statement_value']."',
+			 'IDR')
+");
+
+		echo '<td>oplata 5000 '.$match_sel_1.' '.$match_sel_2.'</td>';
+
 		};
 			// END ---------------- ROZLICZENIE opłat bankowych 5000
 					
