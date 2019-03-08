@@ -162,7 +162,7 @@ $desc_part = explode(' ',$row['description']);
 			//$stmt_match1 -> execute();
 
 			
-			$match_sel_2 = $dbh->prepare("INSERT INTO `cash_book`
+			$match_sel_2 = "INSERT INTO `cash_book`
 			(`cash_book_group_id`,
 			 `location_id`,
 			 `personel_id`,
@@ -188,9 +188,9 @@ VALUES ('18',
 			 '0',
 			 '".$row['statement_value']."',
 			 'IDR')
-");
+";
 
-		echo '<td>oplata 5000 '.$match_sel_1.' '.$match_sel_2.'</td>';
+		echo '<td>oplata 5000 '.$match_sel_1.'<br>'.$match_sel_2.'</td>';
 
 		};
 			// END ---------------- ROZLICZENIE opłat bankowych 5000
