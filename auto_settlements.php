@@ -57,6 +57,8 @@ foreach($row_array as $row)
 	elseif($row['credit'] + $row['debit'] <> $row['value'])
 		$bgvalue = ' style="background-color: #FFA500"';
 
+$desc_part = explode(' ',$row['description']);
+
    echo '<tr>
    <td>'.$row['value_date'].'</td>
    <td>'.$row['account_no'].'</td>
@@ -68,7 +70,7 @@ foreach($row_array as $row)
 	 <td>'.trim($row['type']).'  and (d5 '.$desc_part[5].' or d6 '.$desc_part[6].') and acc:'.$row['account_no'].' and value='.$row['value'].'</td>
    ';
 
-   $desc_part = explode(' ',$row['description']);
+
 
 // START ------------------ ROZLICZENIE CHECKóW
 
