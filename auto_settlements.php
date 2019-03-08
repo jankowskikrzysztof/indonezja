@@ -100,7 +100,7 @@ foreach($row_array as $row)
 
 		// START ---------------- ROZLICZENIE TRANSFEROW POMIEDZY KONTAMI USD I IDR
 
-   if(trim($row['type']) =='TRANSFER KE' and $desc_part[5]=='359738937' and $row['account_no']=='380251201' and $row['value']==0)
+   if(trim($row['type']) =='TRANSFER KE' and ($desc_part[5]=='359738937' or $desc_part[6]=='359738937') and $row['account_no']=='380251201' and $row['value']==0)
 	{
 
 
