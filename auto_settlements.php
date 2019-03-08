@@ -65,7 +65,7 @@ foreach($row_array as $row)
    <td align=right>'.$formatter->formatCurrency($row['credit'], 'IDR').'</td>  
    <td align=right>'.$formatter->formatCurrency($row['debit'], 'IDR').'</td>  
 	 <td align=right '.$bgvalue.'>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>   
-	 <td>'.trim($row['type']).'  and ('.$desc_part[5].' or '.$desc_part[6].' and '.$row['account_no'].' and '.$row['value'].'</td>
+	 <td>'.trim($row['type']).'  and (d5 '.$desc_part[5].' or d6 '.$desc_part[6].') and acc:'.$row['account_no'].' and value='.$row['value'].'</td>
    ';
 
    $desc_part = explode(' ',$row['description']);
