@@ -184,11 +184,10 @@ VALUES ('18',
 			 '2',
 			 '2',
 			 '".$row['value_date']."',
-			 'bank charges ',
+			 'bank charges',
 			 '0',
 			 '".$row['statement_value']."',
-			 'IDR')
-";
+			 'IDR')";
 
 		echo '<td>oplata 5000 '.$match_sel_1.'<br>'.$match_sel_2.'</td>';
 
