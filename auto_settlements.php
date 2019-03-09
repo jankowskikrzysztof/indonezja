@@ -196,7 +196,7 @@ $stmt_match2 = $dbh->prepare($match_sel_2);
 $stmt_match2 -> execute();
 
 
-		echo '<td>oplata 5000 '.$match_sel_1.'<br>'.$match_sel_2.'</td>';
+		//echo '<td>oplata 5000 '.$match_sel_1.'<br>'.$match_sel_2.'</td>';
 		echo '<td>oplata 5000</td>';
 
 		};
