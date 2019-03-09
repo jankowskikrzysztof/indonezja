@@ -38,9 +38,11 @@ echo '
                       <option value='?'>All</option>
      <?php
 
-              echo "<option value='method=0' ".$sel.">Cash</option>";
-              echo "<option value='method=2' ".$sel.">Bank</option>";
-              echo "<option value='method=3' ".$sel.">Paypal</option>";
+              $selM[$_GET['method']] = 'selected';
+
+              echo "<option value='method=0' ".$selM[0].">Cash</option>";
+              echo "<option value='method=2' ".$selM[2].">Bank</option>";
+              echo "<option value='method=3' ".$selM[3].">Paypal</option>";
 
      ?>
 
