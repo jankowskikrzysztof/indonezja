@@ -18,7 +18,7 @@ function changePeriod(url)
 <?php
 if($_SESSION['permission']=='rw' and $personel_location_selected<>14)
 echo '  
-      <th colspan=10><a class="pure-button pure-button-primary" href="?action=add" accesskey="a"><i class="fa fa-plus" aria-hidden="true"></i> <u>A</u>dd</a></th>';
+      <th colspan=11><a class="pure-button pure-button-primary" href="?action=add" accesskey="a"><i class="fa fa-plus" aria-hidden="true"></i> <u>A</u>dd</a></th>';
 ?>
   </tr>
   <tr>
@@ -31,6 +31,7 @@ echo '
      <th>Payment type</th>
      <th>Payment</th>
      <th>Still to pay</th>
+     <th></th>
      <th></th>
   </tr>
  </thead>
@@ -133,6 +134,14 @@ foreach($row_array as $row)
             <td align=center>'.$payment_type.'</td>
             <td align=right>'.$formatter->formatCurrency($total_pay, 'IDR').'</td>
             <td align=right>'.$formatter->formatCurrency($still_to_pay, 'IDR').'</td>
+
+            <td>';
+   
+            if(file_exists('img_uploads/income/income_'.$row['id_cash_book'].'.'.$row['scan_org_filename_ext']))
+                     echo '<a href="img_uploads/income/income_'.$row['id_cash_book'].'.'.$row['scan_org_filename_ext'].'" target=_blank><i class="far fa-file-alt"></i></a>';
+            
+            echo '</td>
+         
             <td>';
 
          if($_SESSION['permission']=='rw' and $row['boat_trip_id']<>0)
@@ -157,6 +166,7 @@ foreach($row_array as $row)
   <td></td>
   <td class=cash><?php echo $formatter->formatCurrency($sum_total_pay, 'IDR'); ?></td>
   <td class=cash><?php echo $formatter->formatCurrency($sum_still_to_pay, 'IDR'); ?></td>
+  <td></td>
   <td></td>
 </tr>
 

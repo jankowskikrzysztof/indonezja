@@ -71,7 +71,7 @@ echo '
           <a class="pure-button pure-button-primary" href="?period='.$period.'&action=add"><i class="fa fa-bed" aria-hidden="true"></i> Cabin Sell</a>
           <a class="pure-button pure-button-primary" href="?period='.$period.'&action=add&ontripsell=1" accesskey="a"><i class="fa fa-plus" aria-hidden="true"></i> <u>A</u>dd "on trip" Sell</a>
       </th>
-      <th colspan=3 align=center>
+      <th colspan=4 align=center>
 <a href=?period='.$period.'&trip_id='.$_GET['trip_id'].'&only_cabin=1>Only Cabin Sell</a>    
       </th>';
 ?>
@@ -86,6 +86,7 @@ echo '
      <th>Payment<br>type</th>
      <th>Payment</th>
      <th>Still to pay</th>
+     <th></th>
      <th>PDF</th>
      <th>Edit</th>
   </tr>
@@ -246,6 +247,14 @@ foreach($row_array as $row)
    <td align=center>'.$payment_type.'</td>
    <td align=right>'.$formatter->formatCurrency($row['total_pay'], 'IDR').' '.$row['currency'].$total_pay_currency.'</td>
    <td align=right>'.$formatter->formatCurrency($still_to_pay, 'IDR').'</td>
+
+   <td>';
+   
+   if(file_exists('img_uploads/income/income_'.$row['id_cash_book'].'.'.$row['scan_org_filename_ext']))
+            echo '<a href="img_uploads/income/income_'.$row['id_cash_book'].'.'.$row['scan_org_filename_ext'].'" target=_blank><i class="far fa-file-alt"></i></a>';
+   
+   echo '</td>
+   
    <td align=right>';
    // '.$row['currency'].$still_to_pay_currency.'
    //($_SESSION['login'] == 'kjankowski' or $_SESSION['login'] == 'przemek') and 
@@ -282,6 +291,7 @@ foreach($row_array as $row)
   <td></td>
   <td class=cash><?php echo $formatter->formatCurrency($sum_total_pay, 'IDR'); ?></td>
   <td class=cash><?php echo $formatter->formatCurrency($sum_still_to_pay, 'IDR'); ?></td>
+  <td></td>
   <td></td>
   <td></td>
 </tr>
