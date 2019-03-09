@@ -39,7 +39,6 @@ $stmt = $dbh->prepare("SELECT bank_statement.*, settlements.value,
 FROM `bank_statement` 
 		 				left join settlements on bank_statement.id_bank_statement=settlements.bank_statement_id
 							ORDER BY value_date desc
-							LIMIT 3
 							");
 $stmt -> execute();
 
