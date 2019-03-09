@@ -65,7 +65,7 @@ if($_SESSION['limit_site']=="")
       <a href="report_inc_monthly.php?period=<?php echo date("Y-m"); ?>">Period report</a>
       <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="report_cash_movement.php?period='.date("Y-m").'">Cash Movement</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1) echo '<a href="report_costs_to_pay.php">Costs - Still to pay</a>'; ?>
+      <?php if($_SESSION['user_id'] == 1) echo '<a href="report_costs_to_pay.php">Costs - Still to pay</a>'; ?>
 
       <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16 or $_SESSION['user_id'] == 24) echo '<a href="report_year.php?period='.date("Y-m").'">Annual Total Report</a>'; ?>
 
