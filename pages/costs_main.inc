@@ -1,7 +1,7 @@
 <script>
 function changePeriod(url)
 {
-    location.href = 'costs.php?period=' + url;
+    location.href = 'costs.php?method=<?php echo $_GET['method'];?>&period=' + url;
 }
 </script>
 
@@ -28,7 +28,7 @@ echo '
       <th><a href="?period='.$period.'&action=xlse"><i class="far fa-file-excel fa-lg" aria-hidden="true"></i>XLS</a></th>';
 ?>
   </tr>
-  <tr>
+  <tr valign=top>
      <th>Day</th>
      <th>Name - Description</th>
      <th>Still to pay</th>
