@@ -19,7 +19,13 @@ $period_month = substr($period,5,2);
 $period_year = substr($period,0,4);
 
 
-
+echo '<p>Działa autosettlements dla:<br>
+- checków - ważna zgodność kwoty i numeru z w systemie<br>
+- transferów pomiędzy USD a IDR manualnych i przelewem<br>
+- miesiecznych oplat bankowych i oprocentowania<br>
+- opłat bankowych za przelew (kwota 5000IDR)<br>
+- konwersji walut na PP<br>
+</p>';
 
 echo '<table class="pure-table pure-table-horizontal pure-table-striped">
    <thead>
