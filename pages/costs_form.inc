@@ -315,17 +315,7 @@ if($action=='edit')
         }
     else
         {
-        //echo '<input type="file" name="fileToUpload" id="fileToUpload" accept="image/*"  capture="environment">';
         echo '<input type="file" name="fileToUpload" id="fileToUpload">';
-
-/*        echo '
-        </div>
-        <div class="pure-control-group">
-        <label for="price"></label>';
-
-        if($_SESSION['user_id'] == 1 and $action=='edit')
-            echo 'or File upload: <input type="file" name="fileToUpload" id="fileToUpload">';
-*/
         }
 
     echo '</div>';

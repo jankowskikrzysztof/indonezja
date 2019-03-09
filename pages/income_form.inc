@@ -148,7 +148,10 @@ if($action=='add')
                    $location_select = $_SESSION[personel_location];
                    }
 
-
+if($_GET['datt']==1 and $_SESSION['permission']=='rw')
+                   {
+                   rename('img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext,'img_uploads/income/income_'.$id.'_'.uniqid().'.'.$scan_org_filename_ext);
+                   }
 
 ?>
 
@@ -520,6 +523,35 @@ else
             </div>
 
 
+<?php
+            if($action=='edit')
+    { 
+    ?>
+
+  <div class="pure-control-group">
+                <label for="price">Document scan</label>
+                
+<?php
+
+    if(file_exists('img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.''))
+        {
+        if(in_array($scan_org_filename_ext,array('jpg','jpeg','png')))
+            $img_file = '<img src="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" style="max-width:200px">';
+        else
+            $img_file = '<i class="far fa-file-pdf fa-5x"></i>';
+
+        echo '<a href="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" target=_blank>'.$img_file.'</a> &nbsp;&nbsp;&nbsp;
+        <a href="?action=edit&id='.$id.'&datt=1"><i class="fas fa-times"></i></a>';
+        }
+    else
+        {
+        echo '<input type="file" name="fileToUpload" id="fileToUpload">';
+        }
+
+    echo '</div>';
+
+
+    }; ?>
 
 
 </div>
