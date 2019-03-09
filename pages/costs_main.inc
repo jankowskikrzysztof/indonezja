@@ -5,6 +5,12 @@ function changePeriod(url)
 }
 </script>
 
+<script>
+function changePeriodMethod(url)
+{
+    location.href = 'costs.php?period=<?php echo $_GET['period'];?>&' + url;
+}
+</script>
 
 <div align=center class="pure-form">
 
@@ -27,7 +33,18 @@ echo '
      <th>Name - Description</th>
      <th>Still to pay</th>
      <th>Amount Paid</th>
-     <th>Method</th>
+     <th>Method<div class="pure-form">
+              <select onchange="changePeriodMethod(this.value)">
+                      <option value='?'>All</option>
+     <?php
+
+              echo "<option value='method=0' ".$sel.">Cash</option>";
+              echo "<option value='method=2' ".$sel.">Bank</option>";
+              echo "<option value='method=3' ".$sel.">Paypal</option>";
+
+     ?>
+
+              </select></div></th>
      <th>Personel</th>
      <th>Location</th>
      <th></th>
@@ -36,6 +53,12 @@ echo '
  </thead>
 
 <?php
+
+
+if($_GET['method'] <> '')
+  $method_sel = 'and cash_book.type_payment ='.$_GET['method'];
+else
+  $method_sel = '';
 
 if($personel_location_selected <> '')
     $sel_loc_pers = 'and location.id_location IN ('.$personel_location_selected.')';
@@ -72,6 +95,7 @@ $stmt = $dbh->prepare("SELECT cash_book_group.name as cb_name, location.name as 
                               ".$sel_loc_pers."
                               ".$location_limit."
                               ".$period_limit."
+                              ".$method_sel."
                               AND MONTH(`cash_book`.`date`) = '".$period_month."'
                               AND YEAR(`cash_book`.`date`) = '".$period_year."'
                               and cash_book.type=2
