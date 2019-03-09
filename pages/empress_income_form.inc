@@ -716,6 +716,36 @@ if($action<>'edit')
 
             </div>
 
+            <?php
+            if($action=='edit')
+    { 
+    ?>
+
+  <div class="pure-control-group">
+                <label for="price">Document scan</label>
+                
+<?php
+
+    if(file_exists('img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.''))
+        {
+        if(in_array($scan_org_filename_ext,array('jpg','jpeg','png')))
+            $img_file = '<img src="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" style="max-width:200px">';
+        else
+            $img_file = '<i class="far fa-file-pdf fa-5x"></i>';
+
+        echo '<a href="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" target=_blank>'.$img_file.'</a> &nbsp;&nbsp;&nbsp;
+        <a href="?action=edit&id='.$id.'&datt=1"><i class="fas fa-times"></i></a>';
+        }
+    else
+        {
+        echo '<input type="file" name="fileToUpload" id="fileToUpload">';
+        }
+
+    echo '</div>';
+
+
+    }; ?>
+
             <div class="pure-controls" align=center>
 
 
@@ -724,16 +754,8 @@ if($action<>'edit')
 
                 if($_SESSION['permission']=='rw')
                    {
-                    //if($action=='edit' and ($_SESSION['login'] == 'kjankowski' or $_SESSION['login'] == 'przemek'))
-                    //echo '<a href="invoice_pdf.php?action=xlse&id='.$id.'" class="pure-button"><i class="far fa-file-pdf" aria-hidden="true"></i> Invoice</a> ';
-
-                   //echo  $currency_second;
-
-                   //if( $currency_second=='' or $currency_second=='0.0') 
                     echo '<button type="submit" class="pure-button pure-button-primary" >Submit</button>';
 
-                    //if( $_SESSION['user_id'] == 1 and $action <> 'add') 
-                    //echo '<button type="submit" class="pure-button pure-button-primary" >Submit KJ</button>';
 
                       if($action<>'add' and $_SESSION['location_id_limit']==0)
                       echo ' <a href="?action=del&period='.$period.'&id='.$id.'" class="pure-button button-error">Delete</a>';
@@ -836,35 +858,7 @@ if($action=='edit' and $room_charge_select<>0)
             </div>
 
 
-            <?php
-            if($action=='edit')
-    { 
-    ?>
 
-  <div class="pure-control-group">
-                <label for="price">Document scan</label>
-                
-<?php
-
-    if(file_exists('img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.''))
-        {
-        if(in_array($scan_org_filename_ext,array('jpg','jpeg','png')))
-            $img_file = '<img src="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" style="max-width:200px">';
-        else
-            $img_file = '<i class="far fa-file-pdf fa-5x"></i>';
-
-        echo '<a href="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" target=_blank>'.$img_file.'</a> &nbsp;&nbsp;&nbsp;
-        <a href="?action=edit&id='.$id.'&datt=1"><i class="fas fa-times"></i></a>';
-        }
-    else
-        {
-        echo '<input type="file" name="fileToUpload" id="fileToUpload">';
-        }
-
-    echo '</div>';
-
-
-    }; ?>
 
 
 </div>
