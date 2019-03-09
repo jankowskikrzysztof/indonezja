@@ -720,7 +720,7 @@ if($action<>'edit')
             if($action=='edit')
     { 
     ?>
-
+<br><br>
   <div class="pure-control-group">
                 <label for="price">Document scan</label>
                 
