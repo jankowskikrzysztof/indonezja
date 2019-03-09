@@ -4,7 +4,7 @@ include('/var/www/scuba.gruvi.pl/inc/db_config.inc');
 
 function convertCurrency($amount, $from, $to){
   $conv_id = "{$from}_{$to}";
-  $string = file_get_contents("http://free.currencyconverterapi.com/api/v3/convert?q=$conv_id&compact=ultra");
+  $string = file_get_contents("http://free.currencyconverterapi.com/api/v6/convert?q=$conv_id&compact=ultra&apiKey=9f1a8d789a23c3670adb");
   $json_a = json_decode($string, true);
 
   return $amount * round($json_a[$conv_id], 4);
