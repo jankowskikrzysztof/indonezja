@@ -38,7 +38,9 @@ $stmt = $dbh->prepare("SELECT bank_statement.*, settlements.value,
 (CASE WHEN debit<>0 THEN debit WHEN credit<>0 THEN credit END) as statement_value
 FROM `bank_statement` 
 		 				left join settlements on bank_statement.id_bank_statement=settlements.bank_statement_id
-							ORDER BY value_date desc");
+							ORDER BY value_date desc
+							LIMIT 3
+							");
 $stmt -> execute();
 
 $row_array = $stmt->fetchAll();
@@ -156,13 +158,9 @@ $desc_part = explode(' ',$row['description']);
 		if($row['branch'] =='0989' and $row['statement_value']==5000 and $row['account_no']=='359738937' and $row['value']==0)
 		{
 		
-			$match_sel_1 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`, `value_foreign`) 
-								VALUES ('1', ".$row['id_bank_statement'].", 0, 'charges', ".$row['statement_value'].", ".$row['statement_value'].")";
-			//$stmt_match1 = $dbh->prepare($match_sel_1);
-			//$stmt_match1 -> execute();
 
 			
-			$match_sel_2 = "INSERT INTO `cash_book`
+			$match_sel_1 = "INSERT INTO `cash_book`
 			(`cash_book_group_id`,
 			 `location_id`,
 			 `personel_id`,
@@ -188,6 +186,16 @@ VALUES ('18',
 			 '0',
 			 '".$row['statement_value']."',
 			 'IDR')";
+
+$stmt_match1 = $dbh->prepare($match_sel_1);
+$stmt_match1 -> execute();
+$insert_id = $dbh->lastInsertId();
+
+$match_sel_2 = "INSERT INTO `settlements` (`personel_id`, `bank_statement_id`, `foreign_id`, `foreign_table`, `value`, `value_foreign`) 
+VALUES ('1', ".$row['id_bank_statement'].", ".$insert_id.", 'cash_book', ".$row['statement_value'].", ".$row['statement_value'].")";
+$stmt_match2 = $dbh->prepare($match_sel_2);
+$stmt_match2 -> execute();
+
 
 		echo '<td>oplata 5000 '.$match_sel_1.'<br>'.$match_sel_2.'</td>';
 
