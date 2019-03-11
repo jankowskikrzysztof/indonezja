@@ -125,6 +125,8 @@ if($action=='edit')
                                   end as type_name,
 
 
+                              cash_book.scan_org_filename_ext,
+
                               cash_book.lastchange
 
                               FROM (cash_book, personel, location, cash_book_group)

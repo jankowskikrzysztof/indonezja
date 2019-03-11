@@ -83,7 +83,7 @@ if($action=='edit')
                                   end as type_name,
 
                               cash_book.pay_cash+cash_book.pay_creditcard+cash_book.pay_roomcharge+cash_book.pay_bank+cash_book.pay_paypal as sum_payments,
-
+                              cash_book.scan_org_filename_ext,
                               cash_book.lastchange
 
                               FROM cash_book, cash_book_item, personel, location, cash_book_group
