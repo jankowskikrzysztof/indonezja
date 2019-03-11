@@ -422,6 +422,8 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
                            `client_id` = '".$client_id."',
                            `boat_trip_id` = '".$boat_trip_id."',
 
+                           ".$file_info_sql."
+
                            `instructor_id` = '".$instructor_id[0]."',
                            `instructor_perc` = '".$instructor_perc."',
                            `instructor_commission` = '".$instructor_commission."',
