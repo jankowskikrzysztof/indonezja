@@ -145,6 +145,8 @@ $sql_select = "SELECT cash_book_group.name as cb_name, location.name as loc_name
                               cash_book.value,
                               cash_book.value_currency,
 
+                              cash_book.scan_org_filename_ext,
+
                               cash_book.currency,
                               cash_book.currency_second,
 

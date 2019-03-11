@@ -71,6 +71,9 @@ $stmt = $dbh->prepare("SELECT cash_book_group.name as cb_name, location.name as 
                                   end as type_name,
 
                               cash_book.value,
+
+                              cash_book.scan_org_filename_ext,
+
                               GROUP_CONCAT(activity.shortcut) as shortcut
 
                               FROM (cash_book, cash_book_item, personel, location, cash_book_group, activity, location_groups)
