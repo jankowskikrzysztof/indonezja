@@ -161,7 +161,7 @@ if($_GET['datt']==1 and $_SESSION['permission']=='rw')
 
 
 
-<form class="pure-form pure-form-aligned" action="?action=post" method="POST" name="income" onsubmit="return validateForm()">
+<form class="pure-form pure-form-aligned" action="?action=post" method="POST" enctype="multipart/form-data" name="income" onsubmit="return validateForm()">
         <fieldset>
 
 <input type="hidden" name="id" value="<?php echo $id ?>" >
