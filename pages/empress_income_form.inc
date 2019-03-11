@@ -240,6 +240,7 @@ if($action=='edit')
 
                    $pers_name = $edit_array[0][pers_name];
 
+                   $scan_org_filename_ext = $edit_array[0]['scan_org_filename_ext'];
 
                    $stmt = $dbh->prepare("SELECT activity.shortcut as act_shortcut, activity.name, activity.description, activity.id_activity,
                                                  cash_book_item.activity_id,cash_book_item.amount,cash_book_item.value, cash_book_item.id_cash_book_item,
