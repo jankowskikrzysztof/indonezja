@@ -382,6 +382,10 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
 elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
     {
 
+        echo '<pre>';
+        var_dump($_FILES["fileToUpload"]);
+        echo '</pre>';
+
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
