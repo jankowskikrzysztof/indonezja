@@ -382,9 +382,9 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
 elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
     {
 
-        echo '<pre>';
-        var_dump($_FILES["fileToUpload"]);
-        echo '</pre>';
+        //echo '<pre>';
+        //var_dump($_FILES["fileToUpload"]);
+        //echo '</pre>';
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
@@ -479,7 +479,7 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
                            WHERE `cash_book`.`id_cash_book` = '".$post_id."'";
                            
 
-    echo '<pre>'.$update_query.'</pre>';
+    //echo '<pre>'.$update_query.'</pre>';
 
     $stmt = $dbh->prepare("$update_query");
     $stmt -> execute();
