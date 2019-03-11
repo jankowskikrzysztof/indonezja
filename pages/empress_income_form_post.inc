@@ -32,7 +32,7 @@ $bill_no = $_POST["bill_no"];
 $desc = $_POST["desc"];
 $value_total_act = str_replace(',','',$_POST["total_act"]);
 
-echo $value_total_act.' '.$_POST["total_act"].'<br>';
+//echo $value_total_act.' '.$_POST["total_act"].'<br>';
 
 $value_currency = str_replace(',','',$_POST["total_act_currency"]);
 //$discount = $_POST["discount"];
@@ -193,6 +193,11 @@ $currency = $_POST["currency"];
           }
 
 /////////////////////////////////// ZAMIANA WALUT
+
+
+$target_dir = "img_uploads/income/";
+$target_file = $target_dir . 'income_' .$_POST['id'];
+$uploadOk = 1;
 
 
 
@@ -376,7 +381,30 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
     }
 elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
     {
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
+    } else {
         
+        $file_ext = pathinfo(parse_url($_FILES["fileToUpload"]["name"])['path'], PATHINFO_EXTENSION);
+        if($file_ext <> "")
+            $file_info_sql = '
+                            `scan_org_filename` = "'.$_FILES['fileToUpload']['name'].'",
+                            `scan_org_filename_ext` = "'.$file_ext.'",';
+        else
+            $file_info_sql = '';
+
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file.'.'.$file_ext)) {
+            echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            
+        } elseif($_FILES["fileToUpload"]<>NULL) {
+            echo "<font color=red>Sorry, there was an error uploading your file.</font>";
+        }
+    }
+        
+
     $stmt = $dbh->prepare("UPDATE `cash_book` SET
 
                            `date` = '".$date."',
