@@ -405,7 +405,7 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
     }
         
 
-    $stmt = $dbh->prepare("UPDATE `cash_book` SET
+    $update_query = "UPDATE `cash_book` SET
 
                            `date` = '".$date."',
                            `bill_no` = '".$bill_no."',
@@ -472,9 +472,12 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
 
 
 
-                           WHERE `cash_book`.`id_cash_book` = '".$post_id."'
-                           ");
+                           WHERE `cash_book`.`id_cash_book` = '".$post_id."'";
+                           
 
+    echo '<pre>'.$update_query.'</pre>';
+
+    $stmt = $dbh->prepare("$update_query");
     $stmt -> execute();
 
 
