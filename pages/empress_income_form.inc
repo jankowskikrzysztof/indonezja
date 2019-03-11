@@ -125,6 +125,8 @@ if($action=='edit')
                                   end as type_name,
 
 
+                              cash_book.scan_org_filename_ext,
+
                               cash_book.lastchange
 
                               FROM (cash_book, personel, location, cash_book_group)
@@ -240,6 +242,7 @@ if($action=='edit')
 
                    $pers_name = $edit_array[0][pers_name];
 
+                   $scan_org_filename_ext = $edit_array[0]['scan_org_filename_ext'];
 
                    $stmt = $dbh->prepare("SELECT activity.shortcut as act_shortcut, activity.name, activity.description, activity.id_activity,
                                                  cash_book_item.activity_id,cash_book_item.amount,cash_book_item.value, cash_book_item.id_cash_book_item,
@@ -304,6 +307,11 @@ if($action=='add' and $ontripsell<>1)
 if($action=='add' and $ontripsell<>1) $currency = 'USD';
 
 
+if($_GET['datt']==1 and $_SESSION['permission']=='rw')
+                   {
+                   rename('img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext,'img_uploads/income/income_'.$id.'_'.uniqid().'.'.$scan_org_filename_ext);
+                   }
+
 ?>
 
 
@@ -314,7 +322,7 @@ if($action=='add' and $ontripsell<>1) $currency = 'USD';
 <?php if($ontripsell==1) echo '<h2>Empress - "On trip" Sell</h2>'; else echo '<h2>Empress - Cabin Sell</h2>'; ?>
 
 
-<form class="pure-form pure-form-aligned" action="?action=post" method="POST" name="income" onsubmit="return validateForm()">
+<form class="pure-form pure-form-aligned" action="?action=post" method="POST" enctype="multipart/form-data" name="income" onsubmit="return validateForm()">
         <fieldset>
 
 <input type="hidden" name="id" value="<?php echo $id ?>" >
@@ -711,6 +719,36 @@ if($action<>'edit')
 
             </div>
 
+            <?php
+            if($action=='edit')
+    { 
+    ?>
+<br><br>
+  <div class="pure-control-group">
+                <label for="price">Document scan</label>
+                
+<?php
+
+    if(file_exists('img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.''))
+        {
+        if(in_array($scan_org_filename_ext,array('jpg','jpeg','png')))
+            $img_file = '<img src="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" style="max-width:200px">';
+        else
+            $img_file = '<i class="far fa-file-pdf fa-5x"></i>';
+
+        echo '<a href="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" target=_blank>'.$img_file.'</a> &nbsp;&nbsp;&nbsp;
+        <a href="?action=edit&id='.$id.'&datt=1"><i class="fas fa-times"></i></a>';
+        }
+    else
+        {
+        echo '<input type="file" name="fileToUpload" id="fileToUpload">';
+        }
+
+    echo '</div>';
+
+
+    }; ?>
+
             <div class="pure-controls" align=center>
 
 
@@ -719,16 +757,8 @@ if($action<>'edit')
 
                 if($_SESSION['permission']=='rw')
                    {
-                    //if($action=='edit' and ($_SESSION['login'] == 'kjankowski' or $_SESSION['login'] == 'przemek'))
-                    //echo '<a href="invoice_pdf.php?action=xlse&id='.$id.'" class="pure-button"><i class="far fa-file-pdf" aria-hidden="true"></i> Invoice</a> ';
-
-                   //echo  $currency_second;
-
-                   //if( $currency_second=='' or $currency_second=='0.0') 
                     echo '<button type="submit" class="pure-button pure-button-primary" >Submit</button>';
 
-                    //if( $_SESSION['user_id'] == 1 and $action <> 'add') 
-                    //echo '<button type="submit" class="pure-button pure-button-primary" >Submit KJ</button>';
 
                       if($action<>'add' and $_SESSION['location_id_limit']==0)
                       echo ' <a href="?action=del&period='.$period.'&id='.$id.'" class="pure-button button-error">Delete</a>';
@@ -829,6 +859,7 @@ if($action=='edit' and $room_charge_select<>0)
     ?>
                 </table>
             </div>
+
 
 
 

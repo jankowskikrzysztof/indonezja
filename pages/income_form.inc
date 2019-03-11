@@ -83,7 +83,7 @@ if($action=='edit')
                                   end as type_name,
 
                               cash_book.pay_cash+cash_book.pay_creditcard+cash_book.pay_roomcharge+cash_book.pay_bank+cash_book.pay_paypal as sum_payments,
-
+                              cash_book.scan_org_filename_ext,
                               cash_book.lastchange
 
                               FROM cash_book, cash_book_item, personel, location, cash_book_group
@@ -129,6 +129,7 @@ if($action=='edit')
                    $lastchange = $edit_array[0][lastchange];
                    $pers_name = $edit_array[0][pers_name];
 
+                   $scan_org_filename_ext = $edit_array[0]['scan_org_filename_ext'];
 
                    $stmt = $dbh->prepare("SELECT activity.shortcut as act_shortcut, activity.name, activity.description, activity.id_activity,
                                                  cash_book_item.activity_id,cash_book_item.amount,cash_book_item.value, cash_book_item.id_cash_book_item
@@ -148,7 +149,10 @@ if($action=='add')
                    $location_select = $_SESSION[personel_location];
                    }
 
-
+if($_GET['datt']==1 and $_SESSION['permission']=='rw')
+                   {
+                   rename('img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext,'img_uploads/income/income_'.$id.'_'.uniqid().'.'.$scan_org_filename_ext);
+                   }
 
 ?>
 
@@ -158,7 +162,7 @@ if($action=='add')
 
 
 
-<form class="pure-form pure-form-aligned" action="?action=post" method="POST" name="income" onsubmit="return validateForm()">
+<form class="pure-form pure-form-aligned" action="?action=post" method="POST" enctype="multipart/form-data" name="income" onsubmit="return validateForm()">
         <fieldset>
 
 <input type="hidden" name="id" value="<?php echo $id ?>" >
@@ -407,6 +411,38 @@ if($action<>'edit')
                 <input type="text" name="still_to_pay" id="still_to_pay" value="<?php echo str_replace('.00','',str_replace(',','',$value-$sum_payments)); ?>" class="money" style='width:8em; text-align:right' readonly>
             </div>
 
+
+            <?php
+            if($action=='edit')
+    { 
+    ?>
+<br><br>
+  <div class="pure-control-group">
+                <label for="price">Document scan</label>
+                
+<?php
+
+    if(file_exists('img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.''))
+        {
+        if(in_array($scan_org_filename_ext,array('jpg','jpeg','png')))
+            $img_file = '<img src="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" style="max-width:200px">';
+        else
+            $img_file = '<i class="far fa-file-pdf fa-5x"></i>';
+
+        echo '<a href="img_uploads/income/income_'.$id.'.'.$scan_org_filename_ext.'" target=_blank>'.$img_file.'</a> &nbsp;&nbsp;&nbsp;
+        <a href="?action=edit&id='.$id.'&datt=1"><i class="fas fa-times"></i></a>';
+        }
+    else
+        {
+        echo '<input type="file" name="fileToUpload" id="fileToUpload">';
+        }
+
+    echo '</div>';
+
+
+    }; ?>
+
+
             <div class="pure-controls" align=center>
 
 
@@ -518,6 +554,7 @@ else
                                 ?>
                 </table>
             </div>
+
 
 
 

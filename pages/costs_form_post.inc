@@ -18,10 +18,8 @@ $costs_bill_value = $value;
 $currency = $_POST['currency'];
 
 $target_dir = "img_uploads/costs/";
-//$target_file = $target_dir . 'costs_' .$_POST['id'].'_'.basename($_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . 'costs_' .$_POST['id'];
 $uploadOk = 1;
-//$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
 if($_SESSION['user_id'] == 1)
@@ -84,11 +82,9 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
 
 
     // Check if $uploadOk is set to 0 by an error
-    //if ($uploadOk == 0 and $_SESSION['user_id'] == 1) {
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
-//} elseif($_SESSION['user_id'] == 1) {    
     } else {
         
         $file_ext = pathinfo(parse_url($_FILES["fileToUpload"]["name"])['path'], PATHINFO_EXTENSION);
@@ -172,4 +168,3 @@ header('location: costs.php');
 exit;
 
 ?>
-

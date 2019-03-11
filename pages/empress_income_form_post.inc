@@ -32,7 +32,7 @@ $bill_no = $_POST["bill_no"];
 $desc = $_POST["desc"];
 $value_total_act = str_replace(',','',$_POST["total_act"]);
 
-echo $value_total_act.' '.$_POST["total_act"].'<br>';
+//echo $value_total_act.' '.$_POST["total_act"].'<br>';
 
 $value_currency = str_replace(',','',$_POST["total_act_currency"]);
 //$discount = $_POST["discount"];
@@ -193,6 +193,11 @@ $currency = $_POST["currency"];
           }
 
 /////////////////////////////////// ZAMIANA WALUT
+
+
+$target_dir = "img_uploads/income/";
+$target_file = $target_dir . 'income_' .$_POST['id'];
+$uploadOk = 1;
 
 
 
@@ -376,8 +381,35 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
     }
 elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
     {
+
+        //echo '<pre>';
+        //var_dump($_FILES["fileToUpload"]);
+        //echo '</pre>';
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
+    } else {
         
-    $stmt = $dbh->prepare("UPDATE `cash_book` SET
+        $file_ext = pathinfo(parse_url($_FILES["fileToUpload"]["name"])['path'], PATHINFO_EXTENSION);
+        if($file_ext <> "")
+            $file_info_sql = '
+                            `scan_org_filename` = "'.$_FILES['fileToUpload']['name'].'",
+                            `scan_org_filename_ext` = "'.$file_ext.'",';
+        else
+            $file_info_sql = '';
+
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file.'.'.$file_ext)) {
+            echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            
+        } elseif($_FILES["fileToUpload"]<>NULL) {
+            echo "<font color=red>Sorry, there was an error uploading your file.</font>";
+        }
+    }
+        
+
+    $update_query = "UPDATE `cash_book` SET
 
                            `date` = '".$date."',
                            `bill_no` = '".$bill_no."',
@@ -393,6 +425,8 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
                            `location_id` = '".$location_id."',
                            `client_id` = '".$client_id."',
                            `boat_trip_id` = '".$boat_trip_id."',
+
+                           ".$file_info_sql."
 
                            `instructor_id` = '".$instructor_id[0]."',
                            `instructor_perc` = '".$instructor_perc."',
@@ -442,9 +476,12 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
 
 
 
-                           WHERE `cash_book`.`id_cash_book` = '".$post_id."'
-                           ");
+                           WHERE `cash_book`.`id_cash_book` = '".$post_id."'";
+                           
 
+    //echo '<pre>'.$update_query.'</pre>';
+
+    $stmt = $dbh->prepare("$update_query");
     $stmt -> execute();
 
 
