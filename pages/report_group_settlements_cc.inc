@@ -1,7 +1,7 @@
 <script>
 function changePeriod(url)
 {
-    location.href = 'report_group_settlements.php?action=cc&period=' + url;
+    location.href = 'report_group_settlements.php?action=cc&loc_sel=<?php echo $_GET['loc_sel'];?>&period=' + url;
 }
 </script>
 
