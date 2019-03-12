@@ -52,9 +52,20 @@ else
 
 if($_GET['loc_sel'] <> '')
       {
-      $location_key = array_search($_GET['loc_sel'], array_column($booker_array, 'id_location'));
-      
-      $location_statement_filter = 'and description LIKE "%'.strtoupper($booker_array[$booker_key]['location_name']).'%"'; // poprawic
+      //$location_key = array_search($_GET['loc_sel'], array_column($booker_array, 'id_location'));
+      //$location_statement_filter = 'and description LIKE "%'.strtoupper($booker_array[$booker_key]['location_name']).'%"'; // poprawic
+
+      if($_GET['loc_sel']==14) // empress
+         $location_statement_filter = 'and description LIKE "%MBL1%"';
+      elseif($_GET['loc_sel']==10) //sengigi happy
+         $location_statement_filter = 'and description LIKE "%MBL %"';
+      elseif($_GET['loc_sel']==6) //kuta downtown
+         $location_statement_filter = 'and description LIKE "%MBL2%"';
+      elseif($_GET['loc_sel']==8) //sengigi sheraton
+         $location_statement_filter = 'and description LIKE "%MBL3%"';
+      else  
+         $location_statement_filter = '';
+
       $location_sel = 'and location.id_location ='.$_GET['loc_sel'];
       }
 else
@@ -200,6 +211,7 @@ or description LIKE ' PEMINDAHAN DARI 774360289411003   SCUBA FROGGY MBL   PEMBA
 
 and MONTH(`value_date`) = '".$period_month."' and YEAR(`value_date`) = '".$period_year."'
 
+".$location_statement_filter."
 
 ORDER BY bank_statement.value_date DESC";
 
