@@ -56,21 +56,34 @@ if($_GET['loc_sel'] <> '')
       //$location_statement_filter = 'and description LIKE "%'.strtoupper($booker_array[$booker_key]['location_name']).'%"'; // poprawic
 
       if($_GET['loc_sel']==14) // empress
+         {
          $location_statement_filter = 'and description LIKE "%MBL1%"';
+         $location_statement_filter_txt = 'with MBL1';
+         }
       elseif($_GET['loc_sel']==10) //sengigi happy
+         {
          $location_statement_filter = 'and description LIKE "%MBL %"';
+         $location_statement_filter_txt = 'with MBL ';
+         }
       elseif($_GET['loc_sel']==6) //kuta downtown
          $location_statement_filter = 'and description LIKE "%MBL2%"';
+         $location_statement_filter_txt = 'with MBL2';
+         }
       elseif($_GET['loc_sel']==8) //sengigi sheraton
          $location_statement_filter = 'and description LIKE "%MBL3%"';
+         $location_statement_filter_txt = 'with MBL3';
+         }
       else  
          $location_statement_filter = '';
+         $location_statement_filter_txt = 'no filter';
+         }
 
       $location_sel = 'and location.id_location ='.$_GET['loc_sel'];
       }
 else
       {
       $location_statement_filter = '';
+      $location_statement_filter_txt = 'no filter';
       $location_sel = '';
       }
 
@@ -192,6 +205,7 @@ foreach($row_array as $row)
 
 
 <div>
+<p align=center>Statement filter: <?php echo $location_statement_filter_txt; ?></p>
   <table class="pure-table pure-table-horizontal pure-table-striped">
  <tbody>
 
