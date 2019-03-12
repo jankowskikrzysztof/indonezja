@@ -5,6 +5,23 @@ function changePeriod(url)
 }
 </script>
 
+<script>
+function changePeriodLoc(url)
+{
+    location.href = 'report_group_settlements.php?action=cc&period=<?php echo $_GET['period'];?>&' + url;
+}
+</script>
+
+
+<?php
+$stmt = $dbh->prepare("SELECT location.id_location, location.name as location_name
+                              FROM location
+
+                              ORDER BY booker.name");
+$stmt -> execute();
+$location_array = $stmt->fetchAll();
+?>
+
 
 <div align=center class="pure-form" >
 
@@ -33,10 +50,22 @@ if($_SESSION['limit_data_months']<>0)
 else
       $period_limit = '';
 
+if($_GET['loc_sel'] <> '')
+      {
+      $location_key = array_search($_GET['loc_sel'], array_column($booker_array, 'id_location'));
+      
+      $location_statement_filter = 'and description LIKE "%'.strtoupper($booker_array[$booker_key]['location_name']).'%"'; // poprawic
+      $location_sel = 'and location.id_location ='.$_GET['loc_sel'];
+      }
+else
+      {
+      $location_statement_filter = '';
+      $location_sel = '';
+      }
 
 //echo $sel_loc_pers.'a<br>';
 
-$select = "SELECT cash_book_group.name as cb_name, location.name as loc_name, personel.name as pers_name, cash_book.type, cash_book.desc,
+$select = "SELECT cash_book_group.name as cb_name, location.id_location, location.name as loc_name, personel.name as pers_name, cash_book.type, cash_book.desc,
 activity.name as act_name, activity.shortcut as act_shortcut, cash_book.id_cash_book, cash_book.date, cash_book.bill_no, cash_book.currency,
 location_groups.name as loc_grp_name, DAY(cash_book.date) as dzien,
 
@@ -57,7 +86,7 @@ and cash_book.cash_report_only=0
                               ".$sel_loc_pers."
                   			      ".$where_limit."
                               ".$period_limit."
-
+                              ".$location_sel."
 and cash_book.pay_creditcard<>0
 
 AND MONTH(`cash_book`.`date`) = '".$period_month."'
@@ -121,7 +150,23 @@ foreach($row_array as $row)
    <thead>
   <tr align=center valign=top>
      <th>Date</th>
-     <th>Location</th>
+     <th>Location<div class="pure-form">
+              <select onchange="changePeriodLoc(this.value)">
+                      <option value='?'>All</option>
+     <?php
+           foreach($location_array as $row)
+              {
+              if($row['id_location'] == $_GET['loc_sel'])
+                 $sel = 'selected';
+              else
+                 $sel = '';
+
+              echo "<option value='loc_sel=".$row['id_location']."' ".$sel.">".$row['location_name']."</option>";
+
+              }
+     ?>
+
+              </select></div></th>
      <th>Bill No</th>
      <th>Group</th>
      <th>Description</th>
