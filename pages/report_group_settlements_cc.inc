@@ -66,14 +66,17 @@ if($_GET['loc_sel'] <> '')
          $location_statement_filter_txt = 'with MBL ';
          }
       elseif($_GET['loc_sel']==6) //kuta downtown
+         {
          $location_statement_filter = 'and description LIKE "%MBL2%"';
          $location_statement_filter_txt = 'with MBL2';
          }
       elseif($_GET['loc_sel']==8) //sengigi sheraton
+         {
          $location_statement_filter = 'and description LIKE "%MBL3%"';
          $location_statement_filter_txt = 'with MBL3';
          }
       else  
+         {
          $location_statement_filter = '';
          $location_statement_filter_txt = 'no filter';
          }
