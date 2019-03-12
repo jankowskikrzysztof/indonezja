@@ -17,7 +17,7 @@ function changePeriodLoc(url)
 $stmt = $dbh->prepare("SELECT location.id_location, location.name as location_name
                               FROM location
 
-                              ORDER BY booker.name");
+                              ORDER BY location.name");
 $stmt -> execute();
 $location_array = $stmt->fetchAll();
 ?>
