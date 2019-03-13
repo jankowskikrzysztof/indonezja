@@ -48,6 +48,10 @@ if($_SESSION['limit_data_months']<>0)
 else
       $period_limit = '';
 
+if($_GET['agent_sel'] <> '')
+      $agent_sel = 'and agent.id_agent ='.$_GET['agent_sel'];
+else
+      $agent_sel = '';
 
 //echo $sel_loc_pers.'a<br>';
 
@@ -71,6 +75,7 @@ $select = "SELECT location.name as loc_name, personel.name as pers_name, cash_bo
                               ".$sel_loc_pers."
                   			      ".$where_limit."
                               ".$period_limit."
+                              ".$agent_sel."
                               AND MONTH(`cash_book`.`date`) = '".$period_month."'
                               AND YEAR(`cash_book`.`date`) = '".$period_year."'
                               and location.id_location=cash_book.location_id
