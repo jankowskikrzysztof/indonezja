@@ -53,14 +53,14 @@ if($action=='edit')
 
                               cash_book.booker_perc,
                               cash_book.booker_id,cash_book.booker_commission,
-                              cash_book.instructor_id,
+                              cash_book.agent_id,
                               cash_book.client_id,
                               cash_book.boat_trip_id,
                               cash_book.value,
                               cash_book.discount,
                               cash_book.value_before_discount,
-                              cash_book.instructor_commission,
-                              cash_book.instructor_perc,
+                              cash_book.agent_commission,
+                              cash_book.agent_perc,
                               cash_book.pay_cash,cash_book.pay_creditcard,cash_book.pay_roomcharge,cash_book.pay_bank,cash_book.pay_paypal,
                               cash_book.pay_cash_deposit,
                               cash_book.pay_cash_deposit2,
@@ -118,9 +118,9 @@ if($action=='edit')
                    $booker_commission = $edit_array[0][booker_commission];
                    $booker_perc = $edit_array[0][booker_perc];
                    $booking_no = $edit_array[0][booking_no];
-                   $instructor_perc= $edit_array[0][instructor_perc];
-                   $instructor_select = $edit_array[0][instructor_id];
-                   $instructor_commission = $edit_array[0][instructor_commission];
+                   $agent_perc= $edit_array[0][agent_perc];
+                   $agent_select = $edit_array[0][agent_id];
+                   $agent_commission = $edit_array[0][agent_commission];
                    $boat_trip_select = $edit_array[0][boat_trip_id];
 
                    $type_cost = $edit_array[0][type_cost];

@@ -7,9 +7,9 @@ $id = $_GET['id'];
 if($action=='edit')
                    {
 
-                   $stmt = $dbh->prepare("SELECT instructor.*
-                              FROM instructor
-                              WHERE instructor.id_instructor='".$id."'
+                   $stmt = $dbh->prepare("SELECT agent.*
+                              FROM agent
+                              WHERE agent.id_agent='".$id."'
                               ");
                    $stmt -> execute();
                    $edit_array = $stmt->fetchAll();

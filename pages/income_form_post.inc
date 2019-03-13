@@ -4,7 +4,7 @@ $post_id = $_POST['id'];
 $cash_book_group_id = $_POST['cash_book_group_id'];
 $location_id = $_POST['location_id'];
 $personel_id = $_SESSION['user_id'];
-$instructor_id = explode("|",$_POST['instructor_id']);
+$agent_id = explode("|",$_POST['agent_id']);
 
 $activity_id = $_POST['activity_id'];
 $pcs_no = $_POST['pcs_no'];
@@ -23,9 +23,9 @@ $value = str_replace(',','',$_POST['total_act']);
 $value_before_discount = str_replace(',','',$_POST['total_act']);
 
 
-$instructor = $_POST['instructor'];
-$instructor_perc = $_POST['instructor_perc'];
-$instructor_commission = str_replace(',','',$_POST['instructor_commission']);
+$agent = $_POST['agent'];
+$agent_perc = $_POST['agent_perc'];
+$agent_commission = str_replace(',','',$_POST['agent_commission']);
 $booker_id = $_POST['booker_id'];
 $booker_perc = $_POST['booker_perc'];
 $booker_commission = str_replace(',','',$_POST['booker_commission']);
@@ -68,9 +68,9 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
                                    `currency`,
                                    `discount`,
                                    `value_before_discount`,
-                                   `instructor_id`,
-                                   `instructor_perc`,
-                                   `instructor_commission`,
+                                   `agent_id`,
+                                   `agent_perc`,
+                                   `agent_commission`,
                                    `booker_id`,
                                    `booker_perc`,
                                    `booker_commission`,
@@ -96,9 +96,9 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
                                    '".$currency."',
                                    '".$discount."',
                                    '".$value_before_discount."',
-                                   '".$instructor_id[0]."',
-                                   '".$instructor_perc."',
-                                   '".$instructor_commission."',
+                                   '".$agent_id[0]."',
+                                   '".$agent_perc."',
+                                   '".$agent_commission."',
                                    '".$booker_id."',
                                    '".$booker_perc."',
                                    '".$booker_commission."',
@@ -187,9 +187,9 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
 
                            ".$file_info_sql."
 
-                           `instructor_id` = '".$instructor_id[0]."',
-                           `instructor_perc` = '".$instructor_perc."',
-                           `instructor_commission` = '".$instructor_commission."',
+                           `agent_id` = '".$agent_id[0]."',
+                           `agent_perc` = '".$agent_perc."',
+                           `agent_commission` = '".$agent_commission."',
                            `booker_id` = '".$booker_id."',
                            `booker_perc` = '".$booker_perc."',
                            `booker_commission` = '".$booker_commission."',

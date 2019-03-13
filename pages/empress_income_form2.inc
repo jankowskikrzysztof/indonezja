@@ -54,7 +54,7 @@ if($action=='edit')
 
                               cash_book.booker_perc,
                               cash_book.booker_id,                                                            
-                              cash_book.instructor_id,
+                              cash_book.agent_id,
                               cash_book.client_id,
                               cash_book.boat_trip_id,
 
@@ -157,7 +157,7 @@ if($action=='edit')
                    $booker_select = $edit_array[0][booker_id];
                    $booker_perc = round($edit_array[0][booker_perc]);
                    $booking_no = $edit_array[0][booking_no];
-                   $instructor_select = $edit_array[0][instructor_id];
+                   $agent_select = $edit_array[0][agent_id];
                    $boat_trip_select = $edit_array[0][boat_trip_id];
 
                    $type_cost = $edit_array[0][type_cost];

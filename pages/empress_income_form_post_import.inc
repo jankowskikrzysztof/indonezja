@@ -79,8 +79,8 @@ $pay_bank_currency = $pay_bank_deposit_currency + $pay_bank_deposit2_currency + 
           $booker_commission_currency = $booker_commission;
           $booker_commission = conv_currency($booker_commission,'from',$currency,$date,$dbh);
 
-          $instructor_commission_currency = $instructor_commission;
-          $instructor_commission = conv_currency($instructor_commission,'from',$currency,$date,$dbh);
+          $agent_commission_currency = $agent_commission;
+          $agent_commission = conv_currency($agent_commission,'from',$currency,$date,$dbh);
 
 
           $value_currency = $value;
@@ -169,10 +169,10 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
                                    `discount_currency`,
                                    `value_before_discount`,
                                    `value_before_discount_currency`,
-                                   `instructor_id`,
-                                   `instructor_perc`,
-                                   `instructor_commission`,
-                                   `instructor_commission_currency`,
+                                   `agent_id`,
+                                   `agent_perc`,
+                                   `agent_commission`,
+                                   `agent_commission_currency`,
                                    `booker_id`,
                                    `booker_perc`,
                                    `booker_commission`,
@@ -233,10 +233,10 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
                                    '".$discount_currency."',
                                    '".$value_before_discount."',
                                    '".$value_before_discount_currency."',
-                                   '".$instructor_id[0]."',
-                                   '".$instructor_perc."',
-                                   '".$instructor_commission."',
-                                   '".$instructor_commission_currency."',
+                                   '".$agent_id[0]."',
+                                   '".$agent_perc."',
+                                   '".$agent_commission."',
+                                   '".$agent_commission_currency."',
                                    '".$booker_id."',
                                    '".$booker_perc."',
                                    '".$booker_commission."',

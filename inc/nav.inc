@@ -107,12 +107,12 @@ if($_SESSION['limit_site']=="")
         <div class="dropdown-content">
       <a href="activities.php">Activities</a>
       <a href="activities_pricelist.php">Activities pricelist</a>
+      <a href="agent.php">Agents</a>
       <a href="backup_list.php">Backup list</a>
       <a href="booker.php">Bookers</a>
       <a href="cash_book_groups.php">Cash Book Groups</a>
       <a href="company.php">Companies</a>
       <a href="currency.php">Currency Rate</a>
-      <a href="instructor.php">Instructors</a>
       <a href="location.php">Locations</a>
       <a href="location_groups.php">Location Groups</a>
       <a href="personel.php">Operators</a>

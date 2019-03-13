@@ -34,12 +34,12 @@ $stmt -> execute();
 $location_array = $stmt->fetchAll();
 
 
-$stmt = $dbh->prepare("SELECT instructor.name as instr_name,instructor.id_instructor, instructor.percentage, CONCAT(instructor.id_instructor,'|',instructor.percentage) as id_and_perc
-                              FROM instructor
-                              ORDER BY instructor.name");
+$stmt = $dbh->prepare("SELECT agent.name as instr_name,agent.id_agent, agent.percentage, CONCAT(agent.id_agent,'|',agent.percentage) as id_and_perc
+                              FROM agent
+                              ORDER BY agent.name");
 
 $stmt -> execute();
-$instructor_array = $stmt->fetchAll();
+$agent_array = $stmt->fetchAll();
 
 
 $stmt = $dbh->prepare("SELECT activity.id_activity, activity.shortcut as act_shortcut, activity.name as act_name
@@ -67,12 +67,12 @@ if($action=='edit')
 
                               cash_book.booker_perc,
                               cash_book.booker_id,cash_book.booker_commission,
-                              cash_book.instructor_id,
+                              cash_book.agent_id,
                               cash_book.value,
                               cash_book.discount,
                               cash_book.value_before_discount,
-                              cash_book.instructor_commission,
-                              cash_book.instructor_perc,
+                              cash_book.agent_commission,
+                              cash_book.agent_perc,
                               cash_book.pay_cash,cash_book.pay_creditcard,cash_book.pay_roomcharge,cash_book.pay_bank,cash_book.pay_paypal,
                               cash_book.pay_cash_deposit, cash_book.pay_cash_part,
                               cash_book.pay_bank_deposit, cash_book.pay_bank_part,
@@ -99,35 +99,35 @@ if($action=='edit')
                    $stmt -> execute();
                    $edit_array = $stmt->fetchAll();
 
-                   $location_select = $edit_array[0][location_id];
-                   $room_charge_select = $edit_array[0][room_charge_perc];
-                   $desc = $edit_array[0][desc];
-                   $bill_no = $edit_array[0][bill_no];
-                   $date = $edit_array[0][date];
-                   $price = $edit_array[0][price];
-                   $currency = $edit_array[0][currency];
-                   $value = $edit_array[0][value];
-                   $discount = $edit_array[0][discount];
-                   $value_before_discount = $edit_array[0][value_before_discount];
-                   $booker_id = $edit_array[0][booker_id];
-                   $booker_commission = $edit_array[0][booker_commission];
-                   $booker_perc = $edit_array[0][booker_perc];
-                   $instructor_perc= $edit_array[0][instructor_perc];
-                   $instructor_select = $edit_array[0][instructor_id];
-                   $instructor_commission = $edit_array[0][instructor_commission];
-                   $pay_cash = $edit_array[0][pay_cash];
-                   $pay_cash_part = $edit_array[0][pay_cash_part];
-                   $pay_cash_deposit = $edit_array[0][pay_cash_deposit];
-                   $pay_creditcard = $edit_array[0][pay_creditcard];
-                   $pay_roomcharge = $edit_array[0][pay_roomcharge];
-                   $pay_bank = $edit_array[0][pay_bank];
-                   $pay_bank_part = $edit_array[0][pay_bank_part];
-                   $pay_bank_deposit = $edit_array[0][pay_bank_deposit];
-                   $pay_paypal = $edit_array[0][pay_paypal];
-                   $sum_payments = $edit_array[0][sum_payments];
+                   $location_select = $edit_array[0]['location_id'];
+                   $room_charge_select = $edit_array[0]['room_charge_perc'];
+                   $desc = $edit_array[0]['desc'];
+                   $bill_no = $edit_array[0]['bill_no'];
+                   $date = $edit_array[0]['date'];
+                   $price = $edit_array[0]['price'];
+                   $currency = $edit_array[0]['currency'];
+                   $value = $edit_array[0]['value'];
+                   $discount = $edit_array[0]['discount'];
+                   $value_before_discount = $edit_array[0]['value_before_discount'];
+                   $booker_id = $edit_array[0]['booker_id'];
+                   $booker_commission = $edit_array[0]['booker_commission'];
+                   $booker_perc = $edit_array[0]['booker_perc'];
+                   $agent_perc= $edit_array[0]['agent_perc'];
+                   $agent_select = $edit_array[0]['agent_id'];
+                   $agent_commission = $edit_array[0]['agent_commission'];
+                   $pay_cash = $edit_array[0]['pay_cash'];
+                   $pay_cash_part = $edit_array[0]['pay_cash_part'];
+                   $pay_cash_deposit = $edit_array[0]['pay_cash_deposit'];
+                   $pay_creditcard = $edit_array[0]['pay_creditcard'];
+                   $pay_roomcharge = $edit_array[0]['pay_roomcharge'];
+                   $pay_bank = $edit_array[0]['pay_bank'];
+                   $pay_bank_part = $edit_array[0]['pay_bank_part'];
+                   $pay_bank_deposit = $edit_array[0]['pay_bank_deposit'];
+                   $pay_paypal = $edit_array[0]['pay_paypal'];
+                   $sum_payments = $edit_array[0]['sum_payments'];
 
-                   $lastchange = $edit_array[0][lastchange];
-                   $pers_name = $edit_array[0][pers_name];
+                   $lastchange = $edit_array[0]['lastchange'];
+                   $pers_name = $edit_array[0]['pers_name'];
 
                    $scan_org_filename_ext = $edit_array[0]['scan_org_filename_ext'];
 
@@ -352,22 +352,22 @@ if($action<>'edit')
             </div>
 <!--
             <div class="pure-control-group">
-                <label for="name">Instructor</label>
-                <select name="instructor_id" id="instructor_id" class="pure-input-1-6" style='width:8em;'>
-                        <option value="0|0">no instructor</option>
+                <label for="name">Agent</label>
+                <select name="agent_id" id="agent_id" class="pure-input-1-6" style='width:8em;'>
+                        <option value="0|0">no agent</option>
                 <?php
-                     foreach($instructor_array as $row)
+                     foreach($agent_array as $row)
                         {
-                        if( $instructor_select == $row['id_instructor'] ) $sel='selected'; else $sel = '';
+                        if( $agent_select == $row['id_agent'] ) $sel='selected'; else $sel = '';
 
                         echo '<option value="'.$row['id_and_perc'].'" '.$sel.'>'.$row['instr_name'].'</option>';
                         }
                 ?>
                 </select>
                 <label for="name">%</label>
-                <input type="text" name="instructor_perc" id="instructor_perc" value="<?php echo $instructor_perc; ?>" class="pure-input-1-1" style='width:5em; text-align:center' onkeyup="findSumInstructor()">
+                <input type="text" name="agent_perc" id="agent_perc" value="<?php echo $agent_perc; ?>" class="pure-input-1-1" style='width:5em; text-align:center' onkeyup="findSumAgent()">
                 <label for="name">Commission</label>
-                <input type="text" name="instructor_commission" id="instructor_commission" value="<?php echo str_replace('.00','',str_replace(',','',$instructor_commission)); ?>" class="money" style='width:8em; text-align:right' readonly>
+                <input type="text" name="agent_commission" id="agent_commission" value="<?php echo str_replace('.00','',str_replace(',','',$agent_commission)); ?>" class="money" style='width:8em; text-align:right' readonly>
             </div>
 -->
 <hr>
@@ -581,7 +581,7 @@ function findSumAct(){
     document.getElementById('total_act').value = tot;
 
 
-findSumInstructor();
+findSumAgent();
 findSumBooker();
 findStillToPay();
 }
@@ -611,15 +611,15 @@ function findSumPayment(){
 }
 
 
-function findSumInstructor(){
+function findSumAgent(){
     var tot=0;
-    var instr_perc=parseInt(document.getElementById('instructor_perc').value.split(",").join("")) || 0;
+    var instr_perc=parseInt(document.getElementById('agent_perc').value.split(",").join("")) || 0;
     var total_act=parseInt(document.getElementById('total_act').value.split(",").join("")) || 0;
 
     tot = total_act * instr_perc/100;
 
 
-    document.getElementById('instructor_commission').value = tot;
+    document.getElementById('agent_commission').value = tot;
 }
 
 function findSumBooker(){
@@ -667,16 +667,16 @@ function validateForm(){
 
 $(document).ready(function() {
 
-    $("#instructor_id option").filter(function() {
-        return $(this).val() == $("#instructor_perc").val();
+    $("#agent_id option").filter(function() {
+        return $(this).val() == $("#agent_perc").val();
     }).attr('selected', true);
 
 
-    $("#instructor_id").on("change", function() {
+    $("#agent_id").on("change", function() {
 
-        $("#instructor_perc").val($(this).find("option:selected").attr("value").toString().split('|')[1]);
+        $("#agent_perc").val($(this).find("option:selected").attr("value").toString().split('|')[1]);
 
-    findSumInstructor();
+    findSumAgent();
     });
 });
 

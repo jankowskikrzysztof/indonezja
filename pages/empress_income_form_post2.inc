@@ -12,7 +12,7 @@ $post_id = $_POST[id];
 $cash_book_group_id = $_POST[cash_book_group_id];
 $location_id = $_POST[location_id];
 $personel_id = $_SESSION[user_id];
-$instructor_id = explode("|",$_POST[instructor_id]);
+$agent_id = explode("|",$_POST[agent_id]);
 $client_id = $_POST[client_id];
 
 $activity_id = $_POST[activity_id];
@@ -38,10 +38,10 @@ $value_before_discount = str_replace(',','',$_POST[value_before_discount]);
 $value_before_discount_currency = str_replace(',','',$_POST[value_before_discount_currency]);
 
 
-$instructor = $_POST[instructor];
-$instructor_perc = $_POST[instructor_perc];
-$instructor_commission = str_replace(',','',$_POST[instructor_commission]);
-$instructor_commission_currency = str_replace(',','',$_POST[instructor_commission_currency]);
+$agent = $_POST[agent];
+$agent_perc = $_POST[agent_perc];
+$agent_commission = str_replace(',','',$_POST[agent_commission]);
+$agent_commission_currency = str_replace(',','',$_POST[agent_commission_currency]);
 $booker_id = $_POST[booker_id];
 $booker_perc = $_POST[booker_perc];
 $booker_commission = str_replace(',','',$_POST[booker_commission]);
@@ -120,8 +120,8 @@ $currency = $_POST[currency];
           $booker_commission_currency = $booker_commission;
           $booker_commission = conv_currency($booker_commission,'from',$currency,$date,$dbh);
 
-          $instructor_commission_currency = $instructor_commission;
-          $instructor_commission = conv_currency($instructor_commission,'from',$currency,$date,$dbh);
+          $agent_commission_currency = $agent_commission;
+          $agent_commission = conv_currency($agent_commission,'from',$currency,$date,$dbh);
 
 
           $value_currency = $value;
@@ -210,10 +210,10 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
                                    `discount_currency`,
                                    `value_before_discount`,
                                    `value_before_discount_currency`,
-                                   `instructor_id`,
-                                   `instructor_perc`,
-                                   `instructor_commission`,
-                                   `instructor_commission_currency`,
+                                   `agent_id`,
+                                   `agent_perc`,
+                                   `agent_commission`,
+                                   `agent_commission_currency`,
                                    `booker_id`,
                                    `booker_perc`,
                                    `booker_commission`,
@@ -274,10 +274,10 @@ if($_POST['source_action']=='add' and $_SESSION['permission']=='rw')
                                    '".$discount_currency."',
                                    '".$value_before_discount."',
                                    '".$value_before_discount_currency."',
-                                   '".$instructor_id[0]."',
-                                   '".$instructor_perc."',
-                                   '".$instructor_commission."',
-                                   '".$instructor_commission_currency."',
+                                   '".$agent_id[0]."',
+                                   '".$agent_perc."',
+                                   '".$agent_commission."',
+                                   '".$agent_commission_currency."',
                                    '".$booker_id."',
                                    '".$booker_perc."',
                                    '".$booker_commission."',
@@ -385,10 +385,10 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
                            `client_id` = '".$client_id."',
                            `boat_trip_id` = '".$boat_trip_id."',
 
-                           `instructor_id` = '".$instructor_id[0]."',
-                           `instructor_perc` = '".$instructor_perc."',
-                           `instructor_commission` = '".$instructor_commission."',
-                           `instructor_commission_currency` = '".$instructor_commission_currency."',
+                           `agent_id` = '".$agent_id[0]."',
+                           `agent_perc` = '".$agent_perc."',
+                           `agent_commission` = '".$agent_commission."',
+                           `agent_commission_currency` = '".$agent_commission_currency."',
                            `booker_id` = '".$booker_id."',
                            `booker_perc` = '".$booker_perc."',
                            `booker_commission` = '".$booker_commission."',

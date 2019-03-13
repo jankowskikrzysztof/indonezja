@@ -14,8 +14,8 @@
 
 
 
-$stmt = $dbh->prepare("SELECT instructor.name,instructor.percentage,instructor.id_instructor
-                              FROM instructor ORDER BY name");
+$stmt = $dbh->prepare("SELECT agent.name,agent.percentage,agent.id_agent
+                              FROM agent ORDER BY name");
 $stmt -> execute();
 
 $row_array = $stmt->fetchAll();
@@ -25,7 +25,7 @@ foreach($row_array as $row)
    echo '<tr>
    <td>'.$row['name'].'</td>
    <td align=center>'.$row['percentage'].' %</td>
-   <td><a href="?action=edit&id='.$row['id_instructor'].'"><i class="far fa-edit" aria-hidden="true"></i></a></td>
+   <td><a href="?action=edit&id='.$row['id_agent'].'"><i class="far fa-edit" aria-hidden="true"></i></a></td>
    </tr>';
 
 

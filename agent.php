@@ -10,11 +10,11 @@ if($action <> 'post' and $action <> 'del')
    include('inc/nav.inc');
 
 if($action == 'add' or $action == 'edit')
-include('pages/instructor_form.inc');
+include('pages/agent_form.inc');
 elseif($action == 'post' or $action == 'del')
-include('pages/instructor_form_post.inc');
+include('pages/agent_form_post.inc');
 else
-include('pages/instructor_main.inc');
+include('pages/agent_main.inc');
 ?>
 
 
