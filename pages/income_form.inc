@@ -34,7 +34,7 @@ $stmt -> execute();
 $location_array = $stmt->fetchAll();
 
 
-$stmt = $dbh->prepare("SELECT agent.name as instr_name,agent.id_agent, agent.percentage, CONCAT(agent.id_agent,'|',agent.percentage) as id_and_perc
+$stmt = $dbh->prepare("SELECT agent.name as agent_name,agent.id_agent, agent.percentage, CONCAT(agent.id_agent,'|',agent.percentage) as id_and_perc
                               FROM agent
                               ORDER BY agent.name");
 
@@ -350,7 +350,7 @@ if($action<>'edit')
                 <label for="name">Commission</label>
                 <input type="text" name="booker_commission" id="booker_commission" value="<?php echo str_replace('.00','',str_replace(',','',$booker_commission)); ?>" class="money" style='width:8em; text-align:right' readonly>
             </div>
-<!--
+
             <div class="pure-control-group">
                 <label for="name">Agent</label>
                 <select name="agent_id" id="agent_id" class="pure-input-1-6" style='width:8em;'>
@@ -360,7 +360,7 @@ if($action<>'edit')
                         {
                         if( $agent_select == $row['id_agent'] ) $sel='selected'; else $sel = '';
 
-                        echo '<option value="'.$row['id_and_perc'].'" '.$sel.'>'.$row['instr_name'].'</option>';
+                        echo '<option value="'.$row['id_and_perc'].'" '.$sel.'>'.$row['agent_name'].'</option>';
                         }
                 ?>
                 </select>
@@ -369,7 +369,7 @@ if($action<>'edit')
                 <label for="name">Commission</label>
                 <input type="text" name="agent_commission" id="agent_commission" value="<?php echo str_replace('.00','',str_replace(',','',$agent_commission)); ?>" class="money" style='width:8em; text-align:right' readonly>
             </div>
--->
+
 <hr>
             <div class="pure-control-group">
                 <p align=center>Payment for activities:</p>
@@ -613,10 +613,10 @@ function findSumPayment(){
 
 function findSumAgent(){
     var tot=0;
-    var instr_perc=parseInt(document.getElementById('agent_perc').value.split(",").join("")) || 0;
+    var agent_perc=parseInt(document.getElementById('agent_perc').value.split(",").join("")) || 0;
     var total_act=parseInt(document.getElementById('total_act').value.split(",").join("")) || 0;
 
-    tot = total_act * instr_perc/100;
+    tot = total_act * agent_perc/100;
 
 
     document.getElementById('agent_commission').value = tot;
