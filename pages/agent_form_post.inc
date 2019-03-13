@@ -22,7 +22,7 @@ elseif($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
     {
 
 
-    $stmt = $dbh->prepare("UPDATE `personel` SET
+    $stmt = $dbh->prepare("UPDATE `agent` SET
 
                            `name` = '".$name."',
                            `percentage` = '".$percentage."'
