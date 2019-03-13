@@ -1,10 +1,25 @@
 <script>
 function changePeriod(url)
 {
-    location.href = 'report.php?action=agent&period=' + url;
+    location.href = 'report.php?action=agent&agent_sel=<?php echo $_GET['agent_sel'];?>&period=' + url;
 }
 </script>
 
+<script>
+function changePeriodAgent(url)
+{
+    location.href = 'report.php?action=agent&period=<?php echo $_GET['period'];?>&' + url;
+}
+</script>
+
+<?php
+$stmt = $dbh->prepare("SELECT agent.id_agent, agent.name as agent_name
+                              FROM agent
+
+                              ORDER BY agent.name");
+$stmt -> execute();
+$agent_array = $stmt->fetchAll();
+?>
 
 <div align=center class="pure-form" >
 
@@ -103,7 +118,23 @@ foreach($row_array as $row)
      <th>Date</th>
      <th>Bill No</th>
      <th>Location</th>
-     <th>Agent</th>
+     <th>Agent<div class="pure-form">
+              <select onchange="changePeriodAgent(this.value)">
+                      <option value='?'>All</option>
+     <?php
+           foreach($agent_array as $row)
+              {
+              if($row['id_agent'] == $_GET['agent_sel'])
+                 $sel = 'selected';
+              else
+                 $sel = '';
+
+              echo "<option value='agent_sel=".$row['id_agent']."' ".$sel.">".$row['agent_name']."</option>";
+
+              }
+     ?>
+
+              </select></div></th>
      <th>%</th>
      <th>Commission</th>
      <th></th>
