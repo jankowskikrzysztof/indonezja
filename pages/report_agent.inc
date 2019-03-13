@@ -80,6 +80,7 @@ foreach($row_array as $row)
      <td>'.$row['agent_perc'].'</td>';
 
      echo '<td class=cash>'.$formatter->formatCurrency($row['agent_commission'], 'IDR').'</td>';
+     echo '<td></td>';
      //echo '<td class=cash>'.$formatter->formatCurrency($row['agent_commission_currency'], 'IDR').'</td>';
 
 
