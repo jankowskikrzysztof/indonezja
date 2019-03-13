@@ -24,6 +24,9 @@ if($action=='room_charge')
 if($action=='empress_trips')
   include('pages/report_empress_trips.inc');  
 
+  if($action=='agent')
+  include('pages/report_agent.inc');  
+
 ?>
 
 

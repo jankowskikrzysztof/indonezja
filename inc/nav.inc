@@ -63,6 +63,8 @@ if($_SESSION['limit_site']=="")
         <div class="dropdown-content">
       <a href="report_inc_daily.php?date=<?php echo date("Y-m-d"); ?>">Income Daily</a>
       <a href="report_inc_monthly.php?period=<?php echo date("Y-m"); ?>">Period report</a>
+      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="report.php?action=agent&period='.date("Y-m").'">Agents</a>'; ?>
+
       <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="report_cash_movement.php?period='.date("Y-m").'">Cash Movement</a>'; ?>
 
       <?php if($_SESSION['user_id'] == 1) echo '<a href="report_costs_to_pay.php">Costs - Still to pay</a>'; ?>
