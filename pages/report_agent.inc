@@ -80,7 +80,7 @@ foreach($row_array as $row)
      <td>'.$row['agent_perc'].'</td>';
 
      echo '<td class=cash>'.$formatter->formatCurrency($row['agent_commission'], 'IDR').'</td>';
-     echo '<td class=cash>'.$formatter->formatCurrency($row['agent_commission_currency'], 'IDR').'</td>';
+     //echo '<td class=cash>'.$formatter->formatCurrency($row['agent_commission_currency'], 'IDR').'</td>';
 
 
      echo '</tr>';
@@ -105,13 +105,14 @@ foreach($row_array as $row)
      <th>Agent</th>
      <th>%</th>
      <th>Commission</th>
+     <th></th>
   </tr>
  </thead>
 <tfoot>
     <tr align=center valign=top>
      <td colspan=5></td>
      <td class=cash><?php echo $formatter->formatCurrency($sum_agent_commission, 'IDR'); ?></td>
-     <td class=cash><?php echo $formatter->formatCurrency($sum_agent_commission_currency, 'IDR'); ?></td>
+     <td class=cash><?php //echo $formatter->formatCurrency($sum_agent_commission_currency, 'IDR'); ?></td>
   </tr>
 </tfoot>
 </table>
