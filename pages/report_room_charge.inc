@@ -249,6 +249,7 @@ WHERE (
      description LIKE '%DARI NOVOTEL%'
   or description LIKE '%MANDALIKA%'
   or description LIKE '%ISTANA%'
+  or description LIKE '%QUEEN GILI TRAW%'
   
 )
 and account_no = '359738937'
