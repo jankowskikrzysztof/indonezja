@@ -350,7 +350,7 @@ if($action<>'edit')
                 <label for="name">Commission</label>
                 <input type="text" name="booker_commission" id="booker_commission" value="<?php echo str_replace('.00','',str_replace(',','',$booker_commission)); ?>" class="money" style='width:8em; text-align:right' readonly>
             </div>
-<!--
+
             <div class="pure-control-group">
                 <label for="name">Agent</label>
                 <select name="agent_id" id="agent_id" class="pure-input-1-6" style='width:8em;'>
@@ -369,7 +369,7 @@ if($action<>'edit')
                 <label for="name">Commission</label>
                 <input type="text" name="agent_commission" id="agent_commission" value="<?php echo str_replace('.00','',str_replace(',','',$agent_commission)); ?>" class="money" style='width:8em; text-align:right' readonly>
             </div>
--->
+
 <hr>
             <div class="pure-control-group">
                 <p align=center>Payment for activities:</p>
