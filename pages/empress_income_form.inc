@@ -491,7 +491,10 @@ elseif($action=='edit')
 	<td >
 	</td>
 	<td>
+
                 <input type="hidden" name="id_cash_book_item[]" value="<?php echo $row['id_cash_book_item'] ?>" >
+
+                <a href=""><i class="fa fa-backspace" aria-hidden="true"></i></a>
 
                 <label for="activity_id">Activity</label>
 
@@ -511,6 +514,7 @@ elseif($action=='edit')
 
                 <label for="name">Activity price</label>
                 <input type="text" name="price[]" id="price" value="<?php echo $activity_value; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumAct()">
+                
                 <?php //echo $row[value_currency]; ?>
        </td>
        <td>
