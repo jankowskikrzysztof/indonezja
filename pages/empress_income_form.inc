@@ -494,7 +494,7 @@ elseif($action=='edit')
 
                 <input type="hidden" name="id_cash_book_item[]" value="<?php echo $row['id_cash_book_item'] ?>" >
 
-                <a href=""><i class="fa fa-backspace" aria-hidden="true"></i></a>
+                <a href=""><i class="fa fa-trash-alt" aria-hidden="true"></i></a>
 
                 <label for="activity_id">Activity</label>
 
