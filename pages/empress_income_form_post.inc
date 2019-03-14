@@ -526,6 +526,20 @@ elseif($_GET['action']=='del' and $_SESSION['location_id_limit']==0 and $_SESSIO
 
     echo '<p>Data delete success</p>';
     }
+elseif($_GET['action']=='del_act' and $_SESSION['location_id_limit']==0 and $_SESSION['permission']=='rw')
+    {
+    $post_id = $_GET['id'];
+    $post_act_id = $_GET['id_act'];
+
+    $stmt = $dbh->prepare("DELETE FROM `cash_book_item` WHERE `cash_book_item`.`cash_book_id` = '".$post_id."' and `cash_book_item`.`id_cash_book_item` = '".$post_act_id."' ");
+
+    //$stmt -> execute();
+
+    //$err_list .= $stmt->error;
+
+    echo '<p>Data delete success</p>';
+    }
+
 
 
 $target_table = 'cash_book';
@@ -537,7 +551,7 @@ if($_POST['source_action']=='add')
 else
     $target_id = $post_id;
 
-if($_GET['action']=='del')
+if($_GET['action']=='del' or $_GET['action']=='del_act')
     $target_action = $_GET['action'];
 else
     $target_action = $_POST['source_action'];
