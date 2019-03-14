@@ -496,7 +496,7 @@ elseif($action=='edit')
 
                 <?php 
                 if(count($cash_book_item_array)>1)
-                    echo '<a href="empress_income.php?action=del_act&period='.$period.'&id='.$id.'&id_act='.$activity_select.'"><i class="fa fa-trash-alt" aria-hidden="true"></i></a>';
+                    echo '<a href="empress_income.php?action=del_act&period='.$period.'&id='.$id.'&id_act='.$row['id_cash_book_item'].'"><i class="fa fa-trash-alt" aria-hidden="true"></i></a>';
                 ?>
 
                 <label for="activity_id">Activity</label>
