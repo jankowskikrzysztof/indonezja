@@ -26,7 +26,6 @@ $stmt = $dbh->prepare("SELECT date_from, date_to, txt_route, boat_trip.id_boat_t
 
                               ORDER BY boat_trip.date_to");
 
-//YEAR(date_to)=".$period_year."
 
 $stmt -> execute();
 $boat_trip_array = $stmt->fetchAll();
@@ -144,85 +143,85 @@ if($action=='edit')
                    $edit_array = $stmt->fetchAll();
 
 
-                   $desc = $edit_array[0][desc];
-                   $bill_no = $edit_array[0][bill_no];
+                   $desc = $edit_array[0]['desc'];
+                   $bill_no = $edit_array[0]['bill_no'];
 
-                   $date = $edit_array[0][date];
-                   $date_pay_deposit = $edit_array[0][date_pay_deposit];
-                   $date_pay_deposit2 = $edit_array[0][date_pay_deposit2];
-                   $date_pay_deposit3 = $edit_array[0][date_pay_deposit3];
-                   $date_pay_deposit4 = $edit_array[0][date_pay_deposit4];
+                   $date = $edit_array[0]['date'];
+                   $date_pay_deposit = $edit_array[0]['date_pay_deposit'];
+                   $date_pay_deposit2 = $edit_array[0]['date_pay_deposit2'];
+                   $date_pay_deposit3 = $edit_array[0]['date_pay_deposit3'];
+                   $date_pay_deposit4 = $edit_array[0]['date_pay_deposit4'];
 
-                   $location_select = $edit_array[0][location_id];
-                   $room_charge_select = $edit_array[0][room_charge_perc];
-                   $client_select = $edit_array[0][client_id];
+                   $location_select = $edit_array[0]['location_id'];
+                   $room_charge_select = $edit_array[0]['room_charge_perc'];
+                   $client_select = $edit_array[0]['client_id'];
                    
                    
-                   $booker_select = $edit_array[0][booker_id];
-                   $booker_perc = round($edit_array[0][booker_perc]);
-                   $booking_no = $edit_array[0][booking_no];
-                   $agent_select = $edit_array[0][agent_id];
-                   $boat_trip_select = $edit_array[0][boat_trip_id];
+                   $booker_select = $edit_array[0]['booker_id'];
+                   $booker_perc = round($edit_array[0]['booker_perc']);
+                   $booking_no = $edit_array[0]['booking_no'];
+                   $agent_select = $edit_array[0]['agent_id'];
+                   $boat_trip_select = $edit_array[0]['boat_trip_id'];
 
-                   $type_cost = $edit_array[0][type_cost];
+                   $type_cost = $edit_array[0]['type_cost'];
 
-                   //$price = $edit_array[0][price];
+                   //$price = $edit_array[0]['price'];
 
-                   $currency = $edit_array[0][currency];
-                   $currency_second = $edit_array[0][currency_second];
+                   $currency = $edit_array[0]['currency'];
+                   $currency_second = $edit_array[0]['currency_second'];
 
-                   $value = str_replace('.00','',str_replace(',','',$edit_array[0][value]));
-                   $discount = str_replace('.00','',str_replace(',','',$edit_array[0][discount]));
-                   $value_before_discount = str_replace('.00','',str_replace(',','',$edit_array[0][value_before_discount]));
-                   $booker_commission = str_replace('.00','',str_replace(',','',$edit_array[0][booker_commission]));
+                   $value = str_replace('.00','',str_replace(',','',$edit_array[0]['value']));
+                   $discount = str_replace('.00','',str_replace(',','',$edit_array[0]['discount']));
+                   $value_before_discount = str_replace('.00','',str_replace(',','',$edit_array[0]['value_before_discount']));
+                   $booker_commission = str_replace('.00','',str_replace(',','',$edit_array[0]['booker_commission']));
 
 
                    $pay_deposit_perc = $edit_array[0]['pay_deposit_perc'];
                    if($pay_deposit_perc == '0') $pay_deposit_perc=100; 
 
-                   $pay_cash = str_replace('.00','',str_replace(',','',$edit_array[0][pay_cash]));
-                   $pay_cash_part = str_replace('.00','',str_replace(',','',$edit_array[0][pay_cash_part]));
-                   $pay_cash_deposit = str_replace('.00','',str_replace(',','',$edit_array[0][pay_cash_deposit]));
-                   $pay_cash_deposit2 = str_replace('.00','',str_replace(',','',$edit_array[0][pay_cash_deposit2]));
-                   $pay_cash_deposit3 = str_replace('.00','',str_replace(',','',$edit_array[0][pay_cash_deposit3]));
-                   $pay_cash_deposit4 = str_replace('.00','',str_replace(',','',$edit_array[0][pay_cash_deposit4]));
-                   $pay_bank_part = str_replace('.00','',str_replace(',','',$edit_array[0][pay_bank_part]));
-                   $pay_bank_deposit = str_replace('.00','',str_replace(',','',$edit_array[0][pay_bank_deposit]));
-                   $pay_bank_deposit2 = str_replace('.00','',str_replace(',','',$edit_array[0][pay_bank_deposit2]));
-                   $pay_bank_deposit3 = str_replace('.00','',str_replace(',','',$edit_array[0][pay_bank_deposit3]));
-                   $pay_bank_deposit4 = str_replace('.00','',str_replace(',','',$edit_array[0][pay_bank_deposit4]));
-                   $pay_creditcard = str_replace('.00','',str_replace(',','',$edit_array[0][pay_creditcard]));
-                   $pay_roomcharge = str_replace('.00','',str_replace(',','',$edit_array[0][pay_roomcharge]));
-                   $pay_bank = str_replace('.00','',str_replace(',','',$edit_array[0][pay_bank]));
-                   $pay_paypal = str_replace('.00','',str_replace(',','',$edit_array[0][pay_paypal]));
-                   $sum_payments = str_replace('.00','',str_replace(',','',$edit_array[0][sum_payments]));
-                   $still_to_pay = str_replace('.00','',str_replace(',','',$edit_array[0][still_to_pay]));
+                   $pay_cash = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_cash']));
+                   $pay_cash_part = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_cash_part']));
+                   $pay_cash_deposit = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_cash_deposit']));
+                   $pay_cash_deposit2 = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_cash_deposit2']));
+                   $pay_cash_deposit3 = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_cash_deposit3']));
+                   $pay_cash_deposit4 = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_cash_deposit4']));
+                   $pay_bank_part = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_bank_part']));
+                   $pay_bank_deposit = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_bank_deposit']));
+                   $pay_bank_deposit2 = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_bank_deposit2']));
+                   $pay_bank_deposit3 = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_bank_deposit3']));
+                   $pay_bank_deposit4 = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_bank_deposit4']));
+                   $pay_creditcard = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_creditcard']));
+                   $pay_roomcharge = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_roomcharge']));
+                   $pay_bank = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_bank']));
+                   $pay_paypal = str_replace('.00','',str_replace(',','',$edit_array[0]['pay_paypal']));
+                   $sum_payments = str_replace('.00','',str_replace(',','',$edit_array[0]['sum_payments']));
+                   $still_to_pay = str_replace('.00','',str_replace(',','',$edit_array[0]['still_to_pay']));
 
                     if($currency_second<>'')
                         {
-                            $currency = $edit_array[0][currency_second];
-                            $value = $edit_array[0][value_currency];
-                            $discount = $edit_array[0][discount_currency];
-                            $value_before_discount = $edit_array[0][value_before_discount_currency];
-                            $booker_commission = $edit_array[0][booker_commission_currency];
+                            $currency = $edit_array[0]['currency_second'];
+                            $value = $edit_array[0]['value_currency'];
+                            $discount = $edit_array[0]['discount_currency'];
+                            $value_before_discount = $edit_array[0]['value_before_discount_currency'];
+                            $booker_commission = $edit_array[0]['booker_commission_currency'];
          
-                            $pay_cash = $edit_array[0][pay_cash_currency];
-                            $pay_cash_part = $edit_array[0][pay_cash_part_currency];
-                            $pay_cash_deposit = $edit_array[0][pay_cash_deposit_currency];
-                            $pay_cash_deposit2 = $edit_array[0][pay_cash_deposit2_currency];
-                            $pay_cash_deposit3 = $edit_array[0][pay_cash_deposit3_currency];
-                            $pay_cash_deposit4 = $edit_array[0][pay_cash_deposit4_currency];
-                            $pay_bank_part = $edit_array[0][pay_bank_part_currency];
-                            $pay_bank_deposit = $edit_array[0][pay_bank_deposit_currency];
-                            $pay_bank_deposit2 = $edit_array[0][pay_bank_deposit2_currency];
-                            $pay_bank_deposit3 = $edit_array[0][pay_bank_deposit3_currency];
-                            $pay_bank_deposit4 = $edit_array[0][pay_bank_deposit4_currency];
-                            $pay_creditcard = $edit_array[0][pay_creditcard_currency];
-                            $pay_roomcharge = $edit_array[0][pay_roomcharge_currency];
-                            $pay_bank = $edit_array[0][pay_bank_currency];
-                            $pay_paypal = $edit_array[0][pay_paypal_currency];
-                            $sum_payments = $edit_array[0][sum_payments_currency];
-                            $still_to_pay = $edit_array[0][still_to_pay_currency];
+                            $pay_cash = $edit_array[0]['pay_cash_currency'];
+                            $pay_cash_part = $edit_array[0]['pay_cash_part_currency'];
+                            $pay_cash_deposit = $edit_array[0]['pay_cash_deposit_currency'];
+                            $pay_cash_deposit2 = $edit_array[0]['pay_cash_deposit2_currency'];
+                            $pay_cash_deposit3 = $edit_array[0]['pay_cash_deposit3_currency'];
+                            $pay_cash_deposit4 = $edit_array[0]['pay_cash_deposit4_currency'];
+                            $pay_bank_part = $edit_array[0]['pay_bank_part_currency'];
+                            $pay_bank_deposit = $edit_array[0]['pay_bank_deposit_currency'];
+                            $pay_bank_deposit2 = $edit_array[0]['pay_bank_deposit2_currency'];
+                            $pay_bank_deposit3 = $edit_array[0]['pay_bank_deposit3_currency'];
+                            $pay_bank_deposit4 = $edit_array[0]['pay_bank_deposit4_currency'];
+                            $pay_creditcard = $edit_array[0]['pay_creditcard_currency'];
+                            $pay_roomcharge = $edit_array[0]['pay_roomcharge_currency'];
+                            $pay_bank = $edit_array[0]['pay_bank_currency'];
+                            $pay_paypal = $edit_array[0]['pay_paypal_currency'];
+                            $sum_payments = $edit_array[0]['sum_payments_currency'];
+                            $still_to_pay = $edit_array[0]['still_to_pay_currency'];
 
                             ?>
 
@@ -238,9 +237,9 @@ if($action=='edit')
                         }
 
 
-                   $lastchange = $edit_array[0][lastchange];
+                   $lastchange = $edit_array[0]['lastchange'];
 
-                   $pers_name = $edit_array[0][pers_name];
+                   $pers_name = $edit_array[0]['pers_name'];
 
                    $scan_org_filename_ext = $edit_array[0]['scan_org_filename_ext'];
 
@@ -260,7 +259,7 @@ if($action=='edit')
 if($action=='add')
                    {
                    $date = date('Y-m-d');
-                   $location_select = $_SESSION[personel_location];
+                   $location_select = $_SESSION['personel_location'];
                    $boat_trip_select = $_GET['sel_trip'];
                    $client_select = $_GET['sel_client'];
                    $pay_deposit_perc = 100;
@@ -639,76 +638,13 @@ if($action<>'edit')
                 <input type="text" name="pay_bank_deposit" id="pay_bank_deposit" value="<?php echo $pay_bank_deposit; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
             </div>
 
-<!--
-
-                <label for="cash_deposit2">Cash Deposit 2</label>
-                <input type="text" name="pay_cash_deposit2" id="pay_cash_deposit2" value="<?php echo $pay_cash_deposit2; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
-                <label for="bank_deposit">Bank Deposit 2</label>
-                <input type="text" name="pay_bank_deposit2" id="pay_bank_deposit2" value="<?php echo $pay_bank_deposit2; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
--->
-
-
-<!--
-
-            <div class="pure-control-group">
-                <label for="cash_deposit3">Cash Deposit 3</label>
-                <input type="text" name="pay_cash_deposit3" id="pay_cash_deposit3" value="<?php echo $pay_cash_deposit3; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
-                <label for="bank_deposit">Bank Deposit 3</label>
-                <input type="text" name="pay_bank_deposit3" id="pay_bank_deposit3" value="<?php echo $pay_bank_deposit3; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
-                <label for="name">Deposit Date 3</label>
-                <input type="date" name="date_pay_deposit3" id="date_pay_deposit3" value="<?php echo $date_pay_deposit3; ?>" class="pure-input-1-1"  style='width:10em'>
-            </div>
-
-            <div class="pure-control-group">
-                <label for="cash_deposit4">Cash Deposit 4</label>
-                <input type="text" name="pay_cash_deposit4" id="pay_cash_deposit4" value="<?php echo $pay_cash_deposit4; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
-                <label for="bank_deposit">Bank Deposit 4</label>
-                <input type="text" name="pay_bank_deposit4" id="pay_bank_deposit4" value="<?php echo $pay_bank_deposit4; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
-                <label for="name">Deposit Date 4</label>
-                <input type="date" name="date_pay_deposit4" id="date_pay_deposit4" value="<?php echo $date_pay_deposit4; ?>" class="pure-input-1-1"  style='width:10em'>
-            </div>
--->
-
-                <!--
-
-            <div class="pure-control-group">
-                <label for="roomcharge">Roomcharge</label>
-                <input type="text" name="roomcharge" id="roomcharge" value="<?php echo $pay_roomcharge; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
-                <select name="currency" id="currency" class="pure-input" style='width:4.5em'>
-
-                 <?php
-                 echo '<option value="'.$row['currency'].'">IDR</option>';
-                 ?>
-
-                 </select>
-            </div>
-               -->
-
                <div class="pure-control-group">
                 <label for="creditcard">Creditcard</label>
                 <input type="text" name="creditcard" id="creditcard" value="<?php echo $pay_creditcard; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
-                <!--
-                <select name="currency" id="currency" class="pure-input" style='width:4.5em'>
-
-                 <?php
-                 echo '<option value="'.$row['currency'].'">IDR</option>';
-                 ?>
-
-                 </select>
-               -->
             </div>
             <div class="pure-control-group">
                 <label for="paypal">Paypal</label>
                 <input type="text" name="paypal" id="paypal" value="<?php echo $pay_paypal; ?>" class="money" style='width:8em; text-align:right' onkeyup="findSumPayment()" >
-                <!--
-                <select name="currency" id="currency" class="pure-input" style='width:4.5em'>
-
-                 <?php
-                 echo '<option value="'.$row['currency'].'">IDR</option>';
-                 ?>
-
-                 </select>
-               -->
             </div>
             <div class="pure-control-group">
                 <label for="total_payment">Total payment</label>
