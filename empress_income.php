@@ -32,7 +32,7 @@ elseif($action == 'add2')
            include('inc/addremoverows.js');
            include('pages/empress_income_form2.inc');
            }
-elseif($action == 'post' or $action == 'del')
+elseif($action == 'post' or $action == 'del' or $action == 'del_act')
 include('pages/empress_income_form_post.inc');
 else
 include('pages/empress_income_main.inc');
