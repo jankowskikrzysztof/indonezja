@@ -567,7 +567,7 @@ elseif($_GET['action']=='del_act' and $_SESSION['location_id_limit']==0 and $_SE
     $booker_commission = $value_before_discount * $cb_booker_perc/100;
     $booker_commission_currency = $value_before_discount_currency * $cb_booker_perc/100;
     $value_total_act = $value_before_discount - $booker_commission;
-    $value_currency = $cb_value_currency - $booker_commission_currency;
+    $value_currency = $value_before_discount_currency - $booker_commission_currency;
 
     $stmt = $dbh->prepare("DELETE FROM `cash_book_item` WHERE `cash_book_item`.`cash_book_id` = '".$post_id."' and `cash_book_item`.`id_cash_book_item` = '".$post_act_id."' ");
     $stmt -> execute();
