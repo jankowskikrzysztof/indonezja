@@ -531,11 +531,61 @@ elseif($_GET['action']=='del_act' and $_SESSION['location_id_limit']==0 and $_SE
     $post_id = $_GET['id'];
     $post_act_id = $_GET['id_act'];
 
+
+    $stmt = $dbh->prepare("SELECT value, value_currency
+                            FROM cash_book_item WHERE `cash_book_item`.`cash_book_id` = '".$post_id."' and `cash_book_item`.`id_cash_book_item` = '".$post_act_id."' ");
+    $stmt -> execute();
+    $cb_item = $stmt->fetchAll();  
+
+    foreach($cb_item as $row)
+            {
+            $cb_item_value = $row['value'];
+            $cb_item_value_currency = $row['value_currency'];
+            }
+
+
+    $stmt = $dbh->prepare("SELECT value, value_currency, value_before_discount, value_before_discount_currency, 
+                                  booker_commission, booker_commission_currency, booker_perc
+                            FROM cash_book WHERE `cash_book`.`id_cash_book` = '".$post_id."' ");
+    $stmt -> execute();
+    $cb = $stmt->fetchAll();  
+
+    foreach($cb as $row)
+            {
+            $cb_value = $row['value'];
+            $cb_value_currency = $row['value_currency'];
+            $cb_value_before_discount = $row['value_before_discount'];
+            $cb_value_before_discount_currency = $row['value_before_discount_currency'];
+            $cb_booker_commission = $row['booker_commission'];
+            $cb_booker_commission_currency = $row['booker_commission_currency'];
+            $cb_booker_perc = $row['booker_perc'];
+            }
+
+    
+    $value_before_discount = $cb_value_before_discount - $cb_item_value;
+    $value_before_discount_currency = $cb_value_before_discount_currency -  $cb_item_value_currency;
+    $booker_commission = $value_before_discount * $cb_booker_perc/100;
+    $booker_commission_currency = $value_before_discount_currency * $cb_booker_perc/100;
+    $value_total_act = $value_before_discount - $booker_commission;
+    $value_currency = $cb_value_currency - $booker_commission_currency;
+
     $stmt = $dbh->prepare("DELETE FROM `cash_book_item` WHERE `cash_book_item`.`cash_book_id` = '".$post_id."' and `cash_book_item`.`id_cash_book_item` = '".$post_act_id."' ");
+    $stmt -> execute();
 
-    //$stmt -> execute();
 
-    //$err_list .= $stmt->error;
+    $update_query = "UPDATE `cash_book` SET
+
+                           `value` = '".$value_total_act."',
+                           `value_currency` = '".$value_currency."',
+                           `value_before_discount` = '".$value_before_discount."',
+                           `value_before_discount_currency` = '".$value_before_discount_currency."',
+                           `booker_commission` = '".$booker_commission."',
+                           `booker_commission_currency` = '".$booker_commission_currency."'
+
+                    WHERE `cash_book`.`id_cash_book` = '".$post_id."'";
+
+    $stmt = $dbh->prepare("$update_query");
+    $stmt -> execute();
 
     echo '<p>Data delete success</p>';
     }
@@ -551,8 +601,10 @@ if($_POST['source_action']=='add')
 else
     $target_id = $post_id;
 
-if($_GET['action']=='del' or $_GET['action']=='del_act')
+if($_GET['action']=='del')
     $target_action = $_GET['action'];
+elseif($_GET['action']=='del_act')
+    $target_action = $_GET['action'].' item: '.$post_act_id;
 else
     $target_action = $_POST['source_action'];
 
