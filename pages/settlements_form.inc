@@ -37,6 +37,7 @@ if($_GET['cc']==0)
     $exclude_cc = "and `description` NOT LIKE '%MBL   PEMBAYARAN%' 
                 and `description` NOT LIKE '%GIRO INTERNAL - PEMBAYARA%' 
                 and `description` NOT LIKE '%MBL   OTOPAY%' 
+                and `description` NOT LIKE '%MBL OTOPAY%' 
                         ";
     }
 else   
