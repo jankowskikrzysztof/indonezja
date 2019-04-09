@@ -150,7 +150,7 @@ $bank_statement_array = $stmt->fetchAll();
 
                             //$formatter->formatCurrency($row['value'], 'IDR').' ('.$row['still_to_settle']
 
-                        if($row['still_to_settle']<>0 or $row['bank_statement_id']==NULL)
+                        if($row['still_to_settle']<>0 or ($row['bank_statement_id']==NULL and $row['still_to_settle']==NULL))
                             echo '<option value="'.$row['id_bank_statement'].'" maxsett="'.$max_sett_value.'" style="color: '.$style_color.'" '.$selected.'>'.$row['account_no'].' - '.$row['value_date'].': '.$stat_value.' '.$row['type'].' '.$row['description'].' </option>';
                         }
 ?>
