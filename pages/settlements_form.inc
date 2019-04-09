@@ -46,7 +46,8 @@ else
 $bs_sql = "SELECT 
                     (CASE WHEN debit<>0 THEN debit WHEN credit<>0 THEN credit END) as value,
                     bank_statement.*,
-                    (bank_statement.credit+bank_statement.debit)-SUM(settlements.value) as still_to_settle
+                    (bank_statement.credit+bank_statement.debit)-SUM(settlements.value) as still_to_settle,
+                    settlements.bank_statement_id
                     FROM bank_statement
                     left join settlements on settlements.bank_statement_id=bank_statement.id_bank_statement
                     where (settlements.bank_statement_id IS NULL or settlements.value<>(bank_statement.credit+bank_statement.debit))
@@ -149,7 +150,8 @@ $bank_statement_array = $stmt->fetchAll();
 
                             //$formatter->formatCurrency($row['value'], 'IDR').' ('.$row['still_to_settle']
 
-                        echo '<option value="'.$row['id_bank_statement'].'" maxsett="'.$max_sett_value.'" style="color: '.$style_color.'" '.$selected.'>'.$row['account_no'].' - '.$row['value_date'].': '.$stat_value.' '.$row['type'].' '.$row['description'].' </option>';
+                        if($row['still_to_settle']<>0 or $row['bank_statement_id']==0)
+                            echo '<option value="'.$row['id_bank_statement'].'" maxsett="'.$max_sett_value.'" style="color: '.$style_color.'" '.$selected.'>'.$row['account_no'].' - '.$row['value_date'].': '.$stat_value.' '.$row['type'].' '.$row['description'].' </option>';
                         }
 ?>
 
