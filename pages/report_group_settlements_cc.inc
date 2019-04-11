@@ -57,7 +57,7 @@ if($_GET['loc_sel'] <> '')
 
       if($_GET['loc_sel']==14) // empress
          {
-         $location_statement_filter = 'and description LIKE "%MBL1%"';
+         $location_statement_filter = 'and (description LIKE "%MBL1%" or description LIKE "%1 MBL%")';
          $location_statement_filter_txt = 'with MBL1';
          }
       elseif($_GET['loc_sel']==10) //sengigi happy
@@ -67,7 +67,7 @@ if($_GET['loc_sel'] <> '')
          }
       elseif($_GET['loc_sel']==6) //kuta downtown
          {
-         $location_statement_filter = 'and description LIKE "%MBL2%"';
+         $location_statement_filter = 'and (description LIKE "%MBL2%" or description LIKE "%2 MBL%)"';
          $location_statement_filter_txt = 'with MBL2';
          }
       elseif($_GET['loc_sel']==8) //sengigi sheraton
