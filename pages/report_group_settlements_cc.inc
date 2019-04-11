@@ -220,10 +220,10 @@ foreach($row_array as $row)
 $select = "SELECT bank_statement.*
 FROM bank_statement
 WHERE bank_statement.type='TRANSFER DARI'
-and (description LIKE ' PEMINDAHAN DARI 774360289411003   SCUBA FROGGY MBL   OTOPAY KK%'
+and (description LIKE '%OTOPAY KK%'
 or description LIKE '%GIRO INTERNAL%'
-or description LIKE ' PEMINDAHAN DARI 774360289411003   SCUBA FROGGY MBL   OTOPAY HLD%'
-or description LIKE ' PEMINDAHAN DARI 774360289411003   SCUBA FROGGY MBL   PEMBAYARAN%')
+or description LIKE '%OTOPAY HLD%'
+or description LIKE '%PEMBAYARAN%')
 
 
 and MONTH(`value_date`) = '".$period_month."' and YEAR(`value_date`) = '".$period_year."'
@@ -232,6 +232,12 @@ and MONTH(`value_date`) = '".$period_month."' and YEAR(`value_date`) = '".$perio
 
 ORDER BY bank_statement.value_date DESC";
 
+
+
+//and (description LIKE ' PEMINDAHAN DARI 774360289411003   SCUBA FROGGY MBL   OTOPAY KK%'
+//or description LIKE '%GIRO INTERNAL%'
+//or description LIKE ' PEMINDAHAN DARI 774360289411003   SCUBA FROGGY MBL   OTOPAY HLD%'
+//or description LIKE ' PEMINDAHAN DARI 774360289411003   SCUBA FROGGY MBL   PEMBAYARAN%')
 
 //and value_date between DATE_ADD('".$period_year."-".$period_month."-01', INTERVAL 1 DAY) and DATE_ADD(LAST_DAY('".$period_year."-".$period_month."-01'), INTERVAL 1 DAY)
 
