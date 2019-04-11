@@ -49,7 +49,7 @@ $bs_sql = "SELECT
                     (bank_statement.credit+bank_statement.debit)-SUM(settlements.value) as still_to_settle,
                     settlements.bank_statement_id,
                     SUM(settlements.value) as sum_sett_value,
-                    (SUM(bank_statement.credit)+SUM(bank_statement.debit)) as sum_value
+                    (bank_statement.credit+bank_statement.debit) as sum_value
                     FROM bank_statement
                     left join settlements on settlements.bank_statement_id=bank_statement.id_bank_statement
                     where (settlements.bank_statement_id IS NULL or settlements.value<>(bank_statement.credit+bank_statement.debit))
