@@ -67,7 +67,7 @@ if($_GET['loc_sel'] <> '')
          }
       elseif($_GET['loc_sel']==6) //kuta downtown
          {
-         $location_statement_filter = 'and (description LIKE "%MBL2%" or description LIKE "%2 MBL%)"';
+         $location_statement_filter = 'and (description LIKE "%MBL2%" or description LIKE "%2 MBL%")';
          $location_statement_filter_txt = 'with MBL2 or 2 MBL';
          }
       elseif($_GET['loc_sel']==8) //sengigi sheraton
@@ -128,7 +128,7 @@ ORDER BY cash_book.date desc";
 
 //                              AND MONTH(`cash_book`.`date`) = '".$period_month."'
 //                              AND YEAR(`cash_book`.`date`) = '".$period_year."'
-echo $select;
+//echo $select;
 $stmt = $dbh->prepare($select);
 $stmt -> execute();
 
