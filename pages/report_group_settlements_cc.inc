@@ -128,7 +128,7 @@ ORDER BY cash_book.date desc";
 
 //                              AND MONTH(`cash_book`.`date`) = '".$period_month."'
 //                              AND YEAR(`cash_book`.`date`) = '".$period_year."'
-//echo $select;
+echo $select;
 $stmt = $dbh->prepare($select);
 $stmt -> execute();
 
