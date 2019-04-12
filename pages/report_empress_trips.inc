@@ -39,6 +39,7 @@ else
 $select = "SELECT 
         boat_trip.date_from,boat_trip.date_to,boat_trip.txt_route, boat_trip.id_boat_trip,
         ROUND(SUM(income_cabin.value)) as income_cabin,
+        clearance_scan_org_filename_ext,
         YEAR(boat_trip.date_to) as trip_year,
         MONTH(boat_trip.date_to) as trip_month
         
@@ -188,6 +189,13 @@ foreach($row_array as $row)
 
      echo '<td class=cash>'.$formatter->formatCurrency($trip_result, 'IDR').'</td>';
 
+     echo '<td>';
+   
+     if(file_exists('img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext']))
+              echo '<a href="img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext'].'" target=_blank><i class="far fa-file-alt fa-2x"></i></a>';
+     
+     echo '</td>';
+
      echo '<td><a href="report_empress.php?action=trip_result&id_boat_trip='.$row['id_boat_trip'].'"><i class="fas fa-info-circle fa-2x" aria-hidden="true"></i></a></td>';
 
      echo '</tr>';
@@ -213,6 +221,7 @@ $sum_result = $sum_inc_cabin+$sum_inc_sell-$sum_costs-$sum_sal-$sum_sal_mnth;
      <td class=cash><?php echo $formatter->formatCurrency($sum_sal_mnth, 'IDR'); ?></td>
      <td class=cash><?php echo $formatter->formatCurrency($sum_result, 'IDR'); ?></td>
      <td></td>
+     <td></td>
   </tr>
 
 
@@ -226,6 +235,7 @@ $sum_result = $sum_inc_cabin+$sum_inc_sell-$sum_costs-$sum_sal-$sum_sal_mnth;
      <th>Salaries Trip</th>
      <th>Salaries Month<br>avg per Trip</th>
      <th>Trip Result</th>
+     <th>Clearance List</th>
      <th></th>
   </tr>
  </thead>
