@@ -41,7 +41,8 @@ foreach($row_array as $row)
 $stmt = $dbh->prepare("SELECT boat_trip.id_boat_trip,
                               boat_trip.date_from, boat_trip.date_to, boat_trip.txt_route,
                               YEAR(boat_trip.date_to) as trip_year,
-                              MONTH(boat_trip.date_to) as trip_month
+                              MONTH(boat_trip.date_to) as trip_month,
+                              boat_trip.clearance_scan_org_filename_ext
 
 
                               FROM boat_trip
@@ -72,7 +73,12 @@ echo '<table width=80%><tr valign=top><td width=50%>';   //tabelka do ulozenia w
 
 echo '<table class="pure-table pure-table-horizontal pure-table-striped">
    <thead>
-<tr><td colspan=2 align=center><h3>Income</h3></td></tr>
+<tr><td colspan=2 align=center><h3>Income</h3>
+<p>Clearance List:'; 
+      if(file_exists('img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext']))
+         echo '<a href="img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext'].'" target=_blank><i class="far fa-file-alt fa-2x"></i></a>';
+
+echo '</p></td></tr>
 <tr><td align=center>Name</td>
 <td>Income</td>
 </tr>

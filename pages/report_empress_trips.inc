@@ -189,7 +189,7 @@ foreach($row_array as $row)
 
      echo '<td class=cash>'.$formatter->formatCurrency($trip_result, 'IDR').'</td>';
 
-     echo '<td>';
+     echo '<td align=center>';
    
      if(file_exists('img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext']))
               echo '<a href="img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext'].'" target=_blank><i class="far fa-file-alt fa-2x"></i></a>';
@@ -235,7 +235,7 @@ $sum_result = $sum_inc_cabin+$sum_inc_sell-$sum_costs-$sum_sal-$sum_sal_mnth;
      <th>Salaries Trip</th>
      <th>Salaries Month<br>avg per Trip</th>
      <th>Trip Result</th>
-     <th>Clearance List</th>
+     <th>Clearance<br>List</th>
      <th></th>
   </tr>
  </thead>
