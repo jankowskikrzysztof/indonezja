@@ -277,7 +277,9 @@ $stmt = $dbh->prepare("SELECT boat_trip.id_boat_trip,
                               boat_trip.price_cabin_d, boat_trip.txt_cabin_d,
                               boat_trip.price_cabin_e, boat_trip.txt_cabin_e,
 
-                              boat_trip.txt_route
+                              boat_trip.txt_route,
+
+                              boat_trip.clearance_scan_org_filename_ext
 
                               FROM boat_trip
                               WHERE
@@ -323,6 +325,9 @@ if($row['date_from']<$date_now and $row['date_to']>$date_now)
                       <br><br><a class="pure-button pure-button-primary" href="?action=edit&id='.$row['id_boat_trip'].'"><i class="far fa-edit" aria-hidden="true"></i> Trip Edit</a>
                       <br><br><a class="pure-button pure-button-primary" href="report_empress.php?action=trip_result&id_boat_trip='.$row['id_boat_trip'].'"><i class="far fa-chart-bar" aria-hidden="true"></i> Trip result</a>';
 
+                      if(file_exists('img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext']))
+                         echo '<br><br><a class="pure-button pure-button-primary" href="img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext'].'" target=_blank><i class="far fa-file-alt" aria-hidden="true"></i> Clearance List</a>';
+                              
                 echo '
                     </td>
    <td align=right>Price</td>
