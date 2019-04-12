@@ -75,7 +75,7 @@ echo '<table width=80%><tr valign=top><td width=50%>';   //tabelka do ulozenia w
 echo '<table class="pure-table pure-table-horizontal pure-table-striped">
    <thead>
 <tr><td colspan=2 align=center><h3>Income</h3>
-<p>Clearance List:'; 
+<p align=right>Clearance List: &nbsp;'; 
       if(file_exists('img_uploads/boat_trip/clearance_list_'.$id_boat_trip.'.'.$clearance_scan_org_filename_ext))
          echo '<a href="img_uploads/boat_trip/clearance_list_'.$id_boat_trip.'.'.$clearance_scan_org_filename_ext.'" target=_blank><i class="far fa-file-alt fa-2x"></i></a>';
 
