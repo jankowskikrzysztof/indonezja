@@ -1,7 +1,7 @@
 <?php
 $action = $_GET['action'];
 
-$header_title = 'Scuba -> Client';
+$header_title = 'Scuba -> Clearance Lists';
 include('inc/header.inc');
 
 include('inc/config.inc');
@@ -10,11 +10,11 @@ if($action <> 'post' and $action <> 'del')
    include('inc/nav.inc');
 
 if($action == 'add' or $action == 'edit')
-   include('pages/client_form.inc');
+   include('pages/clearance_form.inc');
 elseif($action == 'post' or $action == 'del')
-   include('pages/client_form_post.inc');
+   include('pages/clearance_form_post.inc');
 else
-   include('pages/client_main.inc');
+   include('pages/clearance_main.inc');
 ?>
 
 

@@ -36,6 +36,7 @@ if($_SESSION['limit_site']=="")
         <div class="dropdown-content">
       <a href="empress_income.php?period='.date("Y-m").'">Income</a>
       <a href="boat_trip.php?period='.date("Y").'">Calendar</a>
+      <a href="clearance.php">Clearance Lists</a>
       <a href="client.php">Clients</a>
       <a href="empress_guests.php">Empress Guests</a>
       <a href="invoice.php?action=emp&period='.date("Y").'">Invoices</a>
