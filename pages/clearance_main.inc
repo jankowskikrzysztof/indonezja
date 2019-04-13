@@ -37,7 +37,7 @@ foreach($row_array as $row)
    if(file_exists('img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext']))
             echo '<a href="img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext'].'" target=_blank><i class="far fa-file-alt fa-2x"></i></a>';
    else
-            echo '<a href="?action=edit&id='.$row['id_boat_trip'].'" target=_blank><i class="far fa-upload fa-2x"></i></a>';
+            echo '<a href="?action=edit&id='.$row['id_boat_trip'].'" target=_blank><i class="fas fa-upload fa-2x"></i></a>';
    
    echo '</td>
       </tr>';
