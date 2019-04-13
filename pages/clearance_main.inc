@@ -1,10 +1,11 @@
-
+<script src="https://unpkg.com/sticky-table-headers"></script>
 
 
   <table class="pure-table pure-table-horizontal pure-table-striped">
    <thead>
   <tr>
-     <th>Trip</th>
+     <th align=center>Trip</th>
+     <th></th>
      <th></th>
   </tr>
  </thead>
@@ -31,11 +32,22 @@ foreach($row_array as $row)
 
    echo '<tr>
      <td align=center '.$option_bgcolor.'>'.$row['date_from'].' - '.$row['date_to'].'<br><font size=0.5vw>'.$row['txt_route'].'</font></td>
-   <td><a href="?action=edit&id='.$row['id_client'].'"><i class="far fa-edit" aria-hidden="true"></i></a></td>
-   </tr>';
+   <td><a href="?action=edit&id='.$row['id_client'].'"><i class="far fa-edit" aria-hidden="true"></i></a></td>';
+
+   echo '<td align=center>';
+   
+   if(file_exists('img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext']))
+            echo '<a href="img_uploads/boat_trip/clearance_list_'.$row['id_boat_trip'].'.'.$row['clearance_scan_org_filename_ext'].'" target=_blank><i class="far fa-file-alt fa-2x"></i></a>';
+   
+   echo '</td>
+      </tr>';
 
 
    }
 
 ?>
 </table>
+
+<script>
+    $('table').stickyTableHeaders();
+  </script>
