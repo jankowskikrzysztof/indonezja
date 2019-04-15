@@ -21,8 +21,8 @@ if($_POST['source_action']=='edit' and $_SESSION['permission']=='rw')
         $file_ext = pathinfo(parse_url($_FILES["fileToUpload"]["name"])['path'], PATHINFO_EXTENSION);
         if($file_ext <> "")
             $file_info_sql = '
-                            `scan_org_filename` = "'.$_FILES['fileToUpload']['name'].'",
-                            `scan_org_filename_ext` = "'.$file_ext.'"';
+                            `clearance_scan_org_filename` = "'.$_FILES['fileToUpload']['name'].'",
+                            `clearance_scan_org_filename_ext` = "'.$file_ext.'"';
         else
             $file_info_sql = '';
 
@@ -54,14 +54,8 @@ $target_table = 'boat_trip';
 $txt = 'clearance_list_scan';
 
 
-if($_POST['source_action']=='add')
-    $target_id = $last_insert_id;
-else
-    $target_id = $post_id;
 
-if($_GET['action']=='del')
-    $target_action = $_GET['action'];
-else
+    $target_id = $post_id;
     $target_action = $_POST['source_action'];
 
 $stmt = $dbh->prepare("INSERT INTO `logs` (`personel_id`,`ip`,`type`,`target_table`,`target_id`,`txt`)
