@@ -4,7 +4,7 @@
 $post_id = $_POST['id'];
 
 $target_dir = "img_uploads/boat_trip/";
-$target_file = $target_dir . 'boat_trip_' .$_POST['id'];
+$target_file = $target_dir . 'clearance_list_' .$_POST['id'];
 $uploadOk = 1;
 
 
@@ -71,7 +71,7 @@ $stmt = $dbh->prepare("INSERT INTO `logs` (`personel_id`,`ip`,`type`,`target_tab
 $stmt -> execute();
 
 
-header('location: boat_trip.php');
+header('location: clearance.php');
 exit;
 
 ?>

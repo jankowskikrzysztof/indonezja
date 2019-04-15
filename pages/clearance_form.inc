@@ -31,7 +31,7 @@ if($action=='edit')
 
 if($_GET['datt']==1 and $_SESSION['permission']=='rw')
     {
-    rename('img_uploads/boat_trip/boat_trip_'.$id.'.'.$clearance_scan_org_filename_ext,'img_uploads/boat_trip/boat_trip_'.$id.'_'.uniqid().'.'.$clearance_scan_org_filename_ext);
+    rename('img_uploads/boat_trip/clearance_list_'.$id.'.'.$clearance_scan_org_filename_ext,'img_uploads/boat_trip/clearance_list_'.$id.'_'.uniqid().'.'.$clearance_scan_org_filename_ext);
     }
 
 
@@ -74,14 +74,14 @@ if($action=='edit')
                 
 <?php
 
-    if(file_exists('img_uploads/boat_trip/boat_trip_'.$id.'.'.$clearance_scan_org_filename_ext.''))
+    if(file_exists('img_uploads/boat_trip/clearance_list_'.$id.'.'.$clearance_scan_org_filename_ext.''))
         {
         if(in_array($scan_org_filename_ext,array('jpg','jpeg','png')))
-            $img_file = '<img src="img_uploads/boat_trip/boat_trip_'.$id.'.'.$clearance_scan_org_filename_ext.'" style="max-width:200px">';
+            $img_file = '<img src="img_uploads/boat_trip/clearance_list_'.$id.'.'.$clearance_scan_org_filename_ext.'" style="max-width:200px">';
         else
             $img_file = '<i class="far fa-file-pdf fa-5x"></i>';
 
-        echo '<a href="img_uploads/boat_trip/boat_trip_'.$id.'.'.$clearance_scan_org_filename_ext.'" target=_blank>'.$img_file.'</a> &nbsp;&nbsp;&nbsp;
+        echo '<a href="img_uploads/boat_trip/clearance_list_'.$id.'.'.$clearance_scan_org_filename_ext.'" target=_blank>'.$img_file.'</a> &nbsp;&nbsp;&nbsp;
         <a href="?action=edit&id='.$id.'&datt=1"><i class="fas fa-times"></i></a>';
         }
     else
