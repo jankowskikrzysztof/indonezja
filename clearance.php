@@ -9,7 +9,7 @@ include('inc/config.inc');
 if($action <> 'post' and $action <> 'del')
    include('inc/nav.inc');
 
-if($action == 'add' or $action == 'edit')
+if($action == 'edit')
    include('pages/clearance_form.inc');
 elseif($action == 'post' or $action == 'del')
    include('pages/clearance_form_post.inc');
