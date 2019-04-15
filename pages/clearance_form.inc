@@ -76,7 +76,7 @@ if($action=='edit')
 
     if(file_exists('img_uploads/boat_trip/clearance_list_'.$id.'.'.$clearance_scan_org_filename_ext.''))
         {
-        if(in_array($scan_org_filename_ext,array('jpg','jpeg','png')))
+        if(in_array($clearance_scan_org_filename_ext,array('jpg','jpeg','png')))
             $img_file = '<img src="img_uploads/boat_trip/clearance_list_'.$id.'.'.$clearance_scan_org_filename_ext.'" style="max-width:200px">';
         else
             $img_file = '<i class="far fa-file-pdf fa-5x"></i>';
@@ -87,6 +87,13 @@ if($action=='edit')
     else
         {
         echo '<input type="file" name="fileToUpload" id="fileToUpload">';
+  
+  
+        if($_SESSION['permission']=='rw')
+            {
+            echo '<div class="pure-controls"><button type="submit" class="pure-button pure-button-primary">Submit</button></div>';
+
+            }
         }
 
     echo '</div>';
@@ -94,22 +101,5 @@ if($action=='edit')
 
     }; ?>
 
-
-            <div class="pure-controls">
-
-
-
-
-                <?php
-                if($_SESSION['permission']=='rw')
-                   {
-                   echo '<button type="submit" class="pure-button pure-button-primary">Submit</button>';
-
-                   }
-
-
-                 ?>
-
-            </div>
         </fieldset>
     </form>
