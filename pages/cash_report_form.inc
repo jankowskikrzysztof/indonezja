@@ -46,13 +46,13 @@ $to_location_array = $stmt->fetchAll();
                }
             if($cash_doc_type == 'in' and $action == 'edit')
                {
-               $limit_cb_group = 'WHERE cash_book_group.id_cash_book_group IN (21,22,23,24,45)';
+               $limit_cb_group = 'WHERE cash_book_group.id_cash_book_group IN (21,22,23,24,45,55)';
                }
             if($action <> 'edit' and $cash_doc_type == 'in')
                {
-               $limit_cb_group = 'WHERE cash_book_group.id_cash_book_group IN (24,53)';
+               $limit_cb_group = 'WHERE cash_book_group.id_cash_book_group IN (24,53,55)';
                }
-               if($action <> 'edit' and $cash_doc_type == 'out')
+            if($action <> 'edit' and $cash_doc_type == 'out')
                {
                $limit_cb_group = 'WHERE cash_book_group.id_cash_book_group IN (24)';
                }
