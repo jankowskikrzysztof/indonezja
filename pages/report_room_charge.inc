@@ -286,7 +286,7 @@ ORDER BY date DESC";
 
 //                              AND MONTH(`cash_book`.`date`) = 
 //                              AND YEAR(`cash_book`.`date`) = 
-//echo $select;
+echo $select;
 $stmt = $dbh->prepare($select);
 $stmt -> execute();
 
