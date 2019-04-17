@@ -313,7 +313,7 @@ foreach($row_array as $row)
 ?>
 
   <tr align=center valign=top>
-     <td colspan=2></td>
+     <td colspan=3></td>
      <td class=cash><?php echo $formatter->formatCurrency($sum_in, 'IDR'); ?></td>
   </tr>
 
