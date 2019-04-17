@@ -246,7 +246,7 @@ echo '<tfoot>
 $select = "SELECT bank_statement.value_date as date,
 bank_statement.id_bank_statement as id,
 bank_statement.description,
-'bank', as value_source,
+'bank' as value_source,
 bank_statement.credit as cash
 
 FROM bank_statement
@@ -267,7 +267,7 @@ UNION
 SELECT cash_book.date,
 cash_book.id_cash_book as id,
 cash_book.desc as description,
-'cash', as value_source,
+'cash' as value_source,
 cash_book.pay_cash as cash
 
 FROM `cash_book` 
