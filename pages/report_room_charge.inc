@@ -243,7 +243,11 @@ echo '<tfoot>
 
 
 
-$select = "SELECT bank_statement.*
+$select = "SELECT bank_statement.value_date as date,
+bank_statement.id_bank_statement as id,
+bank_statement.description,
+bank_statement.credit as value
+
 FROM bank_statement
 WHERE (
      description LIKE '%DARI NOVOTEL%'
@@ -256,7 +260,22 @@ and account_no = '359738937'
 and YEAR(`value_date`) = '".$period_year."'
 $period_limit_bs
 
-ORDER BY bank_statement.value_date DESC";
+
+UNION
+
+SELECT cash_book.date,
+cash_book.id_cash_book as id,
+cash_book.desc,
+cash_book.pay_cash as value
+
+FROM `cash_book` 
+WHERE `cash_book_group_id` = 55
+and cash_book.type=1
+and cash_report_only=1
+and YEAR(`date`) = '".$period_year."'
+$period_limit
+
+ORDER BY date DESC";
 
 
 //and MONTH(`value_date`) = '".$period_month."'
@@ -275,14 +294,14 @@ foreach($row_array as $row)
 
 
      echo '<tr>
-     <td>'.$row['value_date'].', <font size=0.5vw>'.$row['id_bank_statement'].'</font></td>
+     <td>'.$row['date'].', <font size=0.5vw>'.$row['id'].'</font></td>
      <td>'.$row['description'].'</td>';
 
-     echo '<td class=cash>'.$formatter->formatCurrency($row['credit'], 'IDR').'</td>';
+     echo '<td class=cash>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>';
 
      echo '</tr>';
 
-  $sum_in += $row['credit'];
+  $sum_in += $row['value'];
 
   }
 
