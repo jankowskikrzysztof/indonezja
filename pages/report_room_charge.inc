@@ -245,8 +245,8 @@ echo '<tfoot>
 
 $select = "SELECT bank_statement.value_date as date,
 bank_statement.id_bank_statement as id,
-bank_statement.description as desc,
-bank_statement.credit as value
+bank_statement.description,
+bank_statement.credit as cash
 
 FROM bank_statement
 WHERE (
@@ -265,8 +265,8 @@ UNION
 
 SELECT cash_book.date,
 cash_book.id_cash_book as id,
-cash_book.desc,
-cash_book.pay_cash as value
+cash_book.desc as description,
+cash_book.pay_cash as cash
 
 FROM `cash_book` 
 WHERE `cash_book_group_id` = 55
@@ -274,6 +274,7 @@ and cash_book.type=1
 and cash_report_only=1
 and YEAR(`date`) = '".$period_year."'
 $period_limit
+$where_limit 
 
 ORDER BY date DESC";
 
@@ -295,13 +296,13 @@ foreach($row_array as $row)
 
      echo '<tr>
      <td>'.$row['date'].', <font size=0.5vw>'.$row['id'].'</font></td>
-     <td>'.$row['desc'].'</td>';
+     <td>'.$row['description'].'</td>';
 
-     echo '<td class=cash>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>';
+     echo '<td class=cash>'.$formatter->formatCurrency($row['cash'], 'IDR').'</td>';
 
      echo '</tr>';
 
-  $sum_in += $row['value'];
+  $sum_in += $row['cash'];
 
   }
 
