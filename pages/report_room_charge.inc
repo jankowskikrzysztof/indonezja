@@ -231,7 +231,7 @@ echo '<tfoot>
 
 
 <br><br>
-<h2 align=center>Bank Statement records (year)</h2>
+<h2 align=center>Bank Statement and Cash Book records (year)</h2>
 
 
 <div>
@@ -245,7 +245,7 @@ echo '<tfoot>
 
 $select = "SELECT bank_statement.value_date as date,
 bank_statement.id_bank_statement as id,
-bank_statement.description,
+bank_statement.description as desc,
 bank_statement.credit as value
 
 FROM bank_statement
@@ -295,7 +295,7 @@ foreach($row_array as $row)
 
      echo '<tr>
      <td>'.$row['date'].', <font size=0.5vw>'.$row['id'].'</font></td>
-     <td>'.$row['description'].'</td>';
+     <td>'.$row['desc'].'</td>';
 
      echo '<td class=cash>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>';
 
