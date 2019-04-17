@@ -246,6 +246,7 @@ echo '<tfoot>
 $select = "SELECT bank_statement.value_date as date,
 bank_statement.id_bank_statement as id,
 bank_statement.description,
+'bank', as type,
 bank_statement.credit as cash
 
 FROM bank_statement
@@ -266,6 +267,7 @@ UNION
 SELECT cash_book.date,
 cash_book.id_cash_book as id,
 cash_book.desc as description,
+'cash', as type,
 cash_book.pay_cash as cash
 
 FROM `cash_book` 
@@ -284,7 +286,7 @@ ORDER BY date DESC";
 
 //                              AND MONTH(`cash_book`.`date`) = 
 //                              AND YEAR(`cash_book`.`date`) = 
-echo $select;
+//echo $select;
 $stmt = $dbh->prepare($select);
 $stmt -> execute();
 
@@ -296,6 +298,7 @@ foreach($row_array as $row)
 
      echo '<tr>
      <td>'.$row['date'].', <font size=0.5vw>'.$row['id'].'</font></td>
+     <td>'.$row['type'].'</td>
      <td>'.$row['description'].'</td>';
 
      echo '<td class=cash>'.$formatter->formatCurrency($row['cash'], 'IDR').'</td>';
@@ -319,7 +322,8 @@ foreach($row_array as $row)
    <thead>
   <tr align=center valign=top>
      <th>Date</th>
-     <th>description</th>
+     <th>Type</th>
+     <th>Description</th>
 
      <th>IN</th>
   </tr>
