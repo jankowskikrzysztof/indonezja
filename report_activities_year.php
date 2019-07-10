@@ -240,10 +240,9 @@ $array_pos = 0;
    
    cash_book.*
    
-   FROM `cash_book`, `location`,`cash_book_item`
+   FROM `cash_book`, `location`
    
    WHERE cash_book.location_id=location.id_location
-   and cash_book.id_cash_book=cash_book_item.cash_book_id
    and cash_book_group_id NOT IN (21,22,23,24) 
    and YEAR(cash_book.date)=".$period_year."
    
@@ -259,13 +258,13 @@ $array_pos = 0;
    
    //echo '<pre>'.$select.'</pre>';
    
-	   $stmt_income = $dbh->prepare("
+	   $stmt_comm = $dbh->prepare("
    
    $select
    
 			   ");
-	   $stmt_income -> execute();
-	   $row_array_income = $stmt_income->fetchAll();
+	   $stmt_comm -> execute();
+	   $row_array_income = $stmt_comm->fetchAll();
 
 
 
@@ -349,7 +348,7 @@ foreach($row_array as $row)
 
 
 
-?>
+
 
 
 
