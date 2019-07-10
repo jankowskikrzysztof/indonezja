@@ -191,7 +191,7 @@ $array_pos = 0;
 
    $sum_loc_res = $sum_loc_income - $sum_loc_costs;
 
-   echo '<td class=cash>'.$formatter->formatCurrency($sum_loc_costs, 'IDR').'</td>';
+   echo '<td class=cash>'.$formatter->formatCurrency(round($sum_loc_costs), 'IDR').'</td>';
 
 
    echo '</tr>';
