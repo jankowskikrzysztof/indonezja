@@ -264,9 +264,11 @@ $array_pos = 0;
    
 			   ");
 	   $stmt_comm -> execute();
-	   $row_array_income = $stmt_comm->fetchAll();
+	   $row_array_comm = $stmt_comm->fetchAll();
 
-
+	echo '<td><pre>';
+var_dump($row_array_costs);
+	echo '</pre></td>';
 
 	   $array_pos = 0;
 
@@ -276,10 +278,10 @@ $array_pos = 0;
 		  {
 
 
-		  if($m == $row_array_income[$array_pos][month])
+		  if($m == $row_array_comm[$array_pos][month])
 			{
 				echo '<td class=cash>
-							'.$formatter->formatCurrency($row_array_income[$array_pos][sum_commission], 'IDR').'
+							'.$formatter->formatCurrency($row_array_comm[$array_pos][sum_commission], 'IDR').'
 						</td>';
 				
 				//$sum_costs[$m] += $row_array_income[$array_pos][sum_commission];
