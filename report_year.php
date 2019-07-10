@@ -236,10 +236,10 @@ $sum_loc_rc_txt = '';
 	   {
 	   $profit = $sum_income[$m]-$sum_rc[$m]-$sum_costs[$m];
 
-	   echo '<td class=cash>'.$formatter->formatCurrency($sum_income[$m], 'IDR').'<br>
-				   '.$formatter->formatCurrency($sum_rc[$m], 'IDR').'<br>
-	   				'.$formatter->formatCurrency($sum_costs[$m], 'IDR').'<br>
-					'.$formatter->formatCurrency($profit, 'IDR').'</td>';
+	   echo '<td class=cash>'.$formatter->formatCurrency(round($sum_income[$m]), 'IDR').'<br>
+				   '.$formatter->formatCurrency(round($sum_rc[$m]), 'IDR').'<br>
+	   				'.$formatter->formatCurrency(round($sum_costs[$m]), 'IDR').'<br>
+					'.$formatter->formatCurrency(round($profit), 'IDR').'</td>';
 	   
 	   $sum_loc_income1 += $sum_income[$m];
 	   $sum_loc_rc1 += $sum_rc[$m];
@@ -249,10 +249,10 @@ $sum_loc_rc_txt = '';
 
 	$profit1 = $sum_loc_income1-$sum_loc_rc1-$sum_loc_costs1;
 
-  echo '<td class=cash>'.$formatter->formatCurrency($sum_loc_income1, 'IDR').'<br>
-					'.$formatter->formatCurrency($sum_loc_rc1, 'IDR').'<br>
-					'.$formatter->formatCurrency($sum_loc_costs1, 'IDR').'<br>
-					'.$formatter->formatCurrency($profit1, 'IDR').'</td>';
+  echo '<td class=cash>'.$formatter->formatCurrency(round($sum_loc_income1), 'IDR').'<br>
+					'.$formatter->formatCurrency(round($sum_loc_rc1), 'IDR').'<br>
+					'.$formatter->formatCurrency(round($sum_loc_costs1), 'IDR').'<br>
+					'.$formatter->formatCurrency(round($profit1), 'IDR').'</td>';
 
    echo '</tr>';
 
