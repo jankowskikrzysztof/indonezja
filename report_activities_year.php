@@ -135,6 +135,7 @@ WHERE cash_book.location_id=location.id_location
 and cash_book.id_cash_book=cash_book_item.cash_book_id
 and cash_book_group_id NOT IN (21,22,23,24) 
 and YEAR(cash_book.date)=".$period_year."
+and cash_book.type=1
 
 and cash_book_item.activity_id=".$row['id_activity']."
 			".$def_location."
@@ -146,7 +147,7 @@ GROUP BY YEAR(cash_book.date), MONTH(cash_book.date), cash_book_item.activity_id
 
 ORDER BY YEAR(cash_book.date), MONTH(cash_book.date), location.name";
 
-echo '<pre>'.$select.'</pre>';
+//echo '<pre>'.$select.'</pre>';
 
 	$stmt_income = $dbh->prepare("
 
@@ -201,6 +202,13 @@ $array_pos = 0;
    }
 
 
+
+
+
+   
+
+
+
    echo '<tr><td>TOTAL</td>';
 
 	for($m=1;$m<=12;$m++)
@@ -219,6 +227,77 @@ $array_pos = 0;
   echo '<td class=cash>'.$formatter->formatCurrency(round($sum_loc_costs), 'IDR').'</td>';
 
    echo '</tr>';
+
+
+
+
+
+
+
+   $select = "SELECT YEAR(cash_book.date) as year, MONTH(cash_book.date) as month, cash_book.location_id, location.name, 
+
+	SUM(`booker_commission`) as sum_commission,
+   
+   cash_book.*
+   
+   FROM `cash_book`, `location`,`cash_book_item`
+   
+   WHERE cash_book.location_id=location.id_location
+   and cash_book.id_cash_book=cash_book_item.cash_book_id
+   and cash_book_group_id NOT IN (21,22,23,24) 
+   and YEAR(cash_book.date)=".$period_year."
+   
+   and cash_book.type=1 
+			   ".$def_location."
+			   ".$location_limit."
+			   ".$kuta_seng_location."
+			   ".$location_limit_sel."
+			   ".$period_limit."
+   GROUP BY YEAR(cash_book.date), MONTH(cash_book.date)
+   
+   ORDER BY YEAR(cash_book.date), MONTH(cash_book.date), location.name";
+   
+   //echo '<pre>'.$select.'</pre>';
+   
+	   $stmt_income = $dbh->prepare("
+   
+   $select
+   
+			   ");
+	   $stmt_income -> execute();
+	   $row_array_income = $stmt_income->fetchAll();
+
+
+
+	   $array_pos = 0;
+
+	   echo '<tr><td>BOOKER COMMISION TOTAL</td>';
+
+	   for($m=1;$m<=12;$m++)
+		  {
+
+
+		  if($m == $row_array_income[$array_pos][month])
+			{
+				echo '<td class=cash>
+							'.$formatter->formatCurrency($row_array_income[$array_pos][sum_commission], 'IDR').'
+						</td>';
+				
+				//$sum_costs[$m] += $row_array_income[$array_pos][sum_commission];
+	
+				//$sum_loc_costs += $row_array_income[$array_pos][sum_commission];
+	
+			$array_pos++;
+			}
+			else
+			echo '<td></td>';
+
+		}
+
+   
+	  echo '</tr>';
+
+
 
 
 
