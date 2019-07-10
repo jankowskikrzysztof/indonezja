@@ -173,12 +173,12 @@ $array_pos = 0;
 	   if($m == $row_array_income[$array_pos][month])
 		{
 		   echo '<td class=cash>
-						'.$formatter->formatCurrency($row_array_income[$array_pos][sum_costs], 'IDR').'
+						'.$formatter->formatCurrency($row_array_income[$array_pos][sum_income], 'IDR').'
 					</td>';
 		   
-		   $sum_costs[$m] += $row_array_income[$array_pos][sum_costs];
+		   $sum_costs[$m] += $row_array_income[$array_pos][sum_income];
 
-		   $sum_loc_costs += $row_array_income[$array_pos][sum_costs];
+		   $sum_loc_costs += $row_array_income[$array_pos][sum_income];
 
 		$array_pos++;
 		}
