@@ -118,7 +118,7 @@ $row_array = $stmt->fetchAll();
 foreach($row_array as $row)
    {
    echo '<tr>
-   <td>'.$row['name'].'</td>';
+   <td>'.$row['shortcut'].' '.$row['name'].'</td>';
 
 
 $select = "SELECT YEAR(cash_book.date) as year, MONTH(cash_book.date) as month, cash_book.location_id, location.name, 
