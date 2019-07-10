@@ -266,9 +266,6 @@ $array_pos = 0;
 	   $stmt_comm -> execute();
 	   $row_array_comm = $stmt_comm->fetchAll();
 
-	echo '<tr><td colspan=14><pre>';
-var_dump($row_array_comm);
-	echo '</pre></td></tr>';
 
 	   $array_pos = 0;
 
@@ -286,7 +283,7 @@ var_dump($row_array_comm);
 				
 				//$sum_costs[$m] += $row_array_income[$array_pos][sum_commission];
 	
-				//$sum_loc_costs += $row_array_income[$array_pos][sum_commission];
+				$sum_loc_comm += $row_array_comm[$array_pos][sum_commission];
 	
 			$array_pos++;
 			}
@@ -294,7 +291,8 @@ var_dump($row_array_comm);
 			echo '<td></td>';
 
 		}
-
+	
+		echo '<td class=cash>'.$formatter->formatCurrency(round($sum_loc_comm), 'IDR').'</td>';
    
 	  echo '</tr>';
 
