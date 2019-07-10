@@ -118,13 +118,14 @@ $row_array = $stmt->fetchAll();
 foreach($row_array as $row)
    {
    echo '<tr>
-   <td>'.$row['shortcut'].' '.$row['name'].'</td>';
+   <td>'.$row['shortcut'].': '.$row['name'].'</td>';
+
+//SUM(case when cash_book.type=2 then cash_book.value else 0 end) as sum_costs,
 
 
 $select = "SELECT YEAR(cash_book.date) as year, MONTH(cash_book.date) as month, cash_book.location_id, location.name, 
 
-SUM(case when cash_book.type=1 then cash_book.value else 0 end) as sum_income,
-SUM(case when cash_book.type=2 then cash_book.value else 0 end) as sum_costs,
+SUM(case when cash_book.type=1 then cash_book_item.value else 0 end) as sum_income,
 
 cash_book.*
 
