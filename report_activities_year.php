@@ -146,7 +146,7 @@ GROUP BY YEAR(cash_book.date), MONTH(cash_book.date), cash_book_item.activity_id
 
 ORDER BY YEAR(cash_book.date), MONTH(cash_book.date), location.name";
 
-//echo $select;
+echo '<pre>'.$select.'</pre>';
 
 	$stmt_income = $dbh->prepare("
 
