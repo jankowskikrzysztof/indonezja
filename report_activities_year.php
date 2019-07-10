@@ -303,12 +303,13 @@ $array_pos = 0;
 	  for($m=1;$m<=12;$m++)
 		 {
 
+			$inc_after_comm = $sum_costs[$m]-$sum_comm[$m];
 
 			   echo '<td class=cash>
-						   '.$formatter->formatCurrency($sum_costs[$m]-$sum_comm[$m]), 'IDR').'
+						   '.$formatter->formatCurrency($inc_after_comm, 'IDR').'
 					   </td>';
 			   
-			$sum_inc_after_comm += $sum_costs[$m]-$sum_comm[$m];
+			$sum_inc_after_comm += $inc_after_comm;
 
 	   }
    
