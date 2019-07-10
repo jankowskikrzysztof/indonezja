@@ -278,10 +278,10 @@ $array_pos = 0;
 		  if($m == $row_array_comm[$array_pos][month])
 			{
 				echo '<td class=cash>
-							'.$formatter->formatCurrency($row_array_comm[$array_pos][sum_commission], 'IDR').'
+							'.$formatter->formatCurrency(round($row_array_comm[$array_pos][sum_commission]), 'IDR').'
 						</td>';
 				
-				//$sum_costs[$m] += $row_array_income[$array_pos][sum_commission];
+				$sum_comm[$m] += $row_array_comm[$array_pos][sum_commission];
 	
 				$sum_loc_comm += $row_array_comm[$array_pos][sum_commission];
 	
@@ -296,6 +296,25 @@ $array_pos = 0;
    
 	  echo '</tr>';
 
+
+
+	  echo '<tr><td>BOOKER COMMISION TOTAL</td>';
+
+	  for($m=1;$m<=12;$m++)
+		 {
+
+
+			   echo '<td class=cash>
+						   '.$formatter->formatCurrency($sum_costs[$m]-$sum_comm[$m]), 'IDR').'
+					   </td>';
+			   
+			$sum_inc_after_comm += $sum_costs[$m]-$sum_comm[$m];
+
+	   }
+   
+	   echo '<td class=cash>'.$formatter->formatCurrency(round($sum_inc_after_comm), 'IDR').'</td>';
+  
+	 echo '</tr>';
 
 
 
