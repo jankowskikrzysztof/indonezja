@@ -298,7 +298,7 @@ $array_pos = 0;
 
 
 
-	  echo '<tr><td>BOOKER COMMISION TOTAL</td>';
+	  echo '<tr><td>TOTAL after COMMISSION</td>';
 
 	  for($m=1;$m<=12;$m++)
 		 {
@@ -306,7 +306,7 @@ $array_pos = 0;
 			$inc_after_comm = $sum_costs[$m]-$sum_comm[$m];
 
 			   echo '<td class=cash>
-						   '.$formatter->formatCurrency($inc_after_comm, 'IDR').'
+						   '.$formatter->formatCurrency(round($inc_after_comm), 'IDR').'
 					   </td>';
 			   
 			$sum_inc_after_comm += $inc_after_comm;
