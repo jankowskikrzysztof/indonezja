@@ -206,7 +206,7 @@ $array_pos = 0;
 	   {
 	   $profit = $sum_income[$m]-$sum_costs[$m];
 
-	   echo '<td class=cash>'.$formatter->formatCurrency($sum_costs[$m], 'IDR').'</td>';
+	   echo '<td class=cash>'.$formatter->formatCurrency(round($sum_costs[$m]), 'IDR').'</td>';
 	   
 	   $sum_loc_income += $sum_income[$m];
 	   $sum_loc_costs += $sum_costs[$m];
@@ -215,7 +215,7 @@ $array_pos = 0;
 
 	$profit = $sum_loc_income-$sum_loc_costs;
 
-  echo '<td class=cash>'.$formatter->formatCurrency($sum_loc_costs, 'IDR').'</td>';
+  echo '<td class=cash>'.$formatter->formatCurrency(round($sum_loc_costs), 'IDR').'</td>';
 
    echo '</tr>';
 
