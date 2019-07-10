@@ -266,9 +266,9 @@ $array_pos = 0;
 	   $stmt_comm -> execute();
 	   $row_array_comm = $stmt_comm->fetchAll();
 
-	echo '<td><pre>';
-var_dump($row_array_costs);
-	echo '</pre></td>';
+	echo '<tr><td colspan=14><pre>';
+var_dump($row_array_comm);
+	echo '</pre></td></tr>';
 
 	   $array_pos = 0;
 
