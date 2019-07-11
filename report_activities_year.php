@@ -232,7 +232,7 @@ $array_pos = 0;
 
 
 
-
+// pokazuje totale booker commission na empress bo nie wchodza do przychodu
 
    $select = "SELECT YEAR(cash_book.date) as year, MONTH(cash_book.date) as month, cash_book.location_id, location.name, 
 
@@ -247,6 +247,7 @@ $array_pos = 0;
    and YEAR(cash_book.date)=".$period_year."
    
    and cash_book.type=1 
+   and cash_book.location_id=14
 			   ".$def_location."
 			   ".$location_limit."
 			   ".$kuta_seng_location."
