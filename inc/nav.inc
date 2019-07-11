@@ -12,6 +12,7 @@ $stmt = $dbh->prepare("SELECT location.name as loc_name,location.id_location, lo
 $stmt -> execute();
 $location_array = $stmt->fetchAll();
 
+
 ?>
 
 <nav>
