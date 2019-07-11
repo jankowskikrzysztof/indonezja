@@ -74,7 +74,7 @@ if($_SESSION['limit_site']=="")
 
       <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16 or $_SESSION['user_id'] == 24) echo '<a href="report_cb_group_year.php?period='.date("Y-m").'">Annual Costs Report</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1) echo '<a href="report_activities_year.php?period='.date("Y-m").'">Annual Activities Report</a>'; ?>
+      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 16) echo '<a href="report_activities_year.php?period='.date("Y-m").'">Annual Activities Report</a>'; ?>
 
       <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="withdraw_bank.php?period='.date("Y-m").'">Bank Withdraw</a>'; ?>
 
