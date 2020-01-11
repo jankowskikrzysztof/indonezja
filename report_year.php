@@ -332,7 +332,7 @@ var myChart = new Chart(ctx, {
 					target: 'chart-analyser'
 				}
 			}
-		};
+		}
 });
 </script>
 
