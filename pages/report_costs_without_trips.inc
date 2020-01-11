@@ -8,7 +8,7 @@ function changePeriod(url)
 
 <div align=center class="pure-form" >
 
-<h1>Empress costs without Salaries and without Trips</h1>
+<h1>Empress costs without Trips (except Salaries)</h1>
 
 <input type=month value="<?php echo $period; ?>"  onchange="changePeriod(this.value)">
 <br><br>
@@ -90,9 +90,6 @@ foreach($row_array as $row)
      <td>'.$row['desc'].'</td>';
 
      echo '<td class=cash>'.$formatter->formatCurrency($row['value'], 'IDR').'</td>';
-     echo '<td></td>';
-     //echo '<td class=cash>'.$formatter->formatCurrency($row['agent_commission_currency'], 'IDR').'</td>';
-
 
      echo '</tr>';
 
@@ -113,14 +110,12 @@ foreach($row_array as $row)
      <th>Name</th>
      <th>Description</th>
      <th>Value</th>
-     <th></th>
   </tr>
  </thead>
 <tfoot>
     <tr align=center valign=top>
      <td colspan=3></td>
      <td class=cash><?php echo $formatter->formatCurrency($sum_value, 'IDR'); ?></td>
-
   </tr>
 </tfoot>
 </table>
