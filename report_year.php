@@ -285,7 +285,7 @@ echo '</table>';
 <script src="inc/Chart.js"></script>
 
 
-<div align=center class="pure-form">
+<div align=center>
 <canvas id="myChart" width="40" height="120"></canvas>
 </div>
 
