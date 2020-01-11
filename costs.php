@@ -31,6 +31,8 @@ if($action == 'add' or $action == 'edit')
 include('pages/costs_form.inc');
 elseif($action == 'post' or $action == 'del')
 include('pages/costs_form_post.inc');
+elseif($action == 'without_trips')
+include('pages/report_costs_without_trips.inc');
 else
 include('pages/costs_main.inc');
 

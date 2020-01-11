@@ -42,6 +42,7 @@ if($_SESSION['limit_site']=="")
       <a href="empress_guests.php">Empress Guests</a>
       <a href="invoice.php?action=emp&period='.date("Y").'">Invoices</a>
       <a href="report_empress.php?action=bookers&period='.date("Y").'">Bookers Report</a>
+      <a href="costs.php?action=without_trips&period='.date("Y-m").'">Costs w/o Trips Rep.</a>
       <a href="report.php?action=empress_trips&period='.date("Y-m").'">Trips Report</a>
       <a href="report_empress.php?action=trip_income&period='.date("Y").'">"on trip" sell Report</a>
             </div>
