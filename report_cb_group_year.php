@@ -234,7 +234,9 @@ foreach ($_POST['loc_list'] as $loc) {
 
 
 echo '<br><br><div align=center>
-<table class="pure-table pure-table-horizontal pure-table-striped"><tr class=loc><td>
+<table class="pure-table pure-table-horizontal pure-table-striped">
+<tr><td><input type="checkbox" id="checkAll" > Check All</td></tr>
+<tr class=loc><td>
 <form action="?period='.$period.'" method="post">
 <input type=hidden name=period value='.$period.'>';
 
@@ -270,6 +272,11 @@ foreach($row_array as $row)
 
 
 
+<script>
+$('#checkAll').click(function () {    
+     $('input:checkbox').prop('checked', this.checked);    
+ });
+</script>
 
 
 
