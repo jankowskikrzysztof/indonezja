@@ -347,7 +347,7 @@ var myChart = new Chart(ctx, {
 			},
 			scales: {
 				yAxes: [{
-					stacked: true
+					stacked: false
 				}]
 			},
 			plugins: {
