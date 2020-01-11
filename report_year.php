@@ -286,7 +286,7 @@ echo '</table>';
 
 
 <div align=center>
-<canvas id="myChart" width="40" height="120"></canvas>
+<canvas id="myChart" width="400" height="400"></canvas>
 </div>
 
 <script>
