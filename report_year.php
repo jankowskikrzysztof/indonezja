@@ -285,8 +285,9 @@ echo '</table>';
 <script src="inc/Chart.js"></script>
 
 
+<div align=center class="pure-form">
 <canvas id="myChart" width="40" height="40"></canvas>
-
+</div>
 
 <script>
 var ctx = document.getElementById('myChart');
