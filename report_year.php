@@ -299,7 +299,7 @@ var myChart = new Chart(ctx, {
 						  	'.$sum_income[7].', '.$sum_income[8].', '.$sum_income[9].', '.$sum_income[10].', '.$sum_income[11].', '.$sum_income[12]; ?> ],
 			
 			backgroundColor: [
-                // 'rgba(255, 99, 132, 0.2)'
+                 'rgba(255, 255, 255, 0.2)'
 
             ],
             borderColor: [
@@ -311,7 +311,7 @@ var myChart = new Chart(ctx, {
 			data: [<?php echo $sum_costs[1].', '.$sum_costs[2].', '.$sum_costs[3].', '.$sum_costs[4].', '.$sum_costs[5].', '.$sum_costs[6].', 
 						  	'.$sum_costs[7].', '.$sum_costs[8].', '.$sum_costs[9].', '.$sum_costs[10].', '.$sum_costs[11].', '.$sum_costs[12]; ?> ],
             backgroundColor: [
-                // 'rgba(255, 99, 132, 0.2)'
+                 'rgba(255, 255, 255, 0.2)'
 
             ],
             borderColor: [
