@@ -288,9 +288,6 @@ echo '<pre>';
 var_dump($income);
 echo '</pre>';
 
-echo '<pre>';
-var_dump($sum_income);
-echo '</pre>';
 
 ?>
 
@@ -310,8 +307,10 @@ var myChart = new Chart(ctx, {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [{
             label: 'Income',
-            data: <?php echo $income; ?>,
-            backgroundColor: [
+			data: [<?php echo $sum_income[1].', '.$sum_income[2].', '.$sum_income[3].', '.$sum_income[4].', '.$sum_income[5].', '.$sum_income[6].', 
+						  	'.$sum_income[7].', '.$sum_income[8].', '.$sum_income[9].', '.$sum_income[10].', '.$sum_income[11].', '.$sum_income[12]; ?> ],
+			
+			backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)'
 
@@ -323,7 +322,8 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
 		},  {
             label: 'Costs',
-            data: <?php echo $costs; ?>,
+			data: [<?php echo $sum_costs[1].', '.$sum_costs[2].', '.$sum_costs[3].', '.$sum_costs[4].', '.$sum_costs[5].', '.$sum_costs[6].', 
+						  	'.$sum_costs[7].', '.$sum_costs[8].', '.$sum_costs[9].', '.$sum_costs[10].', '.$sum_costs[11].', '.$sum_costs[12]; ?> ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)'
