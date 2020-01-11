@@ -21,9 +21,27 @@ $stmt -> execute();
 $booker_array = $stmt->fetchAll();
 ?>
 
-<div align=center class="pure-form">
 
-<input type=year value="<?php echo $period; ?>"  onchange="changePeriod(this.value)">
+
+<?php
+$starting_year  =date('Y', strtotime('-3 year'));
+ $ending_year = date('Y', strtotime('+1 year'));
+ $current_year = date('Y');
+ for($starting_year; $starting_year <= $ending_year; $starting_year++)
+     {
+     $yr_option .= '<option value="'.$starting_year.'"';
+     if( ($starting_year ==  $current_year and $period == '') or $period == $starting_year)
+         {
+            $yr_option .= ' selected="selected"';
+         }
+     $yr_option .= ' >'.$starting_year.'</option>';
+     }
+?>
+
+<div align=center class="pure-form">
+<select name=period onchange="changePeriod(this.value)">
+<?php echo $yr_option; ?>
+</select>
 <br><br>
 </div>
 
