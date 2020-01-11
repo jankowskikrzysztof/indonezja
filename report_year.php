@@ -288,6 +288,10 @@ echo '<pre>';
 var_dump($income);
 echo '</pre>';
 
+echo '<pre>';
+var_dump($sum_income);
+echo '</pre>';
+
 ?>
 
 <script src="inc/Chart.js"></script>
