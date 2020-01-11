@@ -290,10 +290,8 @@ echo '</table>';
 
 <script>
 var ctx = document.getElementById('myChart');
+
 var myChart = new Chart(ctx, {
-
-
-
 	type: 'line',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -319,7 +317,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
         }]
     },
-	options = {
+	options: {
 			maintainAspectRatio: false,
 			spanGaps: false,
 			elements: {
