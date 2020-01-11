@@ -284,6 +284,10 @@ echo '</table>';
 $income = json_encode($sum_income);
 $costs = json_encode($sum_costs);
 
+echo '<pre>';
+var_dump($income);
+echo '</pre>';
+
 ?>
 
 <script src="inc/Chart.js"></script>
