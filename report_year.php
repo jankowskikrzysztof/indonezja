@@ -280,6 +280,10 @@ echo '</table>';
 
 
 
+
+$income = json_encode($sum_income);
+$costs = json_encode($sum_costs);
+
 ?>
 
 <script src="inc/Chart.js"></script>
@@ -298,7 +302,7 @@ var myChart = new Chart(ctx, {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [{
             label: 'Income',
-            data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
+            data: <?php echo $income; ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)'
@@ -311,7 +315,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 1
 		},  {
             label: 'Costs',
-            data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
+            data: <?php echo $costs; ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)'
