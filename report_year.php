@@ -282,10 +282,11 @@ echo '</table>';
 
 ?>
 
-
-<canvas id="myChart" width="400" height="400"></canvas>
-
 <script src="inc/Chart.js"></script>
+
+
+<canvas id="myChart" width="40" height="40"></canvas>
+
 
 <script>
 var ctx = document.getElementById('myChart');
