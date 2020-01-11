@@ -281,9 +281,16 @@ echo '</table>';
 
 <script src="inc/Chart.js"></script>
 
+<script>
+$(document).ready(function() {
+  $(".myChart").css({
+    'width': ($(".pure-table").width() + 'px')
+  });
+});
+</script>
 
 <div align=center>
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart" height="400" ></canvas>
 </div>
 
 <script>
