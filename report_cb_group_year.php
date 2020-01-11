@@ -235,7 +235,7 @@ foreach ($_POST['loc_list'] as $loc) {
 
 echo '<br><br><div align=center>
 <table class="pure-table pure-table-horizontal pure-table-striped">
-<tr><td><input type="checkbox" id="checkAll" > Check All</td></tr>
+<tr><td><label><input type="checkbox" id="checkAll" > Check All</label></td></tr>
 <tr class=loc><td>
 <form action="?period='.$period.'" method="post">
 <input type=hidden name=period value='.$period.'>';
