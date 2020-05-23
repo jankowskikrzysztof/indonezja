@@ -90,7 +90,7 @@ if($_SESSION['limit_site']=="")
 
       <?php echo '<a href="report.php?action=room_charge&period='.date("Y-m").'">Room Charge</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
+      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
              echo '<a href="report_group_settlements.php?period='.date("Y-m").'&action=cc">Settlements - CC</a>'; ?>
 
       <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
