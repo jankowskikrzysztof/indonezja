@@ -32,7 +32,7 @@ if($_SESSION['limit_site']=="")
     echo '<li><a href="income.php?period='.date("Y-m").'"  accesskey="i"><u>I</u>ncome</a></li>'; ?>
 
 
-<?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 24 or $_SESSION['user_id'] == 16) echo '
+<?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 24 or $_SESSION['user_id'] == 16) echo '
     <li class="dropdown"><a href="#">Empress</a>
         <div class="dropdown-content">
       <a href="empress_income.php?period='.date("Y-m").'">Income</a>
@@ -66,27 +66,35 @@ if($_SESSION['limit_site']=="")
         <div class="dropdown-content">
       <a href="report_inc_daily.php?date=<?php echo date("Y-m-d"); ?>">Income Daily</a>
       <a href="report_inc_monthly.php?period=<?php echo date("Y-m"); ?>">Period report</a>
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="report.php?action=agent&period='.date("Y-m").'">Agents</a>'; ?>
+      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
+                echo '<a href="report.php?action=agent&period='.date("Y-m").'">Agents</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="report_cash_movement.php?period='.date("Y-m").'">Cash Movement</a>'; ?>
+      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
+                echo '<a href="report_cash_movement.php?period='.date("Y-m").'">Cash Movement</a>'; ?>
 
       <?php if($_SESSION['user_id'] == 1) echo '<a href="report_costs_to_pay.php">Costs - Still to pay</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16 or $_SESSION['user_id'] == 24) echo '<a href="report_year.php?period='.date("Y-m").'">Annual Total Report</a>'; ?>
+      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16 or $_SESSION['user_id'] == 24) 
+              echo '<a href="report_year.php?period='.date("Y-m").'">Annual Total Report</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16 or $_SESSION['user_id'] == 24) echo '<a href="report_cb_group_year.php?period='.date("Y-m").'">Annual Costs Report</a>'; ?>
+      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16 or $_SESSION['user_id'] == 24) 
+             echo '<a href="report_cb_group_year.php?period='.date("Y-m").'">Annual Costs Report</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 16) echo '<a href="report_activities_year.php?period='.date("Y-m").'">Annual Activities Report</a>'; ?>
+      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 16) 
+             echo '<a href="report_activities_year.php?period='.date("Y-m").'">Annual Activities Report</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="withdraw_bank.php?period='.date("Y-m").'">Bank Withdraw</a>'; ?>
+      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
+             echo '<a href="withdraw_bank.php?period='.date("Y-m").'">Bank Withdraw</a>'; ?>
 
       <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1) echo '<a href="withdraw_paypal.php?period='.date("Y-m").'">Paypal Withdraw</a>'; ?>
 
       <?php echo '<a href="report.php?action=room_charge&period='.date("Y-m").'">Room Charge</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="report_group_settlements.php?period='.date("Y-m").'&action=cc">Settlements - CC</a>'; ?>
+      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
+             echo '<a href="report_group_settlements.php?period='.date("Y-m").'&action=cc">Settlements - CC</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) echo '<a href="report_group_settlements.php?period='.date("Y-m").'&action=bookers">Settlements - Bookers</a>'; ?>
+      <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
+             echo '<a href="report_group_settlements.php?period='.date("Y-m").'&action=bookers">Settlements - Bookers</a>'; ?>
 
       <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1) echo '<a href="logs.php?action=last_changes&table=cash_book&period='.date("Y-m").'">Last changes logs</a>'; ?>
 
