@@ -32,7 +32,8 @@ if($_SESSION['limit_site']=="")
     echo '<li><a href="income.php?period='.date("Y-m").'"  accesskey="i"><u>I</u>ncome</a></li>'; ?>
 
 
-<?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 24 or $_SESSION['user_id'] == 16) echo '
+<?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 38 or $_SESSION['user_id'] == 39 or $_SESSION['user_id'] == 40 or $_SESSION['user_id'] == 41 or 
+        $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 24 or $_SESSION['user_id'] == 16) echo '
     <li class="dropdown"><a href="#">Empress</a>
         <div class="dropdown-content">
       <a href="empress_income.php?period='.date("Y-m").'">Income</a>
