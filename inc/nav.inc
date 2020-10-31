@@ -97,7 +97,8 @@ if($_SESSION['limit_site']=="")
 
       <?php echo '<a href="report.php?action=room_charge&period='.date("Y-m").'">Room Charge</a>'; ?>
 
-      <?php if($_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
+      <?php if($_SESSION['user_id'] == 38 or $_SESSION['user_id'] == 41 or
+                $_SESSION['user_id'] == 6 or $_SESSION['user_id'] == 1 or $_SESSION['user_id'] == 7 or $_SESSION['user_id'] == 8 or $_SESSION['user_id'] == 16) 
              echo '<a href="report_group_settlements.php?period='.date("Y-m").'&action=cc">Settlements - CC</a>'; ?>
 
       <?php if($_SESSION['user_id'] == 37 or $_SESSION['user_id'] == 38 or $_SESSION['user_id'] == 39 or $_SESSION['user_id'] == 40 or $_SESSION['user_id'] == 41 or 
@@ -117,7 +118,7 @@ if($_SESSION['limit_site']=="")
    if($_SESSION['location_id_limit']==0)
       {
       ?>
-    <li class="dropdown"><a href="#">Budget</a>
+<!--    <li class="dropdown"><a href="#">Budget</a>
         <div class="dropdown-content">
       <a href="budget.php">All</a>
       <a href="budget.php?loc_sel=3">Board</a>
@@ -125,13 +126,17 @@ if($_SESSION['limit_site']=="")
       <a href="budget.php?loc_sel=1">North</a>
       <a href="budget.php?loc_sel=2">South</a>
       </div>
-    </li>
+    </li>-->
     <li class="dropdown"><a href="#" class="dropbtn">Dictionaries</a>
         <div class="dropdown-content">
       <a href="activities.php">Activities</a>
       <a href="activities_pricelist.php">Activities pricelist</a>
       <a href="agent.php">Agents</a>
-      <a href="backup_list.php">Backup list</a>
+      <?php if($_SESSION['login'] == 'kjankowski')
+       {
+        echo '<a href="backup_list.php">Backup list</a>'; 
+       };
+        ?>
       <a href="booker.php">Bookers</a>
       <a href="cash_book_groups.php">Cash Book Groups</a>
       <a href="company.php">Companies</a>
