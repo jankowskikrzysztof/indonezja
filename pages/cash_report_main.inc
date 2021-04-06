@@ -204,7 +204,7 @@ foreach($row_array as $row)
          <td>';
 
 
-   if($_SESSION['login'] == 'kjankowski' or $_SESSION['login'] == 'przemek')
+   if($_SESSION['login'] == 'kjankowski' or $_SESSION['login'] == 'przemek' or $_SESSION['login'] == 'maciek' or $_SESSION['login'] == 'marcin')
        {
        $stmt = $dbh->prepare("SELECT COUNT(id_cash_book) as count
                               FROM `log_cash_book`
