@@ -19,7 +19,7 @@ $select = "SELECT logs.*
                               FROM `logs`
                               WHERE logs.personel_id= ".$_GET['id']."
                               ORDER BY insertdate desc
-                              LIMIT 100";
+                              LIMIT 1000";
 
 //echo $select;
 $stmt = $dbh->prepare($select);
