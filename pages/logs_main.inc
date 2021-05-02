@@ -20,9 +20,10 @@ $results_per_page = 500;
 $pages_count = ceil($row['records']/$results_per_page);
 $page_first_result = ($page-1) * $results_per_page;  
 
+$actual_records_min = $page_first_result+1;
 $actual_records_max = $page_first_result+$results_per_page;
 
-echo '<br><p>Total records '.$row['records'].', Actual records: '.$page_first_result.'-'.$actual_records_max.'. Choose log page: ';
+echo '<br><p>Total records '.$row['records'].', Actual records: '.$actual_records_min.'-'.$actual_records_max.'. Choose log page: ';
 
 for($page = 1; $page<= $pages_count; $page++) {  
    echo '<a href = "?action='.$action.'&id='.$_GET['id'].'&page=' . $page . '">' . $page . ' </a> &nbsp;&nbsp;&nbsp;';  
