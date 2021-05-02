@@ -25,7 +25,7 @@ $actual_records_max = $page_first_result+$results_per_page;
 echo '<br><p>Total records '.$row['records'].', Actual records: '.$page_first_result.'-'.$actual_records_max.'. Choose log page: ';
 
 for($page = 1; $page<= $pages_count; $page++) {  
-   echo '<a href = "?action='.$action.'&id='.$id.'&page=' . $page . '">' . $page . ' </a> &nbsp;&nbsp;&nbsp;';  
+   echo '<a href = "?action='.$action.'&id='.$_GET['id'].'&page=' . $page . '">' . $page . ' </a> &nbsp;&nbsp;&nbsp;';  
 }
 
 ?>
