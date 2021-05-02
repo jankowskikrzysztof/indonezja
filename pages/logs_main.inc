@@ -26,6 +26,7 @@ echo '<br><p>Total records '.$row['records'].', Actual records: '.$page_first_re
 
 for($page = 1; $page<= $pages_count; $page++) {  
    echo '<a href = "?action='.$action.'&page=' . $page . '">' . $page . ' </a> &nbsp;&nbsp;&nbsp;';  
+}
 
 ?>
   </p><br>
