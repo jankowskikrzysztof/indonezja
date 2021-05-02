@@ -20,12 +20,12 @@ $results_per_page = 500;
 $pages_count = ceil($row['records']/$results_per_page);
 $page_first_result = ($page-1) * $results_per_page;  
 
-echo '<!-- stron: '.$pages_count.' -->';
+$actual_records_max = $page_first_result+$results_per_page;
 
-echo '<br><p>Total records '.$row['records'].', Actual records: '.$page_first_result.'-'.$page_first_result+$results_per_page.'. Choose log page: ';
+echo '<br><p>Total records '.$row['records'].', Actual records: '.$page_first_result.'-'.$actual_records_max.'. Choose log page: ';
 
 for($page = 1; $page<= $pages_count; $page++) {  
-   echo '<a href = "?action='.$action.'&page=' . $page . '">' . $page . ' </a> &nbsp;&nbsp;&nbsp;';  
+   echo '<a href = "?action='.$action.'&id='.$id.'&page=' . $page . '">' . $page . ' </a> &nbsp;&nbsp;&nbsp;';  
 }
 
 ?>
