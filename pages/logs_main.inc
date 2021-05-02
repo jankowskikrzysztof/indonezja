@@ -36,7 +36,7 @@ for($page = 1; $page<= $pages_count; $page++) {
   <table class="pure-table pure-table-horizontal pure-table-striped">
    <thead>
    <tr class=reports>
-   <th colspan=7></th>
+   <th colspan=7><?php echo $paginator; ?></th>
    </tr>
   <tr class=reports>
      <th>Lp</th>
