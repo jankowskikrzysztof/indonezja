@@ -22,6 +22,7 @@ $page_first_result = ($page-1) * $results_per_page;
 
 $actual_records_min = $page_first_result+1;
 $actual_records_max = $page_first_result+$results_per_page;
+if($actual_records_max > $row['records']) $actual_records_max =$row['records'];
 
 echo '<br><p>Total records '.$row['records'].', Actual records: '.$actual_records_min.'-'.$actual_records_max.'. Choose log page: ';
 
