@@ -61,6 +61,8 @@ $stmt -> execute();
 
 $row_array = $stmt->fetchAll();
 
+$lp = $page_first_result;
+
 foreach($row_array as $row)
    {
    $lp++;
