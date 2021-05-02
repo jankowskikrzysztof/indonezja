@@ -1,3 +1,35 @@
+  <?php
+
+if (!isset ($_GET['page']) ) {  
+   $page = 1;  
+} else {  
+   $page = $_GET['page'];  
+}  
+
+$select = "SELECT COUNT(id_logs) as records
+                              FROM `logs`
+                              WHERE logs.personel_id= ".$_GET['id']."";
+
+//echo $select;
+$stmt = $dbh->prepare($select);
+$stmt -> execute();
+
+$row = $stmt->fetch();
+
+$results_per_page = 500;
+$pages_count = ceil($row['records']/$results_per_page);
+$page_first_result = ($page-1) * $results_per_page;  
+
+echo '<!-- stron: '.$pages_count.' -->';
+
+echo '<br><p>Total records '.$row['records'].', Actual records: '.$page_first_result.'-'.$page_first_result+$results_per_page.'. Choose log page: ';
+
+for($page = 1; $page<= $pages_count; $page++) {  
+   echo '<a href = "?action='.$action.'&page=' . $page . '">' . $page . ' </a> &nbsp;&nbsp;&nbsp;';  
+
+?>
+  </p><br>
+  
   <table class="pure-table pure-table-horizontal pure-table-striped">
    <thead>
   <tr class=reports>
@@ -19,11 +51,12 @@ $select = "SELECT logs.*
                               FROM `logs`
                               WHERE logs.personel_id= ".$_GET['id']."
                               ORDER BY insertdate desc
-                              LIMIT 1000";
+                              LIMIT " . $page_first_result . ',' . $results_per_page; 
 
 //echo $select;
 $stmt = $dbh->prepare($select);
 $stmt -> execute();
+
 
 $row_array = $stmt->fetchAll();
 
